@@ -1,0 +1,62 @@
+<fieldset style="display:inline">
+  <legend>Event</legend>
+
+<% form_for(@event) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, "Name:" %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :website,"Website:"%>
+    <%= f.text_field :website %>
+  </p>
+  <p>
+    <%= f.label :promoter, "Promoter:" %>
+    <%= f.text_field :promoter %>
+  </p>
+  <p>
+    <%= f.label :start_date, "Date:" %>
+    <%= f.date_select :start_date,:prompt=>true%>
+  </p>
+  <p>
+    <%= f.label :end_date, "End Date:" %>
+    <%= f.date_select :end_date ,:default=>{:day=>""},:include_blank=>{ :day => 'Select day', :month => 'Select month', :year => 'Select year' }%>
+  </p>
+  <p>
+    <%= f.label :location,"Location:" %>
+    <%= f.text_field :location %>
+  </p>
+  <p>
+    <%= f.label :state,"State:"%>
+    <%= f.select :state, state_list %>
+  </p>
+  <p>
+    <%= f.label :event_type, "Event Type:"%>
+    <%= f.select :event_type,options_for_select([["Cross Country"],["Endurnace"],["Cyclocross"],["Downhill"]]) %>
+  </p>
+  <p>
+    
+    <%= f.label :series, "Series?:" %>
+    <%= f.check_box :series %> Is this event a series?
+  </p>
+  <p>
+
+    <%= f.label :featured, "Featured?:" %>
+    <%= f.check_box :featured %> Is this event featured?
+
+  </p>
+  
+  
+  <p>
+    <%= f.label :logo_path,"Logo Path:" %>
+    <%= f.file_field :logo_path %>
+  </p>
+  <p>
+    <%= f.submit 'Save' %>
+  </p>
+<% end %>
+</fieldset>
+
+<h2 style="display:inline;vertical-align: top;">My Events</h2>

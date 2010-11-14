@@ -1,0 +1,27 @@
+<div id="container3">
+  <div id="container2">
+    <div id="container1">
+      <div id="col1">Column 1</div>
+      <div id="col2">
+        <table width="100%">
+          <tr>
+            <th>Event</th>
+            <th>Type</th>
+            <th>Date</th>
+            <th>State</th>
+          </tr>
+
+          <%  @events.each do |event| %>
+            <tr class="<%=cycle("white","gray") %>">
+              <td><%= link_to event.name, event_path(event)  %> </td>
+              <td><%= event.event_type  %> </td>
+              <td><%= event.start_date  %> </td>
+              <td><%= event.state  %> </td>
+            </tr>
+          <%end%>
+        </table>
+      </div>
+      <div id="col3">Column 3</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+  <head profile="http://gmpg.org/xfn/11">
+
+    <title>Find My Race <%= @page_title unless @page_title.nil? %></title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta NAME="description" CONTENT="<%= @page_desc.gsub(/<\/?[^>]*>/, "") unless @page_desc.nil? %>"/>
+    <meta NAME="keywords" CONTENT="<%=@page_keywords unless @page_title.nil?%>"/>
+
+    <meta name="y_key" content=""/>
+
+    <link rel='icon' href="<%=image_path("favicon.ico")%>"/>
+
+<%#= javascript_include_tag 'prototype','effects','dragdrop','controls',"builder","lightbox"%>
+<%#= javascript_include_tag "scriptaculous" %>
+
+
+<%#= javascript_include_tag "jquery-1.4.2.min","jquery.cycle.min", "jquery-ui-1.8.6.custom.min" %>
+<%#= javascript_include_tag 'application' %>
+
+    <%= stylesheet_link_tag 'style' %>
+<%#= stylesheet_link_tag 'boxes' %>
+<%#= stylesheet_link_tag 'lightbox' %>
+<%#= stylesheet_link_tag 'jquery-ui-1.8.6.custom' %>
+
+<%#= include_tiny_mce_if_needed %>
+
+  </head>
+
+  <body>
+
+    <div id="wrapper">
+      <div id="nav">
+        <p style="float:right">
+          <% if !current_user_logged_in? %>
+            <% form_tag login_url(:secure=>true)  do -%>
+              <span class="white">Email:</span> <%= text_field_tag :email, '', :size=>"20"%>
+              <span class="white">Password:</span>  <%= password_field_tag :password ,'', :size=>"10"%>
+              <%= submit_tag "login", :class=>"button"%>
+            <% end %>
+          <% else %>
+            Welcome <span class="white title bold"><%= current_user.first_name %></span>!
+          <%end%>
+        </p>
+        <p>
+          <%= link_to "HOME", "/",:class=>"white" %> |
+          <%= link_to "ADD EVENT", {:controller=>"events",:action=>"new"} ,:class=>"white" %>
+          <span style="float:right">
+            <%= link_to "CONTACT", {:controller=>"home",:action=>"contact_us"},{:class=>"white"}%> |
+            <%= link_to "ABOUT", {:controller=>"home",:action=>"about"},{:class=>"white"}%> |
+            <%= link_to "HELP", {:controller=>"home",:action=>"help"} ,{:class=>"white"} %>
+          </span>
+        </p>
+      </div>
+      <div id="header">
+
+
+        <div id="image">
+<%#= link_to image_tag("/images/homelogo.jpg", :alt=>"Find My Race"), :controller=>"/home",:action=>"index" %>
+        </div>
+
+
+
+
+      </div>
+
+
+      <div id="content">
+        <% [:error, :warning, :notice].each do |level|
+          if flash[level] -%>
+            <div class="flash <%= level.to_s -%>"><%= flash[level] -%></div>
+          <% end -%>
+        <% end -%>
+
+        <%= yield  %>
+
+      </div>
+
+
+
+      <div id="footer">
+        <p>Find My Race LLC | <%= link_to "Contact Us", {:controller=>"home",:action=>"contact_us"},:class=>"black"  %>
+          <br/>
+          &copy; <%= Time.now.year  %>  Find My Race LLC All Rights Reserved. All
+          information subject to change.</p>
+      </div>
+    </div>
+    <script type="text/javascript">
+      // var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      // document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      // try{
+      //  var pageTracker = _gat._getTracker("UA-9199755-1");
+      //  pageTracker._trackPageview();
+      //} catch(err) {}
+    </script>
+  </body>
+</html>

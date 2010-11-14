@@ -1,0 +1,510 @@
+/* 
+    Document   : style
+    Created on : Jan 7, 2010, 2:25:21 PM
+    Author     : cwilhelm
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+
+}
+
+body{
+
+    font-family: Geneva,Arial,Helvetica,sans-serif;
+    background: #FFFFFF;
+    font-size: .9em;
+    color: #000000;
+    height: 100%;
+    background-color: #333333;
+}
+
+/* id's */
+
+#wrapper{
+    text-align: left;
+    padding: 0px;
+
+    width: 90%;
+    color: #000000;
+    background: #ffffff;
+    margin: auto;
+
+
+}
+
+#map{
+    float:left;
+    padding:10px;
+    margin: 5px;
+}
+
+#dealers{
+    float:left;
+    padding: 10px;
+}
+
+#header{
+    height: 115px;
+    padding: 0px;
+}
+
+#image{
+    float: left;
+
+}
+
+#controls{
+
+    width: 600px;
+    font-size: .8em;
+    height:100%;
+    text-align: right;
+    padding:5px;
+    position:relative;
+    float:right;
+
+
+
+}
+
+#header img{
+    float: left;
+}
+
+#content{
+    color: #000000;
+    padding: 0px;
+    margin: 0px;
+
+
+}
+#admin{
+    margin: 10px;
+
+}
+
+#footer {
+    clear: both;
+    text-align: center;
+    font-size: .9em;
+    margin: 0px;
+    color:#000;
+
+}
+#footer p{
+    margin:0;
+}
+
+#info{
+    float: left;
+}
+
+#info p{
+    padding:  3px;
+}
+
+div.thumbs{
+    width: 100%;
+    border: 2px black solid;
+    clear:left
+}
+
+#files{
+    clear: left;
+}
+
+#dealer_lookup{
+    border: solid black;
+    margin: 3px;
+    padding: 2px;
+}
+
+/*#buy{
+    width:100%;
+    margin-bottom: 10px;
+}*/
+
+#categories ul{
+
+    margin-top: 0;
+}
+
+#notice {
+    border: 2px solid red;
+    padding: 1em;
+    margin-bottom: 2em;
+    background-color: #f0f0f0 ;
+    font: bold smaller sans-serif;
+}
+
+/* end id's */
+h1,h2,h3,h4{
+    padding:3px;
+    margin:3px;
+    text-transform:  capitalize;
+}
+
+/* links */
+a:link {color: #000}
+a:visited {color: #000}
+a:hover {color: #666666}
+
+a.white:link {color: #fff}
+a.white:visited {color: #fff}
+a.white:hover {color: #666666}
+
+td th{padding: 3px}
+th{text-align: center}
+tr {padding:3px}
+
+table{
+    padding: 10px;
+    border: none;
+}
+p{
+    padding:0;
+    margin: 3px;
+}
+
+hr{ width:100%  }
+
+
+
+/* classes */
+.small {
+    font-size: small;
+}
+
+.center {text-align: center;}
+.left{text-align: left;}
+.right{text-align:right;}
+/*.fieldWithErrors input {
+  border: 1px solid red;
+} */
+
+tr.gray {background-color: #cccccc;color:black}
+tr.white{background-color: #ffffff;color:#000}
+tr.black {background-color: black;color:white}
+.title{
+    text-transform: capitalize;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.flash {
+    font-weight: bold;
+    padding: 5px;
+    margin-bottom: 5px;
+    width: 300px;
+    margin-left: auto;
+    margin-right:auto;
+    margin-top:5px;
+    text-align: center;
+    padding: 5px;
+}
+.error {
+    background-color: #FAA;
+    border: solid 2px red;
+}
+.warning {
+    background-color: #FFA;
+    border: solid 2px yellow;
+}
+.notice {
+    background-color: #AFA;
+    border: solid 2px green;
+}
+
+
+.thumb{
+    border: solid black;
+    padding: 1px;
+    margin: 2px;
+    height: auto;
+    width: auto;
+    float: left;
+}
+
+.thumb .title{
+    font-size: .6em;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+p.title, h2.title, h1.title, h3.title{
+    text-transform: capitalize;
+}
+
+
+.heading{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.required  {
+    border: 2px solid red;
+}
+
+/*form */
+.button {
+    border: 1px solid #000;
+    background: #cccccc;
+}
+
+form { display:inline}
+
+.button-to {
+    display: inline;
+}
+
+.button-to div {
+    display: inline;
+}
+
+.button:hover{
+    border: 1px solid #fff;
+    background: #000;
+    color:#fff;
+}
+
+textarea{
+    border: 1px solid #000;
+    background: #cccccc;
+    color:#000;
+
+}
+textarea:hover{
+    border: 1px solid #fff;
+    background: #000;
+    color:#fff;
+}
+
+input{
+    border: 1px solid #000;
+    background: #cccccc;
+    color:#000;
+
+}
+
+input:hover{
+    border: 1px solid #fff;
+    background: #000;
+    color:#fff;
+}
+
+select{
+    border: 1px solid #000000;
+    background: #cccccc;
+    color:#000;
+}
+
+select:hover{
+    border: 1px solid #fff;
+    background: #000;
+    color:#fff;
+}
+legend{
+    font-weight: bold;
+    text-transform: capitalize
+}
+
+label{
+    font-weight: bold;
+    text-transform:  capitalize;
+    float: left;
+    width: 10em;
+}
+
+fieldset{
+    width:350px;
+    margin: 15px;
+}
+
+.fieldWithErrors input select textarea checkbox {
+    border: 2px solid red;
+}
+
+.fieldWithErrors  {
+    display: inline;
+}
+/* end form */
+
+
+/* image thumbs */
+img{
+    text-decoration:none;
+    border:none;
+}
+div.img
+{
+    text-align: center;
+    margin: 10px;
+    padding:5px;
+    height:110px;
+    width:80px;
+    float:left;
+
+}
+
+div.img img
+{
+    display:block;
+    margin: 0px auto;
+
+}
+div.img a:hover img
+{
+    /* border:1px solid #000000;*/
+}
+div.desc
+{
+    text-align:center;
+    font-weight:normal;
+    width:100%;
+    margin:2px;
+}
+
+
+/* naviagion */
+#nav{
+
+    /*text-align: center;*/
+    background: #333333;
+    font-size: 1em;
+    color:#000000;
+    padding:5px;
+    font-weight: bold;
+    border:0;
+    /*  height: 35px;
+      margin:0px;
+      padding:0px;*/
+
+
+}
+ul#list-nav {
+    margin:0px;
+    padding:0;
+    list-style:none;
+    width:100%;
+    text-align: center
+}
+
+ul#list-nav li {
+    display:inline
+}
+
+ul#list-menu li a {
+    text-decoration:none;
+    padding:5px 0;
+    width:100px;
+    background:#000000;
+    color:#ffffff;
+    float:left;
+
+}
+
+ul#list-nav li a {
+    text-decoration: none;
+    padding:5px 0;
+    padding-left: 15px;
+    width: 100%;
+    text-align:center;
+    border-left:3px solid #fff;
+    background: #000000;
+    color:#ffffff
+}
+
+/*
+
+#container3 {
+    float:left;
+    width:100%;
+    overflow:hidden;
+    position:relative;
+}
+#container2 {
+    float:left;
+    width:100%;
+    position:relative;
+    right:20%;
+}
+#container1 {
+    float:left;
+    width:100%;
+    position:relative;
+    right:60%;
+    overflow:hidden;
+}
+#col1 {
+    float:left;
+    width:18%;
+    position:relative;
+    left:81%;
+    overflow:hidden;
+}
+#col2 {
+    float:left;
+    width:58%;
+    position:relative;
+    left:83%;
+    overflow:hidden;
+}
+#col3 {
+    float:left;
+    width:18%;
+    position:relative;
+    left:85%;
+    overflow:hidden;
+}*/
+
+#container3 {
+    float:left;
+    width:100%;
+
+    overflow:hidden;
+    position:relative;
+}
+#container2 {
+    float:left;
+    width:100%;
+
+    position:relative;
+    right:20%;
+}
+#container1 {
+    float:left;
+    width:100%;
+
+    position:relative;
+    right:60%;
+}
+#col1 {
+    float:left;
+    width:18%;
+    position:relative;
+    left:81%;
+    overflow:hidden;
+}
+#col2 {
+    float:left;
+    width:58%;
+    position:relative;
+    left:83%;
+    overflow:hidden;
+}
+#col3 {
+    float:left;
+    width:18%;
+    position:relative;
+    left:85%;
+    overflow:hidden;
+}
