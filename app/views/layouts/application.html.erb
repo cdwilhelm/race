@@ -13,7 +13,7 @@
     <meta name="y_key" content=""/>
 
     <link rel='icon' href="<%=image_path("favicon.ico")%>"/>
-
+<%= javascript_include_tag :defaults %>
 <%#= javascript_include_tag 'prototype','effects','dragdrop','controls',"builder","lightbox"%>
 <%#= javascript_include_tag "scriptaculous" %>
 
@@ -34,33 +34,37 @@
 
     <div id="wrapper">
       <div id="nav">
-        <p style="float:right">
+        <div>
           <% if !current_user_logged_in? %>
             <% form_tag login_url(:secure=>true)  do -%>
-              <span class="white">Email:</span> <%= text_field_tag :email, '', :size=>"20"%>
+              <span class="white">Email:</span> <%= text_field_tag :email, '', :size=>"10"%>
               <span class="white">Password:</span>  <%= password_field_tag :password ,'', :size=>"10"%>
               <%= submit_tag "login", :class=>"button"%>
             <% end %>
           <% else %>
-            Welcome <span class="white title bold"><%= current_user.first_name %></span>!
+             <span class="white title bold" >Welcome <%= current_user.first_name %>! | </span>
+             <%= link_to "My Races", events_path,:class=>"white" %>  <span class="white">|</span>
+              <%= link_to "Logout", "logout",:class=>"white" %>
+            
           <%end%>
-        </p>
-        <p>
+        </div>
+        <div>
           <%= link_to "HOME", "/",:class=>"white" %> |
           <%= link_to "ADD EVENT", {:controller=>"events",:action=>"new"} ,:class=>"white" %>
           <span style="float:right">
-            <%= link_to "CONTACT", {:controller=>"home",:action=>"contact_us"},{:class=>"white"}%> |
-            <%= link_to "ABOUT", {:controller=>"home",:action=>"about"},{:class=>"white"}%> |
+            <%= link_to "CONTACT", {:controller=>"home",:action=>"contact_us"},{:class=>"white"}%> <span class="white">|</span>
+            <%= link_to "ABOUT", {:controller=>"home",:action=>"about"},{:class=>"white"}%>  <span class="white">|</span>
             <%= link_to "HELP", {:controller=>"home",:action=>"help"} ,{:class=>"white"} %>
           </span>
-        </p>
+        
+        </div>
       </div>
       <div id="header">
+      Find My Race
 
-
-        <div id="image">
+        <!--div id="image">
 <%#= link_to image_tag("/images/homelogo.jpg", :alt=>"Find My Race"), :controller=>"/home",:action=>"index" %>
-        </div>
+        </div-->
 
 
 

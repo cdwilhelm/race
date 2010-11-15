@@ -1,27 +1,88 @@
 <div id="container3">
   <div id="container2">
     <div id="container1">
-      <div id="col1">Column 1</div>
-      <div id="col2">
-        <table width="100%">
-          <tr>
-            <th>Event</th>
-            <th>Type</th>
-            <th>Date</th>
-            <th>State</th>
-          </tr>
+      <div id="col1">
+        <div id="search_box" class="box">
+          <h3 class="center block">Search Events</h3>
+          <% form_remote_tag :url=>'/home/search' do %>
+            <p>
+              <%= label_tag "Event:" %><br/>
+              <%= text_field_tag "name","",:size=>15 %>
+            </p>
 
-          <%  @events.each do |event| %>
-            <tr class="<%=cycle("white","gray") %>">
-              <td><%= link_to event.name, event_path(event)  %> </td>
-              <td><%= event.event_type  %> </td>
-              <td><%= event.start_date  %> </td>
-              <td><%= event.state  %> </td>
-            </tr>
+            <p>
+
+              <%= label_tag "Between Dates:" %><br/>
+              <%= text_field_tag "start_date","from",:size=>6%>
+              and
+              <%= text_field_tag "end_date","to",:size=>6%>
+            </p>
+            <p>
+              <%= label_tag "State:" %><br/>
+              <%= select_tag "state",options_for_select(state_list)%>
+            </p>
+            <p>
+
+              <%= label_tag "Type:" %><br/>
+              <%= select_tag "event_type",options_for_select(event_type_list.sort)%>
+            </p>
+            <%= submit_tag 'find' %>
           <%end%>
-        </table>
+        </div>
+        <div id="ads">
+          <div class="ad">
+            <%= link_to image_tag('15hnbanlg.gif'), "http://www.hammernutrition.com/affiliates/146518",:class=>"ad" %>
+          </div>
+          <div class="ad">
+            <%= link_to image_tag('mtbcoach.jpg'),"http://mtbcoach.com",:class=>"ad" %>
+          </div>
+        </div>
       </div>
-      <div id="col3">Column 3</div>
+      <div id="col2">
+
+        <div id="ads" class="box">
+          <p>One Big Ad goes here</p>
+        </div>
+        <br/>
+        <div id="results">
+          <%= render "result"  %>
+        </div>
+
+        <div id="ads" class="box">
+          <p>More ads here</p>
+        </div>
+
+      </div>
+      <div id="col3">
+        <div>
+          <%= link_to image_tag('FaceBooklogo.gif'),"http://facebook.com" %>
+        </div>
+        <div>
+          <%= link_to image_tag('follow_bird-a.png'),"http://twitter.com" %>
+        </div>
+        <div id="about" class="box">
+          <h3 class="center block">About</h3>
+          <p>We are a builing large database of races around the country.
+            If you know of a race that
+            is not listed here, please <%= link_to "add one",new_event_path()  %>. 
+            Your fellow racers will appreciate it.  <%=link_to "Read More...","/home/about"%></p>
+        </div>
+
+        <div id="promote" class="box">
+          <h3 class="center block">Promote your race</h3>
+          <p>If you want to promote your race on your site 
+            <%= link_to "contact us","/home/contact_us" %>. We can discuss options
+            to help increase your attendance. <%=link_to "Read More...", "/home/promote"%> </p>
+        </div>
+
+        <div id="advertise" class="box">
+          <h3 class="center block">Advertise</h3>
+          <p>info about advertising <%=link_to "Read More..." ,"/home/advertise"%></p>
+        </div>
+        <div id="ads">
+
+        </div>
+      </div>
     </div>
   </div>
 </div>

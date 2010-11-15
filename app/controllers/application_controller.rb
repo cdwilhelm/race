@@ -14,8 +14,11 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
 
 end
+def event_type_list
+  [["All",""],["Cross Country"],["Endurance"],["Cyclocross"],["Road"],["Downhill"],["SuperD"]]
+end
 def state_list
-  [
+  [ ["Select State",""],
     ['Alabama', 'AL'],
     ['Alaska', 'AK'],
     ['Arizona', 'AZ'],

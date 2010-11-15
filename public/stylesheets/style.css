@@ -46,14 +46,61 @@ body{
     margin: 5px;
 }
 
-#dealers{
+#search_box{
     float:left;
-    padding: 10px;
+    padding: 3px;
+    font-size: .7em;
+    font-weight: normal;
+
+}
+
+.block{background: #333333;
+       color:#ffffff;
+       -moz-border-radius: 10px;
+       -webkit-border-radius: 10px;}
+.box{
+    margin-top: 0px;
+    border:1px #333333 solid;
+    width: 95%;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+#about{
+    float:left;
+    font-size: .7em;
+    font-weight: normal;
+
+}
+#promote{
+    float:left;
+    font-size: .7em;
+    font-weight: normal;
+
+}
+
+#advertise{
+    float:left;
+    font-size: .7em;
+    font-weight: normal;
+
+}
+
+#ads{
+    float:left;
+    font-size: .7em;
+    font-weight: normal;
+
 }
 
 #header{
-    height: 115px;
+    height: 40px;
     padding: 0px;
+    text-align: center;
+    font-size: 3em;
+    font-weight: bolder;
+    background: -moz-linear-gradient(top, #333333 0%, #fff 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#333333), to(#fff));
 }
 
 #image{
@@ -82,7 +129,7 @@ body{
 #content{
     color: #000000;
     padding: 0px;
-    margin: 0px;
+    margin-top: 20px;
 
 
 }
@@ -168,6 +215,7 @@ tr {padding:3px}
 table{
     padding: 10px;
     border: none;
+    display: block;
 }
 p{
     padding:0;
@@ -226,6 +274,7 @@ tr.black {background-color: black;color:white}
 }
 
 
+.ad{margin-top:3px;margin-left:auto;margin-right: auto}
 .thumb{
     border: solid black;
     padding: 1px;
@@ -292,7 +341,8 @@ input{
     border: 1px solid #000;
     background: #cccccc;
     color:#000;
-
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
 }
 
 input:hover{
@@ -305,6 +355,8 @@ select{
     border: 1px solid #000000;
     background: #cccccc;
     color:#000;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
 }
 
 select:hover{
@@ -325,7 +377,7 @@ label{
 }
 
 fieldset{
-    width:350px;
+
     margin: 15px;
 }
 
@@ -422,49 +474,10 @@ ul#list-nav li a {
     background: #000000;
     color:#ffffff
 }
-
-/*
-
-#container3 {
-    float:left;
-    width:100%;
-    overflow:hidden;
-    position:relative;
-}
-#container2 {
-    float:left;
-    width:100%;
-    position:relative;
-    right:20%;
-}
-#container1 {
-    float:left;
-    width:100%;
-    position:relative;
-    right:60%;
-    overflow:hidden;
-}
-#col1 {
-    float:left;
-    width:18%;
-    position:relative;
-    left:81%;
-    overflow:hidden;
-}
-#col2 {
-    float:left;
-    width:58%;
-    position:relative;
-    left:83%;
-    overflow:hidden;
-}
-#col3 {
-    float:left;
-    width:18%;
-    position:relative;
-    left:85%;
-    overflow:hidden;
-}*/
+/* color */
+.white{color:#ffffff}
+.black{color:#333333}
+.gray{color:#cccccc}
 
 #container3 {
     float:left;

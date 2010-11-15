@@ -1,63 +1,70 @@
-<h1>New user</h1>
+<h1>Register</h1>
+
+<fieldset>
 
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.text_field :email %>
+  </p>      <p>
+    <%= f.label :email_confirmation,"Confirm Email"%>
+    <%= f.text_field :email_confirmation , :size=>30 %>
   </p>
   <p>
-    <%= f.label :first_name %><br />
+    <%= f.label :password %>
+    <%= f.password_field :password,:size => 10 %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation,"Confirm Password" %>
+    <%= f.password_field :password_confirmation,:size => 10 %>
+  </p>
+  <p>
+    <%= f.label :first_name %>
     <%= f.text_field :first_name %>
   </p>
   <p>
-    <%= f.label :last_name %><br />
+    <%= f.label :last_name %>
     <%= f.text_field :last_name %>
   </p>
+
+  <!--
   <p>
-    <%= f.label :hashed_password %><br />
-    <%= f.text_field :hashed_password %>
+  <%= f.label :role %><br />
+  <%= f.text_field :role %>
   </p>
   <p>
-    <%= f.label :salt %><br />
-    <%= f.text_field :salt %>
+  <%= f.label :address %><br />
+  <%= f.text_field :address %>
   </p>
   <p>
-    <%= f.label :role %><br />
-    <%= f.text_field :role %>
+  <%= f.label :address_1 %><br />
+  <%= f.text_field :address_1 %>
   </p>
   <p>
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
+  <%= f.label :city %><br />
+  <%= f.text_field :city %>
   </p>
   <p>
-    <%= f.label :address_1 %><br />
-    <%= f.text_field :address_1 %>
+  <%= f.label :state %><br />
+  <%= f.text_field :state %>
   </p>
   <p>
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
+  <%= f.label :zipcode %><br />
+  <%= f.text_field :zipcode %>
   </p>
   <p>
-    <%= f.label :state %><br />
-    <%= f.text_field :state %>
+  <%= f.label :country %><br />
+  <%= f.text_field :country %>
   </p>
   <p>
-    <%= f.label :zipcode %><br />
-    <%= f.text_field :zipcode %>
-  </p>
-  <p>
-    <%= f.label :country %><br />
-    <%= f.text_field :country %>
-  </p>
-  <p>
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone %>
-  </p>
+  <%= f.label :phone %><br />
+  <%= f.text_field :phone %>
+  </p>-->
   <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>
 
-<%= link_to 'Back', users_path %>
+</fieldset>

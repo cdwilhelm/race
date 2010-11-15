@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  validates_presence_of :first_name,:last_name
+  validates_presence_of :first_name,:last_name,:email
   validates_uniqueness_of :email
   attr_accessor :password_confirmation,:email_confirmation
   validates_confirmation_of :password,:email
@@ -10,9 +10,11 @@ class User < ActiveRecord::Base
   validates_format_of [:phone], :allow_nil=>true,:allow_blank=>true, :with=>/^\d\d\d-\d\d\d-\d\d\d\d$/,
     :message =>"must be of the format: ###-###-####"
 
+  has_many :events
   def validate
     errors.add_to_base("Missing password" ) if hashed_password.blank?
   end
+
 
   def self.authenticate(name, password)
     user = self.find_by_email(name)

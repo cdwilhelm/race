@@ -1,0 +1,17 @@
+<table width="90%">
+  <tr>
+    <th>Event</th>
+    <th>Type</th>
+    <th>Date</th>
+    <th>State</th>
+  </tr>
+
+  <%  @events.each do |event| %>
+    <tr class="<%=cycle("white","gray") %>">
+      <td><%= link_to event.name, event_path(event)  %> </td>
+      <td><%= event.event_type  %> </td>
+      <td><%= event.start_date  %> </td>
+      <td><%= event.state  %> </td>
+    </tr>
+  <%end%>
+</table>

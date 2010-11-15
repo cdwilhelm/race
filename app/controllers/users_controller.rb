@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   before_filter :authorize, :except=>[:login,:new]
+  ssl_exceptions
   def index
     @users = User.all
 

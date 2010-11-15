@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20101114034628) do
     t.string   "event_type",                    :null => false
     t.boolean  "featured",   :default => false
     t.string   "logo_path"
+    t.string   "user_id",                       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20101114034628) do
   add_index "events", ["event_type"], :name => "index_events_on_event_type"
   add_index "events", ["name"], :name => "index_events_on_name"
   add_index "events", ["state"], :name => "index_events_on_state"
+  add_index "events", ["user_id"], :name => "index_events_on_user_id"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false

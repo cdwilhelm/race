@@ -1,5 +1,5 @@
 <fieldset style="display:inline">
-  <legend>Event</legend>
+  <legend>Add Event</legend>
 
 <% form_for(@event) do |f| %>
   <%= f.error_messages %>
@@ -59,4 +59,5 @@
 <% end %>
 </fieldset>
 
-<h2 style="display:inline;vertical-align: top;">My Events</h2>
+<h2>My Events</h2>
+<%= render "result" %>
