@@ -13,9 +13,9 @@
             <p>
 
               <%= label_tag "Between Dates:" %><br/>
-              <%= text_field_tag "start_date","from",:size=>6%>
+              <%= text_field_tag "start_date",Time.now.strftime("%Y-%m-%d"),:size=>6%><br/>
               and
-              <%= text_field_tag "end_date","to",:size=>6%>
+              <%= text_field_tag "end_date",end_date,:size=>6%>
             </p>
             <p>
               <%= label_tag "State:" %><br/>
