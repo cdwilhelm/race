@@ -1,1 +1,1 @@
-page.replace_html "results", :partial=> "result"
+page.replace_html("results",:partial=>"result",:object=>@events)

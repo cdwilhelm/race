@@ -4,7 +4,7 @@
       <div id="col1">
         <div id="search_box" class="box">
           <h3 class="center block">Search Events</h3>
-          <% form_remote_tag :url=>'/home/search' do %>
+          <% form_remote_tag :url=>'/events/search' do %>
             <p>
               <%= label_tag "Event:" %><br/>
               <%= text_field_tag "name","",:size=>15 %>
@@ -13,9 +13,9 @@
             <p>
 
               <%= label_tag "Between Dates:" %><br/>
-              <%= text_field_tag "start_date",Time.now.strftime("%Y-%m-%d"),:size=>6%><br/>
+              <%= text_field_tag "start_date",Time.now.strftime("%Y-%m-%d"),:size=>11,:maxsize=>10%><br/>
               and
-              <%= text_field_tag "end_date",end_date,:size=>6%>
+              <%= text_field_tag "end_date",(Time.now + 1.month).strftime("%Y-%m-%d"),:size=>11,:maxsize=>10%>
             </p>
             <p>
               <%= label_tag "State:" %><br/>
@@ -45,7 +45,7 @@
         </div>
         <br/>
         <div id="results">
-          <%= render "result"  %>
+          <%= render "/events/result"  %>
         </div>
 
         <div id="ads" class="box">

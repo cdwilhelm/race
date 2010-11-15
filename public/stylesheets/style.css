@@ -341,8 +341,8 @@ input{
     border: 1px solid #000;
     background: #cccccc;
     color:#000;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
 }
 
 input:hover{
@@ -355,8 +355,8 @@ select{
     border: 1px solid #000000;
     background: #cccccc;
     color:#000;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
 }
 
 select:hover{

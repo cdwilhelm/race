@@ -43,14 +43,14 @@
             <% end %>
           <% else %>
              <span class="white title bold" >Welcome <%= current_user.first_name %>! | </span>
-             <%= link_to "My Races", events_path,:class=>"white" %>  <span class="white">|</span>
-              <%= link_to "Logout", "logout",:class=>"white" %>
+             <%= link_to "MY RACES", events_path,:class=>"white" %>  <span class="white">|</span>
+              <%= link_to "LOGOUT", "logout",:class=>"white" %>
             
           <%end%>
         </div>
         <div>
           <%= link_to "HOME", "/",:class=>"white" %> |
-          <%= link_to "ADD EVENT", {:controller=>"events",:action=>"new"} ,:class=>"white" %>
+          <%= link_to "ADD MY RACE", {:controller=>"events",:action=>"new"} ,:class=>"white" %>
           <span style="float:right">
             <%= link_to "CONTACT", {:controller=>"home",:action=>"contact_us"},{:class=>"white"}%> <span class="white">|</span>
             <%= link_to "ABOUT", {:controller=>"home",:action=>"about"},{:class=>"white"}%>  <span class="white">|</span>
