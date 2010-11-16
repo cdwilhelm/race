@@ -8,7 +8,7 @@
 
   <%  @events.each do |event| %>
     <tr class="<%=cycle("white","gray") %>">
-      <td><%= link_to event.name, edit_event_path(event)  %> </td>
+      <td><%= link_to event.name, event_path(event)  %> </td>
       <td><%= event.event_type  %> </td>
       <td><%= event.start_date  %> </td>
       <td><%= event.state  %> </td>

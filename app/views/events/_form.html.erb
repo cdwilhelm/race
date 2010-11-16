@@ -60,7 +60,23 @@
 </fieldset>
 
 <h2>My Races</h2>
-<%= render "result" %>
+<table width="90%">
+  <tr>
+    <th>Race</th>
+    <th>Type</th>
+    <th>Date</th>
+    <th>State</th>
+  </tr>
+
+  <%  @events.each do |event| %>
+    <tr class="<%=cycle("white","gray") %>">
+      <td><%= link_to event.name, edit_event_path(event)  %> </td>
+      <td><%= event.event_type  %> </td>
+      <td><%= event.start_date  %> </td>
+      <td><%= event.state  %> </td>
+    </tr>
+  <%end%>
+</table>
 
 <script type="text/javascript">
   options = {
