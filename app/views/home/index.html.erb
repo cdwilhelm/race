@@ -13,7 +13,7 @@
             <p>
 
               <%= label_tag "Between Dates:" %><br/>
-              <%= text_field_tag "start_date",Time.now.strftime("%Y-%m-%d"),:size=>11,:maxsize=>10%><br/>
+              <%= text_field_tag "start_date",Time.now.strftime('%Y-%m-%d'),:size=>11,:maxsize=>10%><br/>
               and
               <%= text_field_tag "end_date",(Time.now + 1.month).strftime("%Y-%m-%d"),:size=>11,:maxsize=>10%>
             </p>
@@ -62,8 +62,9 @@
         </div>
         <div id="about" class="box">
           <h3 class="center block">About</h3>
-          <p>We are a builing large database of races around the country.
-            If you know of a race that
+          <p>This site is built by racers for racers.  We were tired of having
+            not having all of our races in one place. Our goal is to have every single
+            race in the nation listed on this site. If you know of a race that
             is not listed here, please <%= link_to "add one",new_event_path()  %>. 
             Your fellow racers will appreciate it.  <%=link_to "Read More...","/home/about"%></p>
         </div>
@@ -86,3 +87,23 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  options = {
+    showOn: 'button',
+    buttonImage: '/images/icons/calendar.png',
+    buttonImageOnly: true,
+    dateFormat: 'yy-mm-dd',
+    constrainInput: true,
+    minDate: new Date()
+  }
+  // datepicker start_date
+  $jq(function() {
+    $jq("#start_date").datepicker(options);
+  });
+
+  $jq(function() {
+    $jq("#end_date").datepicker(options);
+  });
+
+</script>

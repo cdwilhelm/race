@@ -13,18 +13,24 @@
     <meta name="y_key" content=""/>
 
     <link rel='icon' href="<%=image_path("favicon.ico")%>"/>
-<%= javascript_include_tag :defaults %>
-<%#= javascript_include_tag 'prototype','effects','dragdrop','controls',"builder","lightbox"%>
+<%#= javascript_include_tag :defaults %>
+    <%= javascript_include_tag 'prototype','effects','dragdrop','controls'%>
 <%#= javascript_include_tag "scriptaculous" %>
+    <!--[if (gte IE 6)&(lte IE 8)]>
+<%#= javascript_include_tag "selectivizr" %>
+    <noscript><link rel="stylesheet" href="[fallback css]" /></noscript>
+    <![endif]-->
+
+    <%= javascript_include_tag "jquery-1.4.2.min",'jquery-ui-1.8.6.custom.min'%>
+    <%= javascript_include_tag 'application' %>
 
 
-<%#= javascript_include_tag "jquery-1.4.2.min","jquery.cycle.min", "jquery-ui-1.8.6.custom.min" %>
-<%#= javascript_include_tag 'application' %>
+
 
     <%= stylesheet_link_tag 'style' %>
 <%#= stylesheet_link_tag 'boxes' %>
 <%#= stylesheet_link_tag 'lightbox' %>
-<%#= stylesheet_link_tag 'jquery-ui-1.8.6.custom' %>
+    <%= stylesheet_link_tag 'jquery-ui-1.8.6.custom' %>
 
 <%#= include_tiny_mce_if_needed %>
 
@@ -41,11 +47,13 @@
               <span class="white">Password:</span>  <%= password_field_tag :password ,'', :size=>"10"%>
               <%= submit_tag "login", :class=>"button"%>
             <% end %>
+              <%= link_to "Or Register",new_user_path(),:class=>"white"%>
           <% else %>
-             <span class="white title bold" >Welcome <%= current_user.first_name %>! | </span>
-             <%= link_to "MY RACES", events_path,:class=>"white" %>  <span class="white">|</span>
-              <%= link_to "LOGOUT", "logout",:class=>"white" %>
-            
+            <span class="white title bold" >Welcome <%= current_user.first_name %>! | </span>
+            <%= link_to "MY RACES", events_path,:class=>"white" %>  <span class="white">|</span>
+            <%= link_to "Admin", admin_path,:class=>"white" %>  <span class="white">|</span>
+            <%= link_to "LOGOUT", "logout",:class=>"white" %>
+
           <%end%>
         </div>
         <div>
@@ -56,11 +64,11 @@
             <%= link_to "ABOUT", {:controller=>"home",:action=>"about"},{:class=>"white"}%>  <span class="white">|</span>
             <%= link_to "HELP", {:controller=>"home",:action=>"help"} ,{:class=>"white"} %>
           </span>
-        
+
         </div>
       </div>
       <div id="header">
-      Find My Race
+        Find My Race
 
         <!--div id="image">
 <%#= link_to image_tag("/images/homelogo.jpg", :alt=>"Find My Race"), :controller=>"/home",:action=>"index" %>

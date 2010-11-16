@@ -18,11 +18,11 @@
   </p>
   <p>
     <%= f.label :start_date, "Date:" %>
-    <%= f.date_select :start_date,:prompt=>true%>
+    <%= f.text_field :start_date,:size=>11%>
   </p>
   <p>
     <%= f.label :end_date, "End Date:" %>
-    <%= f.date_select :end_date ,:default=>{:day=>""},:include_blank=>{ :day => 'Select day', :month => 'Select month', :year => 'Select year' }%>
+    <%= f.text_field :end_date,:size=>11%>
   </p>
   <p>
     <%= f.label :location,"Location:" %>
@@ -61,3 +61,25 @@
 
 <h2>My Races</h2>
 <%= render "result" %>
+
+<script type="text/javascript">
+  options = {
+    showOn: 'button',
+    buttonImage: '/images/icons/calendar.png',
+    buttonImageOnly: true,
+    dateFormat: 'yy-mm-dd',
+    defaultDate: null,
+    constrainInput: true,
+    minDate: new Date()
+
+  }
+  // datepicker start_date
+  $jq(function() {
+    $jq("#event_start_date").datepicker(options);
+  });
+
+  $jq(function() {
+    $jq("#event_end_date").datepicker(options);
+  });
+
+</script>

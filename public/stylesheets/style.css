@@ -64,7 +64,10 @@ body{
     width: 95%;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
+    /*behavior: url('/stylesheets/ie-css3.htc');*/
 }
+
+.ui-icon { margin:20px; }
 
 #about{
     float:left;

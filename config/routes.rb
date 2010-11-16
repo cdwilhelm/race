@@ -1,10 +1,17 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :users
-
   map.resources :events
+  map.resources :admin
+  map.namespace :admin do |admin|
+    admin.resources :users
+    admin.resources :events
+  end
+
+
 
   map.logout    "logout"  , :controller=>"users", :action=>"logout"
   map.login "login", :controller=>"users" ,:action=>"login"
+  map.admin "admin",:controller=>"admin",:action=>"index"
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
