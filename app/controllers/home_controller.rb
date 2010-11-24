@@ -1,10 +1,14 @@
 class HomeController < ApplicationController
+  
   def index
-    @events = Event.all(:conditions=>"curdate()  >= start_date",:order=>"start_date,name")
+    @events = Event.paginate(:all,:conditions=>["start_date > ?",Time.now ],
+      :order=>"start_date,name",:page=>params[:page],:per_page=>"30")
   end
   def search
-  @events = EventSearch.search(params)#.paginate(:page=>params[:page],:per_page="30")
+    @events = EventSearch.search(params).paginate(:all,:page=>params[:page],:per_page=>"30")
+
   end
+
   def about
   end
 

@@ -32,7 +32,7 @@ body{
     text-align: left;
     padding: 0px;
 
-    width: 90%;
+    width: 950px;
     color: #000000;
     background: #ffffff;
     margin: auto;
@@ -97,13 +97,15 @@ body{
 }
 
 #header{
-    height: 40px;
+    height: 100px;
     padding: 0px;
     text-align: center;
+    vertical-align: middle;
     font-size: 3em;
     font-weight: bolder;
-    background: -moz-linear-gradient(top, #333333 0%, #fff 100%);
-    background: -webkit-gradient(linear, left top, left bottom, from(#333333), to(#fff));
+    background-image:url('/images/header-gradient.jpg');
+    background-repeat:repeat-x;
+
 }
 
 #image{
@@ -524,3 +526,64 @@ ul#list-nav li a {
     left:85%;
     overflow:hidden;
 }
+
+/* boxes */
+
+.roundedcornr_box {
+    background: url(/images/roundedcornr_tl.png) no-repeat top left;
+    margin-top:2px;
+}
+.roundedcornr_top {
+    background: url(/images/roundedcornr_tr.png) no-repeat top right;
+}
+.roundedcornr_bottom {
+    background: url(/images/roundedcornr_bl.png) no-repeat bottom left;
+}
+.roundedcornr_bottom div {
+    background: url(/images/roundedcornr_br.png) no-repeat bottom right;
+}
+.roundedcornr_content {
+    background: url(/images/roundedcornr_r.png) top right repeat-y;
+}
+
+.roundedcornr_top div,.roundedcornr_top,
+.roundedcornr_bottom div, .roundedcornr_bottom {
+    width: 100%;
+    height: 10px;
+    font-size: 1px;
+
+}
+.roundedcornr_content, .roundedcornr_bottom {
+
+}
+.roundedcornr_content { /*padding: 0 10px; */
+                        padding: 3px;
+                        font-size: .7em;
+                        font-weight: normal;}
+
+.rounded{
+    background-image:  url(/images/roundedcornr.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left:auto;
+    margin-right:auto;
+    color:#ffffff;
+    text-align: center;
+    overflow: visible;
+}
+
+/* set millions of background images */
+.rbroundbox { background: url(/images/nt.gif) repeat; }
+.rbtop div { background: url(/images/tl.gif) no-repeat top left; }
+.rbtop { background: url(/images/tr.gif) no-repeat top right; }
+.rbbot div { background: url(/images/bl.gif) no-repeat bottom left; }
+.rbbot { background: url(/images/br.gif) no-repeat bottom right; }
+
+/* height and width stuff, width not really nessisary. */
+.rbtop div, .rbtop, .rbbot div, .rbbot {
+width: 100%;
+height: 7px;
+font-size: 1px;
+}
+.rbcontent { margin: 0 7px; }
+.rbroundbox { width: 100%; margin: 1em auto; }

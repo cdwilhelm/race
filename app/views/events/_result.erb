@@ -1,9 +1,11 @@
+<%= will_paginate @events %>
 <table width="90%">
   <tr>
     <th>Race</th>
     <th>Type</th>
     <th>Date</th>
     <th>State</th>
+    <th>Website</th>
   </tr>
 
   <%  @events.each do |event| %>
@@ -12,6 +14,8 @@
       <td><%= event.event_type  %> </td>
       <td><%= event.start_date  %> </td>
       <td><%= event.state  %> </td>
+       <td><%= link_to event.promoter ,event.website %> </td>
     </tr>
   <%end%>
 </table>
+<%= will_paginate @events %>

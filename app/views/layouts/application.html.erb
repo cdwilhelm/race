@@ -17,10 +17,6 @@
 <%#= javascript_include_tag :defaults %>
     <%= javascript_include_tag 'prototype','effects','dragdrop','controls'%>
 <%#= javascript_include_tag "scriptaculous" %>
-    <!--[if (gte IE 6)&(lte IE 8)]>
-<%#= javascript_include_tag "selectivizr" %>
-    <noscript><link rel="stylesheet" href="[fallback css]" /></noscript>
-    <![endif]-->
 
     <%= javascript_include_tag "jquery-1.4.2.min",'jquery-ui-1.8.6.custom.min'%>
     <%= javascript_include_tag 'application' %>
@@ -69,20 +65,12 @@
         </div>
       </div>
       <div id="header">
-        Find My Race
-
-        <!--div id="image">
-<%#= link_to image_tag("/images/homelogo.jpg", :alt=>"Find My Race"), :controller=>"/home",:action=>"index" %>
-        </div-->
-
-
-
-
+        Find My Bike Race
       </div>
 
 
       <div id="content">
- 
+
 
         <% [:error, :warning, :notice].each do |level|
           if flash[level] -%>
@@ -97,7 +85,7 @@
 
 
       <div id="footer">
-        <p>Find My Race LLC | <%= link_to "Contact Us", {:controller=>"home",:action=>"contact_us"},:class=>"black"  %>
+        <p>Find My Bike Race LLC | <%= link_to "Contact Us", {:controller=>"home",:action=>"contact_us"},:class=>"black"  %>
           <br/>
           &copy; <%= Time.now.year  %>  Find My Race LLC All Rights Reserved. All
           information subject to change.</p>

@@ -13,33 +13,38 @@
           </div>
           <!-- AddThis Button END -->
         </div>
-        <div id="search_box" class="box">
-          <h3 class="center block">Search Events</h3>
-          <% form_remote_tag :url=>'/events/search' do %>
-            <p>
-              <%= label_tag "Event:" %><br/>
-              <%= text_field_tag "name","",:size=>15 %>
-            </p>
+        <div class="roundedcornr_box">
+          <div class="roundedcornr_top"><div></div></div>
+          <div class="roundedcornr_content">
+            <h3 class="rounded">Search Events</h3>
+            <% form_remote_tag :url=>'/events/search' do %>
+              <p>
+                <%= label_tag "Event:" %><br/>
+                <%= text_field_tag "name","",:size=>15 %>
+              </p>
 
-            <p>
+              <p>
 
-              <%= label_tag "Dates Range" %><br/>
-              <%= text_field_tag "start_date",Time.now.strftime('%Y-%m-%d'),:size=>11,:maxsize=>10%><br/>
-              to <br/>
-              <%= text_field_tag "end_date",(Time.now + 1.month).strftime("%Y-%m-%d"),:size=>11,:maxsize=>10%>
-            </p>
-            <p>
-              <%= label_tag "State:" %><br/>
-              <%= select_tag "state",options_for_select(state_list)%>
-            </p>
-            <p>
+                <%= label_tag "Dates Range" %><br/>
+                <%= text_field_tag "start_date",Time.now.strftime('%Y-%m-%d'),:size=>11,:maxsize=>10%><br/>
+                to <br/>
+                <%= text_field_tag "end_date",(Time.now + 1.month).strftime("%Y-%m-%d"),:size=>11,:maxsize=>10%>
+              </p>
+              <p>
+                <%= label_tag "State:" %><br/>
+                <%= select_tag "state",options_for_select(state_list)%>
+              </p>
+              <p>
 
-              <%= label_tag "Type:" %><br/>
-              <%= select_tag "event_type",options_for_select(event_type_list.sort)%>
-            </p>
-            <%= submit_tag 'find' %>
-          <%end%>
+                <%= label_tag "Type:" %><br/>
+                <%= select_tag "event_type",options_for_select(event_type_list.sort)%>
+              </p>
+              <%= submit_tag 'find' %>
+            <%end%>
+          </div>
+          <div class="roundedcornr_bottom"><div></div></div>
         </div>
+
         <div id="ads">
           <div class="ad">
             <%= link_to image_tag('15hnbanlg.gif'), "http://www.hammernutrition.com/affiliates/146518",:class=>"ad" %>
@@ -71,25 +76,40 @@
         <div>
           <%= link_to image_tag('follow_bird-a.png'),"http://twitter.com" %>
         </div>
-        <div id="about" class="box">
-          <h3 class="center block">About</h3>
-          <p>This site is built by racers for racers.  We were tired of having
-            not having all of our races in one place. Our goal is to have every single
-            race in the nation listed on this site. If you know of a race that
-            is not listed here, please <%= link_to "add one",new_event_path()  %>. 
-            Your fellow racers will appreciate it.  <%=link_to "Read More...","/home/about"%></p>
+        <div class="roundedcornr_box">
+          <div class="roundedcornr_top"><div></div></div>
+          <div class="roundedcornr_content">
+            <h3 class="rounded">Abouy</h3>
+        <p>This site is built by racers for racers.  We were tired of having
+          not having all of our races in one place. Our goal is to have every single
+          race in the nation listed on this site. If you know of a race that
+          is not listed here, please <%= link_to "add one",new_event_path()  %>.
+          Your fellow racers will appreciate it.  <%=link_to "Read More...","/home/about"%></p>
+
+          </div>
+          <div class="roundedcornr_bottom"><div></div></div>
+        </div>
+       
+
+
+        <div class="roundedcornr_box">
+          <div class="roundedcornr_top"><div></div></div>
+          <div class="roundedcornr_content">
+            <h3 class="rounded">Promote your race</h3>
+            <p>If you want to promote your race on your site
+              <%= link_to "contact us","/home/contact_us" %>. We can discuss options
+              to help increase your attendance. <%=link_to "Read More...", "/home/promote"%> </p>
+          </div>
+          <div class="roundedcornr_bottom"><div></div></div>
         </div>
 
-        <div id="promote" class="box">
-          <h3 class="center block">Promote your race</h3>
-          <p>If you want to promote your race on your site 
-            <%= link_to "contact us","/home/contact_us" %>. We can discuss options
-            to help increase your attendance. <%=link_to "Read More...", "/home/promote"%> </p>
-        </div>
-
-        <div id="advertise" class="box">
-          <h3 class="center block">Advertise</h3>
-          <p>info about advertising <%=link_to "Read More..." ,"/home/advertise"%></p>
+        <div class="roundedcornr_box">
+          <div class="roundedcornr_top"><div></div></div>
+          <div class="roundedcornr_content">
+            <h3 class="rounded">Advertise</h3>
+            <p>info about advertising <%=link_to "Read More..." ,"/home/advertise"%></p>
+          </div>
+          <div class="roundedcornr_bottom"><div></div></div>
         </div>
         <div id="ads">
 
