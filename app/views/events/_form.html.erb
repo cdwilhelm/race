@@ -1,5 +1,4 @@
 <fieldset style="display:inline">
-  <legend>Add Race</legend>
 
 <% form_for(@event) do |f| %>
   <%= f.error_messages %>
@@ -39,15 +38,14 @@
   <p>
     
     <%= f.label :series, "Series?:" %>
-    <%= f.check_box :series %> Is this event a series?
+    <%= f.check_box :series,{},'y','n' %> Is this event a series?
   </p>
   <p>
 
     <%= f.label :featured, "Featured?:" %>
-    <%= f.check_box :featured %> Is this event featured?
+    <%= f.check_box :featured, {},"y",'n' %> Is this event featured?
 
   </p>
-  
   
   <p>
     <%= f.label :logo_path,"Logo Path:" %>
@@ -59,24 +57,7 @@
 <% end %>
 </fieldset>
 
-<h2>My Races</h2>
-<table width="90%">
-  <tr>
-    <th>Race</th>
-    <th>Type</th>
-    <th>Date</th>
-    <th>State</th>
-  </tr>
 
-  <%  @events.each do |event| %>
-    <tr class="<%=cycle("white","gray") %>">
-      <td><%= link_to event.name, edit_event_path(event)  %> </td>
-      <td><%= event.event_type  %> </td>
-      <td><%= event.start_date  %> </td>
-      <td><%= event.state  %> </td>
-    </tr>
-  <%end%>
-</table>
 
 <script type="text/javascript">
   options = {

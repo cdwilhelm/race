@@ -11,16 +11,14 @@ class EventsController < ApplicationController
     end
   end
 
-
-
   def search
     @events = EventSearch.search(params).paginate(:page=>params[:page],:per_page=>"30")
   end
+
   # GET /events/1
   # GET /events/1.xml
   def show
     @event = Event.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @event }
@@ -31,7 +29,7 @@ class EventsController < ApplicationController
   # GET /events/new.xml
   def new
     @event = Event.new
-    @events = Event.all(:conditions=>["user_id=?",current_user.id])
+    #@events = Event.find_by_user_id(current_user.id)
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @event }
@@ -41,7 +39,7 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
-    @events = Event.all(:conditions=>["user_id=?",current_user.id])
+    @events = Event.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30")
 
   end
 
@@ -50,7 +48,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(params[:event])
     @event.user = current_user
-    @events = Event.all(:conditions=>["user_id=?",current_user.id])
+    #@events = Event.all(:conditions=>["user_id=?",current_user.id])
     respond_to do |format|
       if @event.save
         flash[:notice] = 'Event was successfully created.'
