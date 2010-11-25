@@ -11,7 +11,10 @@
 
 
       <div id="content">
-
+        <p class="center">
+          <%= link_to "ADMIN HOME",admin_path %> | <%= link_to "RACES",admin_events_path() %> |
+          <%= link_to "USERS",admin_users_path %>
+        </p>
 
         <% [:error, :warning, :notice].each do |level|
           if flash[level] -%>
@@ -22,7 +25,6 @@
 
 
         <%= yield %>
-
 
 
         <script type="text/javascript">

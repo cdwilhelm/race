@@ -1,7 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resources :events
-  map.resources :admin
+  #map.resources :admin
+
   map.namespace :admin do |admin|
     admin.resources :users
     admin.resources :events

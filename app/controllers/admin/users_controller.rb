@@ -3,6 +3,7 @@ class Admin::UsersController < ApplicationController
   # GET /users.xml
   before_filter :authorize
   ssl_exceptions
+  layout 'admin'
   def index
     @users = User.all
 
@@ -87,5 +88,3 @@ class Admin::UsersController < ApplicationController
   end
 end
 
-
-end
