@@ -8,9 +8,9 @@ class CreateEvents < ActiveRecord::Migration
       t.string :end_date
       t.string :location
       t.string :state,:null=>false
-      t.boolean :series,:default=>false
+      t.string :series,:default=>''
       t.string :event_type,:null=>false
-      t.boolean :featured, :default=>false
+      t.string :featured, :default=>'n'
       t.string :logo_path
       t.string :user_id,:null=>false
       t.timestamps
