@@ -8,6 +8,11 @@ class HomeController < ApplicationController
     @events = EventSearch.search(params).paginate(:all,:page=>params[:page],:per_page=>"30")
 
   end
+  
+  def my_races
+    @events = Event.paginate_by_user_id(current_user.id,
+      :order=>"start_date, name, state",:page=>params[:page],:per_page=>"30")#.paginate(:page=>params[:page],:per_page=>"30")
+  end
 
   def about
   end

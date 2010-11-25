@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   # GET /events.xml
   before_filter :authorize, :except=>:show
   def index
-    @events = Event.all
+    @events = Event.all.paginate(:page=>params[:page],:per_page=>"30")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -11,8 +11,10 @@ class EventsController < ApplicationController
     end
   end
 
+
+
   def search
-  @events = EventSearch.search(params).paginate(:page=>params[:page],:per_page=>"30")
+    @events = EventSearch.search(params).paginate(:page=>params[:page],:per_page=>"30")
   end
   # GET /events/1
   # GET /events/1.xml

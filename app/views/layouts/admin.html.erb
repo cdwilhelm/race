@@ -47,7 +47,7 @@
             <%= link_to "Register",new_user_path(),:class=>"white"%>
           <% else %>
             <span class="white title bold" >Welcome <%= current_user.first_name %>! | </span>
-            <%= link_to "MY RACES", my_races_path,:class=>"white" %>  <span class="white">|</span>
+            <%= link_to "MY RACES", events_path,:class=>"white" %>  <span class="white">|</span>
             <%= link_to "Admin", admin_path,:class=>"white" %>  <span class="white">|</span>
             <%= link_to "LOGOUT", "logout",:class=>"white" %>
 
@@ -150,7 +150,7 @@
         <div class="roundedcornr_box">
           <div class="roundedcornr_top"><div></div></div>
           <div class="roundedcornr_content">
-            <h3 class="rounded">About</h3>
+            <h3 class="rounded">Abouy</h3>
         <p>This site is built by racers for racers.  We were tired of having
           not having all of our races in one place. Our goal is to have every single
           race in the nation listed on this site. If you know of a race that

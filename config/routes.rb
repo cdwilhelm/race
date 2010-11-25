@@ -9,9 +9,10 @@ ActionController::Routing::Routes.draw do |map|
 
 
 
-  map.logout    "logout"  , :controller=>"users", :action=>"logout"
+  map.logout "logout"  , :controller=>"users", :action=>"logout"
   map.login "login", :controller=>"users" ,:action=>"login"
   map.admin "admin",:controller=>"admin",:action=>"index"
+  map.my_races "my_races" ,:controller=>:home,:action=>:my_races
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
