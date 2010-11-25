@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+  <%= render '/layouts/head' %>
+
+  <body>
+
+    <div id="wrapper">
+      <%= render '/layouts/header' %>
+
+
+      <div id="content">
+
+
+        <% [:error, :warning, :notice].each do |level|
+          if flash[level] -%>
+            <div class="flash <%= level.to_s -%>"><%= flash[level] -%></div>
+          <% end -%>
+        <% end -%>
+
+
+
+        <%= yield %>
+
+
+
+        <script type="text/javascript">
+          options = {
+            showOn: 'button',
+            buttonImage: '/images/icons/calendar.png',
+            buttonImageOnly: true,
+            dateFormat: 'yy-mm-dd',
+            constrainInput: true,
+            minDate: new Date()
+          }
+          // datepicker start_date
+          $jq(function() {
+            $jq("#start_date").datepicker(options);
+          });
+
+          $jq(function() {
+            $jq("#end_date").datepicker(options);
+          });
+
+        </script>
+
+      </div>
+
+
+
+      <%= render '/layouts/footer' %>
+    </div>
+  </body>
+</html>
