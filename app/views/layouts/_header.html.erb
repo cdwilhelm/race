@@ -1,0 +1,31 @@
+<div id="nav">
+        <div>
+          <% if !current_user_logged_in? %>
+            <% form_tag login_url(:secure=>true)  do -%>
+              <span class="white">Email:</span> <%= text_field_tag :email, '', :size=>"10"%>
+              <span class="white">Password:</span>  <%= password_field_tag :password ,'', :size=>"10"%>
+              <%= submit_tag "login", :class=>"button"%>
+            <% end %>
+            <%= link_to "Register",new_user_path(),:class=>"white"%>
+          <% else %>
+            <span class="white title bold" >Welcome <%= current_user.first_name %>! | </span>
+            <%= link_to "MY RACES", my_races_path,:class=>"white" %>  <span class="white">|</span>
+            <%= link_to "Admin", admin_path,:class=>"white" %>  <span class="white">|</span>
+            <%= link_to "LOGOUT", "logout",:class=>"white" %>
+
+          <%end%>
+        </div>
+        <div>
+          <%= link_to "HOME", "/",:class=>"white" %> |
+          <%= link_to "ADD MY RACE", {:controller=>"events",:action=>"new"} ,:class=>"white" %>
+          <span style="float:right">
+            <%= link_to "CONTACT", {:controller=>"home",:action=>"contact_us"},{:class=>"white"}%> <span class="white">|</span>
+            <%= link_to "ABOUT", {:controller=>"home",:action=>"about"},{:class=>"white"}%>  <span class="white">|</span>
+            <%= link_to "HELP", {:controller=>"home",:action=>"help"} ,{:class=>"white"} %>
+          </span>
+
+        </div>
+      </div>
+      <div id="header">
+        Find My Bike Race
+      </div>

@@ -1,0 +1,21 @@
+<div id="footer">
+  <p>Find My Bike Race LLC | <%= link_to "Contact Us", {:controller=>"home",:action=>"contact_us"},:class=>"black"  %>
+    <br/>
+    &copy; <%= Time.now.year  %>  Find My Race LLC All Rights Reserved. All
+    information subject to change.</p>
+</div>
+
+
+<% if not is_admin %>
+  <script type="text/javascript">
+    // var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    // document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+    // try{
+    //  var pageTracker = _gat._getTracker("UA-9199755-1");
+    //  pageTracker._trackPageview();
+    //} catch(err) {}
+  </script>
+<%end%>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4ce202d427a8d5a3"></script>

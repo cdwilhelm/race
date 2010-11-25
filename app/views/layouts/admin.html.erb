@@ -2,71 +2,12 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html>
-  <head profile="http://gmpg.org/xfn/11"
-        xmlns:addthis="http://www.addthis.com/help/api-spec">
-
-    <title>Find My Race <%= @page_title unless @page_title.nil? %></title>
-
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta NAME="description" CONTENT="<%= @page_desc.gsub(/<\/?[^>]*>/, "") unless @page_desc.nil? %>"/>
-    <meta NAME="keywords" CONTENT="<%=@page_keywords unless @page_title.nil?%>"/>
-
-    <meta name="y_key" content=""/>
-
-    <link rel='icon' href="<%=image_path("favicon.ico")%>"/>
-<%#= javascript_include_tag :defaults %>
-    <%= javascript_include_tag 'prototype','effects','dragdrop','controls'%>
-<%#= javascript_include_tag "scriptaculous" %>
-
-    <%= javascript_include_tag "jquery-1.4.2.min",'jquery-ui-1.8.6.custom.min'%>
-    <%= javascript_include_tag 'application' %>
-
-
-
-
-    <%= stylesheet_link_tag 'style' %>
-<%#= stylesheet_link_tag 'boxes' %>
-<%#= stylesheet_link_tag 'lightbox' %>
-    <%= stylesheet_link_tag 'jquery-ui-1.8.6.custom' %>
-
-<%#= include_tiny_mce_if_needed %>
-
-  </head>
+  <%= render '/layouts/head' %>
 
   <body>
 
     <div id="wrapper">
-      <div id="nav">
-        <div>
-          <% if !current_user_logged_in? %>
-            <% form_tag login_url(:secure=>true)  do -%>
-              <span class="white">Email:</span> <%= text_field_tag :email, '', :size=>"10"%>
-              <span class="white">Password:</span>  <%= password_field_tag :password ,'', :size=>"10"%>
-              <%= submit_tag "login", :class=>"button"%>
-            <% end %>
-            <%= link_to "Register",new_user_path(),:class=>"white"%>
-          <% else %>
-            <span class="white title bold" >Welcome <%= current_user.first_name %>! | </span>
-            <%= link_to "MY RACES", events_path,:class=>"white" %>  <span class="white">|</span>
-            <%= link_to "Admin", admin_path,:class=>"white" %>  <span class="white">|</span>
-            <%= link_to "LOGOUT", "logout",:class=>"white" %>
-
-          <%end%>
-        </div>
-        <div>
-          <%= link_to "HOME", "/",:class=>"white" %> |
-          <%= link_to "ADD MY RACE", {:controller=>"events",:action=>"new"} ,:class=>"white" %>
-          <span style="float:right">
-            <%= link_to "CONTACT", {:controller=>"home",:action=>"contact_us"},{:class=>"white"}%> <span class="white">|</span>
-            <%= link_to "ABOUT", {:controller=>"home",:action=>"about"},{:class=>"white"}%>  <span class="white">|</span>
-            <%= link_to "HELP", {:controller=>"home",:action=>"help"} ,{:class=>"white"} %>
-          </span>
-
-        </div>
-      </div>
-      <div id="header">
-        Find My Bike Race
-      </div>
+      <%= render '/layouts/header' %>
 
 
       <div id="content">
@@ -78,159 +19,37 @@
           <% end -%>
         <% end -%>
 
-        <div id="container3">
-  <div id="container2">
-    <div id="container1">
-      <div id="col1">
-        <div style="padding-bottom: 3px; text-align: center">
-          <p class="bold">Share</p>
-          <!-- AddThis Button BEGIN -->
-          <div style="margin-right:auto;margin-left:auto;" class="addthis_toolbox addthis_default_style addthis_32x32_style"
-               addthis:url="<%= request.env['REQUEST_URI']%>" addthis:title="<%= @event.nil? ? "Find My Bike Race" : @event.name  %>">
-            <a class="addthis_button_email"></a>
-            <a class="addthis_button_facebook"></a>
-            <a class="addthis_button_twitter"></a>
-          </div>
-          <!-- AddThis Button END -->
-        </div>
-        <div class="roundedcornr_box">
-          <div class="roundedcornr_top"><div></div></div>
-          <div class="roundedcornr_content">
-            <h3 class="rounded">Search Events</h3>
-            <% form_remote_tag :url=>'/events/search' do %>
-              <p>
-                <%= label_tag "Event:" %><br/>
-                <%= text_field_tag "name","",:size=>15 %>
-              </p>
 
-              <p>
-
-                <%= label_tag "Dates Range" %><br/>
-                <%= text_field_tag "start_date",Time.now.strftime('%Y-%m-%d'),:size=>11,:maxsize=>10%><br/>
-                to <br/>
-                <%= text_field_tag "end_date",(Time.now + 1.month).strftime("%Y-%m-%d"),:size=>11,:maxsize=>10%>
-              </p>
-              <p>
-                <%= label_tag "State:" %><br/>
-                <%= select_tag "state",options_for_select(state_list)%>
-              </p>
-              <p>
-
-                <%= label_tag "Type:" %><br/>
-                <%= select_tag "event_type",options_for_select(event_type_list.sort)%>
-              </p>
-              <%= submit_tag 'find' %>
-            <%end%>
-          </div>
-          <div class="roundedcornr_bottom"><div></div></div>
-        </div>
-
-        <div id="ads">
-          <div class="ad">
-            <%= link_to image_tag('15hnbanlg.gif'), "http://www.hammernutrition.com/affiliates/146518",:class=>"ad" %>
-          </div>
-          <div class="ad">
-            <%= link_to image_tag('mtbcoach.jpg'),"http://mtbcoach.com",:class=>"ad" %>
-          </div>
-        </div>
-      </div>
-      <div id="col2">
 
         <%= yield %>
 
 
+
+        <script type="text/javascript">
+          options = {
+            showOn: 'button',
+            buttonImage: '/images/icons/calendar.png',
+            buttonImageOnly: true,
+            dateFormat: 'yy-mm-dd',
+            constrainInput: true,
+            minDate: new Date()
+          }
+          // datepicker start_date
+          $jq(function() {
+            $jq("#start_date").datepicker(options);
+          });
+
+          $jq(function() {
+            $jq("#end_date").datepicker(options);
+          });
+
+        </script>
+
       </div>
-      <div id="col3">
-        <div>
-          <%= link_to image_tag('FaceBooklogo.gif'),"http://facebook.com" %>
-        </div>
-        <div>
-          <%= link_to image_tag('follow_bird-a.png'),"http://twitter.com" %>
-        </div>
-        <div class="roundedcornr_box">
-          <div class="roundedcornr_top"><div></div></div>
-          <div class="roundedcornr_content">
-            <h3 class="rounded">Abouy</h3>
-        <p>This site is built by racers for racers.  We were tired of having
-          not having all of our races in one place. Our goal is to have every single
-          race in the nation listed on this site. If you know of a race that
-          is not listed here, please <%= link_to "add one",new_event_path()  %>.
-          Your fellow racers will appreciate it.  <%=link_to "Read More...","/home/about"%></p>
-
-          </div>
-          <div class="roundedcornr_bottom"><div></div></div>
-        </div>
 
 
 
-        <div class="roundedcornr_box">
-          <div class="roundedcornr_top"><div></div></div>
-          <div class="roundedcornr_content">
-            <h3 class="rounded">Promote your race</h3>
-            <p>If you want to promote your race on your site
-              <%= link_to "contact us","/home/contact_us" %>. We can discuss options
-              to help increase your attendance. <%=link_to "Read More...", "/home/promote"%> </p>
-          </div>
-          <div class="roundedcornr_bottom"><div></div></div>
-        </div>
-
-        <div class="roundedcornr_box">
-          <div class="roundedcornr_top"><div></div></div>
-          <div class="roundedcornr_content">
-            <h3 class="rounded">Advertise</h3>
-            <p>info about advertising <%=link_to "Read More..." ,"/home/advertise"%></p>
-          </div>
-          <div class="roundedcornr_bottom"><div></div></div>
-        </div>
-        <div id="ads">
-
-        </div>
-      </div>
+      <%= render '/layouts/footer' %>
     </div>
-  </div>
-</div>
-
-<script type="text/javascript">
-  options = {
-    showOn: 'button',
-    buttonImage: '/images/icons/calendar.png',
-    buttonImageOnly: true,
-    dateFormat: 'yy-mm-dd',
-    constrainInput: true,
-    minDate: new Date()
-  }
-  // datepicker start_date
-  $jq(function() {
-    $jq("#start_date").datepicker(options);
-  });
-
-  $jq(function() {
-    $jq("#end_date").datepicker(options);
-  });
-
-</script>
-
-      </div>
-
-
-
-      <div id="footer">
-        <p>Find My Bike Race LLC | <%= link_to "Contact Us", {:controller=>"home",:action=>"contact_us"},:class=>"black"  %>
-          <br/>
-          &copy; <%= Time.now.year  %>  Find My Race LLC All Rights Reserved. All
-          information subject to change.</p>
-      </div>
-    </div>
-    <script type="text/javascript">
-      // var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-      // document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-    <script type="text/javascript">
-      // try{
-      //  var pageTracker = _gat._getTracker("UA-9199755-1");
-      //  pageTracker._trackPageview();
-      //} catch(err) {}
-    </script>
-    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4ce202d427a8d5a3"></script>
   </body>
 </html>
