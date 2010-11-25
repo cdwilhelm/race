@@ -12,18 +12,18 @@
 ActiveRecord::Schema.define(:version => 20101114034628) do
 
   create_table "events", :force => true do |t|
-    t.string   "name",                          :null => false
+    t.string   "name",                        :null => false
     t.string   "website"
     t.string   "promoter"
-    t.date     "start_date",                    :null => false
+    t.date     "start_date",                  :null => false
     t.string   "end_date"
     t.string   "location"
-    t.string   "state",                         :null => false
-    t.boolean  "series",     :default => false
-    t.string   "event_type",                    :null => false
-    t.boolean  "featured",   :default => false
+    t.string   "state",                       :null => false
+    t.string   "series",     :default => ""
+    t.string   "event_type",                  :null => false
+    t.string   "featured",   :default => "n"
     t.string   "logo_path"
-    t.string   "user_id",                       :null => false
+    t.string   "user_id",                     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -42,16 +42,6 @@ ActiveRecord::Schema.define(:version => 20101114034628) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
-
-  create_table "user_events", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "event_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "user_events", ["event_id"], :name => "index_user_events_on_event_id"
-  add_index "user_events", ["user_id"], :name => "index_user_events_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :null => false
