@@ -10,18 +10,18 @@
 
 
   <% @events_by_month.each do |monthname, events| %>
-  <tr>
-    <td colspan="5" style="color:#ffffff;background-color: #333333;text-align: center" ><%=monthname%></td>
-  </tr>
-    <%  events.each do |event| %>
-    <tr class="<%=cycle("white","gray") %>">
-      <td><%= link_to event.name, event_path(event)  %> </td>
-      <td><%= event.event_type  %> </td>
-      <td><%= event.start_date  %> </td>
-      <td><%= event.state  %> </td>
-       <td><%= link_to event.promoter ,event.website %> </td>
+    <tr>
+      <td colspan="5" style="color:#ffffff;background-color: #333333;text-align: center" ><%=monthname%></td>
     </tr>
-  <%end%>
+    <%  events.each do |event| %>
+      <tr class="<%=cycle("white","gray") %>">
+        <td class="center"><%= link_to event.name, event_path(event)  %> </td>
+        <td class="center"><%= event.event_type  %> </td>
+        <td class="center"><%= event.start_date  %> </td>
+        <td class="center"><%= event.state  %> </td>
+        <td class="center"><%= link_to event.promoter ,event.website,:target=>"new" %> </td>
+      </tr>
     <%end%>
+  <%end%>
 </table>
 <%= will_paginate @events %>
