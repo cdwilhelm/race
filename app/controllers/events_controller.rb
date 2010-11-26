@@ -4,20 +4,10 @@ class EventsController < ApplicationController
   before_filter :authorize, :except=>:show
   def index
 
-    @events = Event.all.paginate(:page=>params[:page],:per_page=>"30")
-    @events_by_month = @events.group_by { |e| e.start_date.strftime("%B") }
-
-    puts @events_by_month.size
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @events }
-    end
+    redirect_to root_path
   end
 
-  def search
-    @events = EventSearch.search(params).paginate(:page=>params[:page],:per_page=>"30")
-  end
+
 
   # GET /events/1
   # GET /events/1.xml
@@ -38,7 +28,6 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @page_title="Add Race"
-    #@events = Event.find_by_user_id(current_user.id)
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @event }
@@ -67,6 +56,7 @@ class EventsController < ApplicationController
         format.html { render :action=>:edit}
         format.xml  { render :xml => @event, :status => :created, :location => @event }
       else
+        @events = Event.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30")
         format.html { render :action => "new" }
         format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
       end
@@ -85,6 +75,7 @@ class EventsController < ApplicationController
         format.html { render :action=>:edit }
         format.xml  { head :ok }
       else
+        @events = Event.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30")
         format.html { render :action => "edit" }
         format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
       end
