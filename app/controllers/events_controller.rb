@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   # GET /events.xml
   before_filter :authorize, :except=>:show
   def index
+
     @events = Event.all.paginate(:page=>params[:page],:per_page=>"30")
 
     respond_to do |format|
@@ -13,13 +14,16 @@ class EventsController < ApplicationController
 
   def search
     @events = EventSearch.search(params).paginate(:page=>params[:page],:per_page=>"30")
-    
   end
 
   # GET /events/1
   # GET /events/1.xml
   def show
+
     @event = Event.find(params[:id])
+    @page_title="#{@event.name} #{@event.city} #{@event.state} #{@event.start_date}"
+    @page_desc=@event.notes
+    @page_keywords="#{@event.name},#{@event.venue_location} #{@event.city}, #{@event.state}, #{@event.event_type}"
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @event }
@@ -30,6 +34,7 @@ class EventsController < ApplicationController
   # GET /events/new.xml
   def new
     @event = Event.new
+    @page_title="Add Race"
     #@events = Event.find_by_user_id(current_user.id)
     respond_to do |format|
       format.html # new.html.erb
@@ -40,6 +45,7 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+    @page_title="Edit Race"
     @events = Event.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30")
 
   end
@@ -52,6 +58,7 @@ class EventsController < ApplicationController
  
     respond_to do |format|
       if @event.save
+        #twitter(@event)
         @events = Event.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30")
         flash[:notice] = 'Event was successfully created.'
         format.html { render :action=>:edit}
@@ -91,5 +98,22 @@ class EventsController < ApplicationController
       format.html { redirect_to(events_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+
+  def twitter(event)
+    if APP_CONFIG['perform_twitter']
+      oauth = Twitter::OAuth.new('consumer token', 'consumer secret')
+      oauth.authorize_from_access('access token', 'access secret')
+
+      client = Twitter::Base.new(oauth)
+      client.friends_timeline.each  { |tweet| puts tweet.inspect }
+      client.user_timeline.each     { |tweet| puts tweet.inspect }
+      client.replies.each           { |tweet| puts tweet.inspect }
+
+      client.update('Heeeyyyyoooo from Twitter Gem!')
+    end
+
   end
 end

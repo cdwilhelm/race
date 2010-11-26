@@ -15,12 +15,15 @@ class HomeController < ApplicationController
   end
 
   def about
+    @page_title="About"
   end
 
   def contact_us
+     @page_title="Contact Us"
   end
 
   def help
+     @page_title="Help"
   end
 
 end

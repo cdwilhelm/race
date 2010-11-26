@@ -27,10 +27,20 @@
 </p>
 <p>
   <b>Notes:</b><br/>
-<%=h @event.notes %>
+  <%=h @event.notes %>
 </p>
 
+<table width="100%">
+  <tr>
+    <td>
+      <%= label_tag "Directions From:" %><%= text_field_tag 'from' %> </td>
+    <td><%= button_to_function "Go","setDirections($('from').value,'#{@event.address}','en_US')" %>
+    </td>
+  </tr>
+</table>
+
 <div id="map"></div>
+<div id="route"></div>
 
 
 <script src="http://maps.google.com/maps?file=api&v=2&key=<%= google_map_api_key  %> "
@@ -48,11 +58,11 @@ type="text/javascript"></script>
 
   // this is called when the page loads.
   // it initializes the map, and creates each marker
+  var gdir;
   function initialize() {
 
 
     if (GBrowserIsCompatible()) {
-
 
       var map = new GMap(document.getElementById("map"));
       map.addControl(new GSmallMapControl());
@@ -61,10 +71,50 @@ type="text/javascript"></script>
       var marker = createMarker(point, '<%=marker(@event)%>')
       map.addOverlay(marker);
 
+      directionsPanel = document.getElementById("route");
+      gdir = new GDirections(map, directionsPanel);
+      GEvent.addListener(gdir, "load", onGDirectionsLoad);
+      GEvent.addListener(gdir, "error", handleErrors);
     }
 
 
   }
+  function setDirections(fromAddress, toAddress,locale) {
+    gdir.load("from: " + fromAddress + " to: " + toAddress,{ "locale": locale });
+  }
+
+  function handleErrors(){
+    if (gdir.getStatus().code == G_GEO_UNKNOWN_ADDRESS)
+      alert("No corresponding geographic location could be found for one of the specified addresses. This may be due to the fact that the address is relatively new, or it may be incorrect.\nError code: " + gdir.getStatus().code);
+    else if (gdir.getStatus().code == G_GEO_SERVER_ERROR)
+      alert("A geocoding or directions request could not be successfully processed, yet the exact reason for the failure is not known.\n Error code: " + gdir.getStatus().code);
+
+    else if (gdir.getStatus().code == G_GEO_MISSING_QUERY)
+      alert("The HTTP q parameter was either missing or had no value. For geocoder requests, this means that an empty address was specified as input. For directions requests, this means that no query was specified in the input.\n Error code: " + gdir.getStatus().code);
+
+    //   else if (gdir.getStatus().code == G_UNAVAILABLE_ADDRESS)  <--- Doc bug... this is either not defined, or Doc is wrong
+    //     alert("The geocode for the given address or the route for the given directions query cannot be returned due to legal or contractual reasons.\n Error code: " + gdir.getStatus().code);
+
+    else if (gdir.getStatus().code == G_GEO_BAD_KEY)
+      alert("The given key is either invalid or does not match the domain for which it was given. \n Error code: " + gdir.getStatus().code);
+
+    else if (gdir.getStatus().code == G_GEO_BAD_REQUEST)
+      alert("A directions request could not be successfully parsed.\n Error code: " + gdir.getStatus().code);
+
+    else alert("An unknown error occurred.");
+
+  }
+
+  function onGDirectionsLoad(){
+    // Use this function to access information about the latest load()
+    // results.
+
+    // e.g.
+     //document.getElementById("getStatus").innerHTML = gdir.getStatus().code;
+    // and yada yada yada...
+  }
+
+
 
 
 </script>
@@ -74,5 +124,10 @@ type="text/javascript"></script>
     // initially hide all containers for tab content
     initialize()
   });
+  document.observe("dom:unloaded", function() {
+    // initially hide all containers for tab content
+    GUnload()
+  });
+
 
 </script>
