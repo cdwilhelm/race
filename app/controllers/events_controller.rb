@@ -63,7 +63,7 @@ class EventsController < ApplicationController
       if @event.save
         #twitter(@event)
         @events = Event.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30")
-        flash[:notice] = 'Event was successfully created.'
+        flash.now[:notice] = 'Event was successfully created.'
         format.html { render :action=>:edit}
         format.xml  { render :xml => @event, :status => :created, :location => @event }
       else
@@ -81,7 +81,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.update_attributes(params[:event])
         @events = Event.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30")
-        flash[:notice] = 'Event was successfully updated.'
+        flash.now[:notice] = 'Event was successfully updated.'
         format.html { render :action=>:edit }
         format.xml  { head :ok }
       else
