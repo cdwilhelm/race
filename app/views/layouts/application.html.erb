@@ -38,7 +38,7 @@
                   <div class="roundedcornr_top"><div></div></div>
                   <div class="roundedcornr_content">
                     <h3 class="rounded">Search Events</h3>
-                    <% form_remote_tag :url=>'/events/search' do %>
+                    <% form_tag '/home/search' do %>
                       <p>
                         <%= label_tag "Event:" %><br/>
                         <%= text_field_tag "name","",:size=>15 %>

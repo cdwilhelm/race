@@ -13,6 +13,7 @@ class EventsController < ApplicationController
 
   def search
     @events = EventSearch.search(params).paginate(:page=>params[:page],:per_page=>"30")
+    
   end
 
   # GET /events/1

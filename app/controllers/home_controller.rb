@@ -5,7 +5,7 @@ class HomeController < ApplicationController
       :order=>"start_date,name",:page=>params[:page],:per_page=>"30")
   end
   def search
-    @events = EventSearch.search(params).paginate(:all,:page=>params[:page],:per_page=>"30")
+    @events = EventSearch.search(params).paginate(:page=>params[:page],:per_page=>"30")
 
   end
   
