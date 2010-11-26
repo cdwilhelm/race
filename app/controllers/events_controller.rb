@@ -48,9 +48,10 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(params[:event])
     @event.user = current_user
-    #@events = Event.all(:conditions=>["user_id=?",current_user.id])
+ 
     respond_to do |format|
       if @event.save
+        @events = Event.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30")
         flash[:notice] = 'Event was successfully created.'
         format.html { render :action=>:edit}
         format.xml  { render :xml => @event, :status => :created, :location => @event }
@@ -68,6 +69,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
+        @events = Event.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30")
         flash[:notice] = 'Event was successfully updated.'
         format.html { render :action=>:edit }
         format.xml  { head :ok }

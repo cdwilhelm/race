@@ -12,23 +12,29 @@
 ActiveRecord::Schema.define(:version => 20101114034628) do
 
   create_table "events", :force => true do |t|
-    t.string   "name",                        :null => false
+    t.string   "name",                            :null => false
     t.string   "website"
     t.string   "promoter"
-    t.date     "start_date",                  :null => false
-    t.string   "end_date"
-    t.string   "location"
-    t.string   "state",                       :null => false
-    t.string   "series",     :default => ""
-    t.string   "event_type",                  :null => false
-    t.string   "featured",   :default => "n"
+    t.date     "start_date",                      :null => false
+    t.date     "end_date"
+    t.string   "venue_location"
+    t.string   "city",                            :null => false
+    t.string   "zip_code"
+    t.string   "state",                           :null => false
+    t.string   "series",         :default => ""
+    t.string   "event_type",                      :null => false
+    t.string   "featured",       :default => "n"
     t.string   "logo_path"
-    t.string   "user_id",                     :null => false
+    t.string   "user_id",                         :null => false
+    t.float    "lat"
+    t.float    "lng"
+    t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "events", ["event_type"], :name => "index_events_on_event_type"
+  add_index "events", ["lat", "lng"], :name => "index_events_on_lat_and_lng"
   add_index "events", ["name"], :name => "index_events_on_name"
   add_index "events", ["state"], :name => "index_events_on_state"
   add_index "events", ["user_id"], :name => "index_events_on_user_id"

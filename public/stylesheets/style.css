@@ -484,6 +484,15 @@ ul#list-nav li a {
 .black{color:#333333}
 .gray{color:#cccccc}
 
+#map{
+    float:left;
+    padding:10px;
+    width: 525px;
+    height:300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #container3 {
     float:left;
     width:100%;

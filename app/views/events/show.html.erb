@@ -1,76 +1,78 @@
+<% if @event.logo_path? %>
+  <%= image_tag @event.logo_path  %>
+<%end%>
+<h1><%=h @event.name %></h1>
 
 <p>
-  <b>Name:</b>
-  <%=h @event.name %>
+  <b>Promoter:</b> <%=link_to h( @event.promoter), @event.website, :target=>"new" %>
 </p>
 
 <p>
-  <b>Website:</b>
-  <%=h @event.website %>
+  <b>Date:</b> <%=h @event.start_date %>
+</p>
+
+<% if @event.is_series %>
+  <p>
+    <b>End date:</b> <%=h @event.end_date %>
+  </p>
+<%end %>
+
+<p>
+  <b>Venue Location:</b> <%=h @event.venue_location.upcase %>
+  <%=h @event.city.capitalize %>, <%=h @event.state %>
 </p>
 
 <p>
-  <b>Promoter:</b>
-  <%=h @event.promoter %>
+  <b>Event Type:</b> <%=h @event.event_type %>
 </p>
-
 <p>
-  <b>Start date:</b>
-  <%=h @event.start_date %>
+  <b>Notes:</b><br/>
+<%=h @event.notes %>
 </p>
 
-<p>
-  <b>End date:</b>
-  <%=h @event.end_date %>
-</p>
+<div id="map"></div>
 
-<p>
-  <b>Location:</b>
-  <%=h @event.location %>
-</p>
 
-<p>
-  <b>State:</b>
-  <%=h @event.state %>
-</p>
-
-<p>
-  <b>Series:</b>
-  <%=h @event.series %>
-</p>
-
-<p>
-  <b>Type:</b>
-  <%=h @event.type %>
-</p>
-
-<p>
-  <b>Featured:</b>
-  <%=h @event.featured %>
-</p>
-
-<p>
-  <b>Logo path:</b>
-  <%=h @event.logo_path %>
-</p>
-
+<script src="http://maps.google.com/maps?file=api&v=2&key=<%= google_map_api_key  %> "
+type="text/javascript"></script>
 
 <script type="text/javascript">
-  options = {
-    showOn: 'button',
-    buttonImage: '/images/icons/calendar.png',
-    buttonImageOnly: true,
-    dateFormat: 'yy-mm-dd',
-    constrainInput: true,
-    minDate: new Date()
+  // helper function to create markers
+  function createMarker(point,html) {
+    var marker = new GMarker(point);
+    GEvent.addListener(marker, "click", function() {
+      marker.openInfoWindowHtml(html);
+    });
+    return marker;
   }
-  // datepicker start_date
-  $jq(function() {
-    $jq("#start_date").datepicker(options);
-  });
 
-  $jq(function() {
-    $jq("#end_date").datepicker(options);
+  // this is called when the page loads.
+  // it initializes the map, and creates each marker
+  function initialize() {
+
+
+    if (GBrowserIsCompatible()) {
+
+
+      var map = new GMap(document.getElementById("map"));
+      map.addControl(new GSmallMapControl());
+      map.centerAndZoom(new GPoint(<%= "#{@event.lng},#{@event.lat}" %>), 9);
+      var point = new GPoint(<%=@event[:lng]%>,<%=@event[:lat]%>);
+      var marker = createMarker(point, '<%=marker(@event)%>')
+      map.addOverlay(marker);
+
+    }
+
+
+  }
+
+
+</script>
+
+<script type="text/javascript">
+  document.observe("dom:loaded", function() {
+    // initially hide all containers for tab content
+    initialize()
   });
 
 </script>
