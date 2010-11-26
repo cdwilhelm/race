@@ -1,5 +1,5 @@
 <%= will_paginate @events %>
-<table width="90%">
+<table width="90%" cellspacing="0"  >
   <tr>
     <th>Race</th>
     <th>Type</th>
@@ -8,7 +8,12 @@
     <th>Website</th>
   </tr>
 
-  <%  @events.each do |event| %>
+
+  <% @events_by_month.each do |monthname, events| %>
+  <tr>
+    <td colspan="5" style="color:#ffffff;background-color: #333333;text-align: center" ><%=monthname%></td>
+  </tr>
+    <%  events.each do |event| %>
     <tr class="<%=cycle("white","gray") %>">
       <td><%= link_to event.name, event_path(event)  %> </td>
       <td><%= event.event_type  %> </td>
@@ -17,5 +22,6 @@
        <td><%= link_to event.promoter ,event.website %> </td>
     </tr>
   <%end%>
+    <%end%>
 </table>
 <%= will_paginate @events %>

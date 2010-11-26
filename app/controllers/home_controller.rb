@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   def index
     @events = Event.paginate(:all,:conditions=>["start_date > ?",Time.now ],
       :order=>"start_date,name",:page=>params[:page],:per_page=>"30")
+     @events_by_month = @events.group_by { |e| e.start_date.strftime("%B %Y") }
   end
   def search
     @events = EventSearch.search(params).paginate(:page=>params[:page],:per_page=>"30")

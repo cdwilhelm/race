@@ -5,6 +5,9 @@ class EventsController < ApplicationController
   def index
 
     @events = Event.all.paginate(:page=>params[:page],:per_page=>"30")
+    @events_by_month = @events.group_by { |e| e.start_date.strftime("%B") }
+
+    puts @events_by_month.size
 
     respond_to do |format|
       format.html # index.html.erb
