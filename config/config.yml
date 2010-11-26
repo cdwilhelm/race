@@ -10,7 +10,7 @@ test:
 production:
   perform_twitter: true
   perform_facebook: true
-  fb_username:
-  fb_password:
-  twitter_username:
-  twitter_password:
+  fb_username: none
+  fb_password: none
+  twitter_username: none
+  twitter_password: none
