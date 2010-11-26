@@ -27,7 +27,7 @@
                   <span class="bold">Share</span>
                   <!-- AddThis Button BEGIN -->
                   <div style="margin-right:auto;margin-left:auto;" class="addthis_toolbox addthis_default_style addthis_32x32_style"
-                       addthis:url="<%= request.env['REQUEST_URI']%>" addthis:title="<%= @event.nil? ? "Find My Bike Race" : @event.name  %>">
+                       addthis:url="http://<%= request.env['HTTP_HOST'] + request.env['REQUEST_URI']%>" addthis:title="<%= @event.nil? ? "Find My Bike Race" : @event.name  %>">
                     <a class="addthis_button_email"></a>
                     <a class="addthis_button_facebook"></a>
                     <a class="addthis_button_twitter"></a>
@@ -148,6 +148,13 @@
           $jq(function() {
             $jq("#end_date").datepicker(options);
           });
+          var addthis_share =
+            {
+            // ...
+            templates: {
+              twitter: '{{title}} {{url}} via @findmybikerace'
+            }
+          }
 
         </script>
 
