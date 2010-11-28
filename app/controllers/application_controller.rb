@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
 end
 def event_type_list
-  [["All",""],["Cross Country"],["Endurance"],["Stage"],["Cyclocross"],["Road"],["Downhill"],["SuperD"]]
+  [["Cross Country"],["Endurance"],["Short Track"],["Stage"],["Cyclocross"],["Road"],["Downhill"],["SuperD"]]
 end
 def state_list
   [ ["Select State",""],
