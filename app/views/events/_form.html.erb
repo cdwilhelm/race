@@ -37,7 +37,7 @@
   </p>
   <p>
     <%= f.label :event_type, "Event Type:"%>
-    <%= f.select :event_type,options_for_select(event_type_list) %>
+    <%= f.select :event_type,event_type_list,{:prompt=>"Select Event Type"},{} %>
   </p>
   <p>
     
@@ -51,10 +51,10 @@
 
   </p>
   
-  <p>
+  <!--p>
     <%= f.label :logo_path,"Logo Path:" %>
     <%= f.file_field :logo_path %>
-  </p>
+  </p-->
    <p>
     <%= f.label :notes,"Notes:" %>
     <%= f.text_area :notes, :rows=>3,:cols=>40 %>
