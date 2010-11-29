@@ -56,6 +56,6 @@ Rails::Initializer.run do |config|
     :default_mime_version =>'1.0',
     :default_charset=>'UTF-8'
   }
-  config.action_mailer.raise_delivery_errors = true
+  #config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
 end
