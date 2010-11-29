@@ -1,2 +1,28 @@
-<h1>Home#contact_us</h1>
-<p>Find me in app/views/home/contact_us.html.erb</p>
+
+<h2>Contact Us</h2>
+
+<% form_tag :action=> 'contactus_sendmail' do %>
+  <fieldset style="width: 500px;float:left" >
+    <legend>Send Us an Email</legend>
+    <p>
+      <%= label :message, :email, "Email:" %>
+      <%= text_field :message, :email, :size=> 20 %>
+    </p>
+    <p>
+      <%= label :message, :subject, "Subject:" %>
+      <%= text_field :message, :subject , :size=> 20 %>
+    </p>
+    <p>
+      <%= label :message, :category, "Category:" %>
+      <%= select :message, :category,options_for_select([["Race Data Correction"],
+          ["Website Issues"],["Advertising"],["Other"]].sort),:include_blank=>"Select Category" %>
+    </p>
+    <p>
+      <%= label :message, :body, "Message:" %>
+      <%= text_area :message, :body, :rows => 10, :cols => 40%>
+    </p>
+    <p>
+      <%= submit_tag 'send' ,{:class=>"center"} %>
+    </p>
+  </fieldset>
+<%  end%>

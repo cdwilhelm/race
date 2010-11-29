@@ -38,7 +38,7 @@ class EventsController < ApplicationController
   def edit
     @event = Event.find(params[:id])
     @page_title="Edit Race"
-    @events = Event.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30")
+    @events = Event.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30",:order=>"start_date,name")
 
   end
 
@@ -51,7 +51,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.save
         #twitter(@event)
-        @events = Event.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30")
+        @events = Event.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30",:order=>"start_date,name")
         flash.now[:notice] = 'Event was successfully created.'
         format.html { render :action=>:edit}
         format.xml  { render :xml => @event, :status => :created, :location => @event }
@@ -70,7 +70,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        @events = Event.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30")
+        @events = Event.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30",:order=>"start_date,name")
         flash.now[:notice] = 'Event was successfully updated.'
         format.html { render :action=>:edit }
         format.xml  { head :ok }
