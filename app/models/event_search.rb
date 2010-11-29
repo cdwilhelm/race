@@ -17,7 +17,7 @@ class EventSearch
   private
 
   def self.find_events
-    Event.find(:all,:conditions => conditions )
+    Event.find(:all,:conditions => conditions ,:order=>"start_date, name")
   end
 
 
