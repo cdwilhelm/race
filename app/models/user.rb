@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  validates_presence_of :first_name,:last_name,:email
+  validates_presence_of :first_name,:last_name,:email,:nickname
   validates_uniqueness_of :email
   attr_accessor :password_confirmation,:email_confirmation
   validates_confirmation_of :password,:email
@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
     :message =>"must be of the format: ###-###-####"
 
   has_many :events
+  has_many :event_comments
+  
   def validate
     errors.add_to_base("Missing password" ) if hashed_password.blank?
   end
