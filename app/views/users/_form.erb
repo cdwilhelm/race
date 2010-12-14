@@ -1,0 +1,65 @@
+
+
+<p>
+  Who likes SPAM?  Not us!  We will never sell, trade or barter with your personal
+  information.  Register in confidence that the information you supply here stays with us.
+  We may from time to time tell you about some great new feature we've added, or if you wanted to be
+  notified of a race in your area.
+</p>
+<fieldset>
+
+  <% form_for(@user) do |f| %>
+    <%= f.error_messages %>
+
+    <p>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </p>
+    <p>
+      <%= f.label :email_confirmation,"Confirm Email"%>
+      <%= f.text_field :email_confirmation , :size=>30 %>
+    </p>
+    <p>
+      <%= f.label :nickname%>
+      <%= f.text_field :nickname , :size=>30 %>
+    </p>
+    <p>
+      <%= f.label :password %>
+      <%= f.password_field :password,:size => 10 %>
+    </p>
+    <p>
+      <%= f.label :password_confirmation,"Confirm Password" %>
+      <%= f.password_field :password_confirmation,:size => 10 %>
+    </p>
+    <p>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </p>
+    <p>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </p>
+    <p>If you include City, State, and Zipcode, we can notify you of events in your area. The below fields are optional.</p>
+    <p>
+      <%= f.label :city %>
+      <%= f.text_field :city %>
+    </p>
+
+    <p>
+      <%= f.label :state %>
+      <%= f.select :state, state_list %>
+    </p>
+    <p>
+      <%= f.label :zipcode %>
+      <%= f.text_field :zipcode,:size=>6%>
+    </p>
+    <p>
+      <%= f.label :opt_in %>
+      <%= f.check_box :opt_in,{},'y','n' %> Send me an email of new races.
+    </p>
+    <p>
+      <%= f.submit 'Save' %>
+    </p>
+  <% end %>
+
+</fieldset>

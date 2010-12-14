@@ -1,8 +1,17 @@
 class User < ActiveRecord::Base
+
+#  acts_as_mappable :default_units => :miles,
+#    :distance_field_name => :distance,
+#    :lat_column_name => :lat,
+#    :lng_column_name => :lng,
+#    :auto_geocode=>{:field=>:address, :error_message=>'Could not geocode address'}
+
   validates_presence_of :first_name,:last_name,:email,:nickname
-  validates_uniqueness_of :email
+  validates_uniqueness_of :email,:nickname
   attr_accessor :password_confirmation,:email_confirmation
   validates_confirmation_of :password,:email
+  validates_numericality_of  :zipcode,:allow_nil=>true, :allow_blank=>true
+  validates_length_of :password, :within=>6...12
   validates_format_of :email,
     :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i,
     :message => 'is not formated correctly.  Use you@example.com',
@@ -12,11 +21,14 @@ class User < ActiveRecord::Base
 
   has_many :events
   has_many :event_comments
-  
+
   def validate
     errors.add_to_base("Missing password" ) if hashed_password.blank?
   end
 
+#  def address
+#    "#{self.city}, #{self.state} #{self.zipcode}"
+#  end
 
   def self.authenticate(name, password)
     user = self.find_by_email(name)

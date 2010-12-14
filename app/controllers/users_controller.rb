@@ -1,15 +1,10 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
-  before_filter :authorize, :except=>[:login,:new]
+  before_filter :authorize, :except=>[:login,:new,:create]
   ssl_exceptions
   def index
-    @users = User.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @users }
-    end
+    redirect_to root_path
   end
   def login
     @page_desc="Login"
@@ -39,12 +34,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.xml
   def show
-    @user = User.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @user }
-    end
+    redirect_to root_path
   end
 
   # GET /users/new
@@ -60,7 +50,12 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    begin
+    @user = User.find(params[:id],:conditions=>["id=?",current_user_id])
+    rescue
+      flash.now[:error] = "Unable to find User."
+      redirect_to root_path
+    end
   end
 
   # POST /users
@@ -70,8 +65,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        flash[:notice] = 'User was successfully created.'
-        format.html { redirect_to(@user) }
+        flash[:notice] = 'Your account was created.  Please log in!'
+        format.html { redirect_to login_path}
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }
@@ -88,7 +83,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update_attributes(params[:user])
         flash[:notice] = 'User was successfully updated.'
-        format.html { redirect_to(@user) }
+        format.html { render :action=>:edit }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
