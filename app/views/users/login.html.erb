@@ -4,11 +4,11 @@
     <legend>Please Log In</legend>
     <% form_tag "/users/login", :secure=>true do %>
       <p>
-        <label for="email" >Email Address:</label>
+        <label for="email" >Email Address</label>
         <%= text_field_tag :email, params[:email] %>
       </p>
       <p>
-        <label for="password" >Password:</label>
+        <label for="password" >Password</label>
         <%= password_field_tag :password, params[:password] %>
       </p>
       <p>
