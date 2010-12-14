@@ -10,7 +10,9 @@
           <% else %>
             <span class="white title bold" >Welcome <%= current_user.first_name %>! | </span>
             <%= link_to "MY RACES", my_races_path,:class=>"white" %>  <span class="white">|</span>
-            <%= link_to "Admin", admin_path,:class=>"white" %>  <span class="white">|</span>
+         <% if is_admin? %>
+           <%= link_to "Admin", admin_path,:class=>"white" %>  <span class="white">|</span>
+           <%end%>
             <%= link_to "LOGOUT", "/logout",:class=>"white" %>
 
           <%end%>

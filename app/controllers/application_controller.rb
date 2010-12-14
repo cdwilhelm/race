@@ -82,7 +82,7 @@ end
 #hide_action :current_user_logged_in?
 #helper_method :current_user_logged_in?
 
-def is_admin
+def is_admin?
   if current_user_logged_in?
     current_user.role=='admin'
   else
