@@ -5,20 +5,20 @@
   <fieldset style="width: 500px;float:left" >
     <legend>Send Us an Email</legend>
     <p>
-      <%= label :message, :email, "Email:" %>
+      <%= label :message, :email %>
       <%= text_field :message, :email, :size=> 20 %>
     </p>
     <p>
-      <%= label :message, :subject, "Subject:" %>
+      <%= label :message, :subject %>
       <%= text_field :message, :subject , :size=> 20 %>
     </p>
     <p>
-      <%= label :message, :category, "Category:" %>
+      <%= label :message, :category %>
       <%= select :message, :category,options_for_select([["Race Data Correction"],
           ["Website Issues"],["Advertising"],["Other"]].sort),:include_blank=>"Select Category" %>
     </p>
     <p>
-      <%= label :message, :body, "Message:" %>
+      <%= label :message, :body, "Message" %>
       <%= text_area :message, :body, :rows => 10, :cols => 40%>
     </p>
     <p>
