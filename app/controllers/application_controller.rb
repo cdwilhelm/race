@@ -113,13 +113,17 @@ def authorize
   unless User.find_by_id(session[:user_id])
     session[:original_uri] = request.request_uri
     flash[:notice] = "Please log in"
-    render :update do |page|
-      page.alert("Your session has expired.  Please log in to add a comment!")
-      #page.redirect_to(request.request_uri) unless current_user_logged_in?
-      page.redirect_to(login_path) unless current_user_logged_in?
-    end
+    #render :update do |page|
+     # page.alert("Your session has expired.  Please log in to add a comment!")
+     # page.redirect_to(request.request_uri) if current_user_logged_in?
+     # page.redirect_to(login_path(:securt=>true)) unless current_user_logged_in?
+     #
+    #end
+    redirect_to(login_path(:session=>true))
   end
 end
+
+
 
 def admin
   unless User.find_by_id(session[:user_id],:conditions=>"role='admin'")

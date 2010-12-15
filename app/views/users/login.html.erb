@@ -2,7 +2,7 @@
 <div >
   <fieldset>
     <legend>Please Log In</legend>
-    <% form_tag "/users/login", :secure=>true do %>
+    <% form_tag login_path(:secure=>true) do %>
       <p>
         <label for="email" >Email Address</label>
         <%= text_field_tag :email, params[:email] %>

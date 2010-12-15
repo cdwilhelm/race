@@ -15,8 +15,8 @@ class UsersController < ApplicationController
       if user
         session[:user_id] = user.id
         uri = session[:original_uri]
-        #session[:original_uri] = nil
-        redirect_to(request.request_uri )
+        session[:original_uri] = nil
+        redirect_to(uri || { :controller=>"home",:action => "index" })
       else
         flash.now[:notice] = "Invalid user/password combination"
       end
