@@ -4,59 +4,59 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :name, "Name:" %>
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :website,"Website:"%>
+    <%= f.label :website%>
     <%= f.text_field :website %>
   </p>
   <p>
-    <%= f.label :promoter, "Promoter:" %>
+    <%= f.label :promoter %>
     <%= f.text_field :promoter %>
   </p>
   <p>
-    <%= f.label :start_date, "Date:" %>
+    <%= f.label :start_date, "Date" %>
     <%= f.text_field :start_date,:size=>11%>
   </p>
   <p>
-    <%= f.label :end_date, "End Date:" %>
+    <%= f.label :end_date %>
     <%= f.text_field :end_date,:size=>11%>
   </p>
   <p>
-    <%= f.label :venue_location,"Location:" %>
+    <%= f.label :venue_location,"Location" %>
     <%= f.text_field :venue_location %>
   </p>
     <p>
-    <%= f.label :city,"City:" %>
+    <%= f.label :city %>
     <%= f.text_field :city %>
   </p>
   <p>
-    <%= f.label :state,"State:"%>
+    <%= f.label :state%>
     <%= f.select :state, state_list,:index=>8 %>
   </p>
   <p>
-    <%= f.label :event_type, "Event Type:"%>
+    <%= f.label :event_type%>
     <%= f.select :event_type,event_type_list,{:prompt=>"Select Event Type"},{} %>
   </p>
   <p>
     
-    <%= f.label :series, "Series?:" %>
+    <%= f.label :series, "Series?" %>
     <%= f.check_box :series,{},'y','n' %> Is this event a series?
   </p>
   <p>
 
-    <%= f.label :featured, "Featured?:" %>
+    <%= f.label :featured, "Featured?" %>
     <%= f.check_box :featured, {},"y",'n' %> Is this event featured?
 
   </p>
   
   <!--p>
-    <%= f.label :logo_path,"Logo Path:" %>
+    <%= f.label :logo_path %>
     <%= f.file_field :logo_path %>
   </p-->
    <p>
-    <%= f.label :notes,"Notes:" %>
+    <%= f.label :notes,"Notes" %>
     <%= f.text_area :notes, :rows=>3,:cols=>40 %>
   </p>
   <p>
