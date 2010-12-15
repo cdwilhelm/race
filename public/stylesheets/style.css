@@ -20,7 +20,7 @@ body{
 
     font-family: Geneva,Arial,Helvetica,sans-serif;
     background: #FFFFFF;
-    font-size: .9em;
+    font-size: .8em;
     color: #000000;
     height: 100%;
     background-color: #333333;
@@ -40,7 +40,13 @@ body{
 
 }
 
-
+.comment{
+    font-size: .7em;
+    border:1px solid #333333;
+    width: 300px;
+    padding:3px;
+    
+}
 
 #search_box{
     float:left;
@@ -130,8 +136,7 @@ body{
 #content{
     color: #000000;
     padding: 0px;
-    margin-top: 20px;
-
+    
 
 }
 #admin{
@@ -374,8 +379,11 @@ label{
     font-weight: bold;
     text-transform:  capitalize;
     float: left;
-    width: 10em;
+    width: 12em;
+    clear:left;
 }
+
+label:after{content:":";}
 
 fieldset{
 

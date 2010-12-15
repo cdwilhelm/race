@@ -1,7 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :event_comments
+
   map.resources :users
   map.resources :events
   #map.resources :admin
+
+  map.namespace :event do |event|
+    event.resources :event_comments
+  end
 
   map.namespace :admin do |admin|
     admin.resources :users

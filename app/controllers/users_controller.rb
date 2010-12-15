@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
-  before_filter :authorize, :except=>[:login,:new,:create]
+  before_filter :authorize, :except=>[:login,:new,:create,:logout]
   ssl_exceptions
   def index
     redirect_to root_path
@@ -15,8 +15,8 @@ class UsersController < ApplicationController
       if user
         session[:user_id] = user.id
         uri = session[:original_uri]
-        session[:original_uri] = nil
-        redirect_to(uri || { :controller=>"home",:action => "index" })
+        #session[:original_uri] = nil
+        redirect_to(request.request_uri )
       else
         flash.now[:notice] = "Invalid user/password combination"
       end

@@ -5,12 +5,12 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   include SslRequirement
-   #only have ssl in prod
-    def ssl_required?
-      return false if local_request? || RAILS_ENV == 'test' || RAILS_ENV == 'development'
-      super
-    end
-#   Scrub sensitive parameters from your log
+  #only have ssl in prod
+  def ssl_required?
+    return false if local_request? || RAILS_ENV == 'test' || RAILS_ENV == 'development'
+    super
+  end
+  #   Scrub sensitive parameters from your log
   filter_parameter_logging :password
 
 end
@@ -113,9 +113,12 @@ def authorize
   unless User.find_by_id(session[:user_id])
     session[:original_uri] = request.request_uri
     flash[:notice] = "Please log in"
-    redirect_to(:controller => "/users" , :action => "login" )
+    render :update do |page|
+      page.alert("Your session has expired.  Please log in to add a comment!")
+      #page.redirect_to(request.request_uri) unless current_user_logged_in?
+      page.redirect_to(login_path) unless current_user_logged_in?
+    end
   end
-
 end
 
 def admin

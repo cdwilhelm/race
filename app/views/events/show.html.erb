@@ -28,11 +28,35 @@
 <p>
   <%=h @event.notes %>
 </p>
+<% if @event.event_comments.size > 0 %>
+<%= link_to_function "view comments", "$('comments').show();$('h_comments').show();$('v_comments').hide()",:id=>"v_comments" %>
+<%= link_to_function "hide comments", "$('comments').hide();$('v_comments').show();$('h_comments').hide()",:id=>"h_comments" ,:style=>"display:none"%>
+<%end%>
+<%  unless current_user_logged_in?  %>
+  | <%= link_to "log in to add comment", login_path %>
+<%end%>
+<p>
+<div id="comments" style="display:none">
+  <%= render 'comments' %>
+</div>
+</p>
+
+<% if current_user_logged_in? %>
+  <p>
+    <% form_remote_for(@comment,:url=>{:action=>:create_comment},:success=>"$('event_comment_comment').value=''")  do |f| -%>
+      <% #f.fields_for :event_comments do |ff| %>
+      <%= f.hidden_field :event_id,:value=>@event.id %>
+      <%= f.text_area :comment, :rows=>2 %><br/>
+    <%#end%>
+      <%= f.submit "comment" %>
+    <%end%>
+  </p>
+<%end%>
 
 <table width="100%">
   <tr>
     <td>
-      <%= label_tag "Directions From:" %><%= text_field_tag 'from' %> </td>
+      <%= label_tag "Directions From" %><%= text_field_tag 'from' %> </td>
     <td><%= button_to_function "Go","setDirections($('from').value,'#{@event.address}','en_US')" %>
     </td>
   </tr>
@@ -109,7 +133,7 @@ type="text/javascript"></script>
     // results.
 
     // e.g.
-     //document.getElementById("getStatus").innerHTML = gdir.getStatus().code;
+    //document.getElementById("getStatus").innerHTML = gdir.getStatus().code;
     // and yada yada yada...
   }
 

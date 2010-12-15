@@ -11,7 +11,10 @@ class Event < ActiveRecord::Base
   validates_uniqueness_of :name,:scope=>[:start_date,:state]
   validates_format_of :website, :with => /^http\:\/\//,:message=>"must include http://"
 
+
   belongs_to :user
+  has_many :event_comments
+  accepts_nested_attributes_for :event_comments, :allow_destroy => true
 
   def to_param
     "#{id}-#{name.gsub(/[^a-z0-9]+/i, '-')}"

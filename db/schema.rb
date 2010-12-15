@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101213034244) do
+ActiveRecord::Schema.define(:version => 20101213140548) do
 
   create_table "event_comments", :force => true do |t|
     t.integer  "event_id"
@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(:version => 20101213034244) do
   end
 
   add_index "events", ["event_type"], :name => "index_events_on_event_type"
-  add_index "events", ["lat", "lng"], :name => "index_events_on_lat_and_lng"
   add_index "events", ["name"], :name => "index_events_on_name"
   add_index "events", ["state"], :name => "index_events_on_state"
   add_index "events", ["user_id"], :name => "index_events_on_user_id"
@@ -74,8 +73,12 @@ ActiveRecord::Schema.define(:version => 20101213034244) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "nickname",        :limit => 10
+    t.string   "opt_in",          :limit => 1,  :default => "y"
+    t.float    "lat"
+    t.float    "lng"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["lat", "lng"], :name => "index_users_on_lat_and_lng"
 
 end

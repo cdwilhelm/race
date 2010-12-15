@@ -14,6 +14,9 @@ class EventsController < ApplicationController
   def show
 
     @event = Event.find(params[:id])
+    #@event.event_comments.build
+    @comment = EventComment.new
+
     @page_title="#{@event.name} #{@event.city} #{@event.state} #{@event.start_date}"
     @page_desc=@event.notes
     @page_keywords="#{@event.name},#{@event.venue_location} #{@event.city}, #{@event.state}, #{@event.event_type}"
@@ -47,7 +50,8 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(params[:event])
     @event.user = current_user
- 
+
+    @event.save
     respond_to do |format|
       if @event.save
         #twitter(@event)
@@ -63,10 +67,27 @@ class EventsController < ApplicationController
     end
   end
 
+  def create_comment
+    @event = Event.find(params[:event_comment][:event_id])
+
+    if current_user_logged_in? and !params[:event_comment][:comment].blank?
+      @event_comment = EventComment.new(params[:event_comment])
+      @event_comment.user=current_user
+      @event_comment.save
+    end
+    render :update do |page|
+      page.replace_html 'comments',:partial=>'comments' 
+      #page.assign 'event_comment_comment', ''
+      #page.call "$('event_comment_comment').value", ""
+    end
+  end
+
   # PUT /events/1
   # PUT /events/1.xml
   def update
     @event = Event.find(params[:id])
+
+    #@event.event_comments.build(:user_id=>current_user_id})
 
     respond_to do |format|
       if @event.update_attributes(params[:event])

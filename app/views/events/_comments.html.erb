@@ -1,0 +1,8 @@
+<b>Comments:</b>
+<% @event.event_comments.each do |comment| %>
+
+<p style="font-size: .7em">
+    By: <%= comment.user.nickname %> <%= time_ago_in_words(comment.created_at)%> ago <br/>
+    <div class="comment"><%= comment.comment %></div>
+  </p>
+<%end%>

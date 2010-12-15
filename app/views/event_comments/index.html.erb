@@ -1,0 +1,24 @@
+<h1>Listing event_comments</h1>
+
+<table>
+  <tr>
+    <th>Event</th>
+    <th>User</th>
+    <th>Comment</th>
+  </tr>
+
+<% @event_comments.each do |event_comment| %>
+  <tr>
+    <td><%=h event_comment.event_id %></td>
+    <td><%=h event_comment.user_id %></td>
+    <td><%=h event_comment.comment %></td>
+    <td><%= link_to 'Show', event_comment %></td>
+    <td><%= link_to 'Edit', edit_event_comment_path(event_comment) %></td>
+    <td><%= link_to 'Destroy', event_comment, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New event_comment', new_event_comment_path %>
