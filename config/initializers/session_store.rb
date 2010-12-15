@@ -7,7 +7,7 @@
 ActionController::Base.session = {
   :key         => '_race_session',
   :secret      => 'c2713f58ed4bee47d65977fd15e8141bdf75a451326256c8fbbfb19a25f4995ad939a7ed625ebacdcb3bf9de5c84ecc884d658822566cfb9caa6ab79d3e7eecc',
-  :expire_after => 2.years.from_now
+  :expire_after => 2.years
 }
 
 # Use the database for sessions instead of the cookie-based default,
