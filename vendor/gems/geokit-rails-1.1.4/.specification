@@ -1,0 +1,131 @@
+--- !ruby/object:Gem::Specification 
+name: geokit-rails
+version: !ruby/object:Gem::Version 
+  version: 1.1.4
+platform: ruby
+authors: 
+- Andre Lewis
+- Bill Eisenhauer
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2010-09-07 00:00:00 -06:00
+default_executable: 
+dependencies: 
+- !ruby/object:Gem::Dependency 
+  name: geokit
+  type: :runtime
+  version_requirement: 
+  version_requirements: !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        version: 1.5.0
+    version: 
+- !ruby/object:Gem::Dependency 
+  name: rubyforge
+  type: :development
+  version_requirement: 
+  version_requirements: !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        version: 2.0.4
+    version: 
+- !ruby/object:Gem::Dependency 
+  name: hoe
+  type: :development
+  version_requirement: 
+  version_requirements: !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        version: 2.6.2
+    version: 
+description: ""
+email: 
+- andre@earthcode.com
+- bill@billeisenhauer.com
+executables: []
+
+extensions: []
+
+extra_rdoc_files: 
+- Manifest.txt
+files: 
+- CHANGELOG.rdoc
+- MIT-LICENSE
+- Manifest.txt
+- README.markdown
+- Rakefile
+- about.yml
+- assets/api_keys_template
+- geokit-rails.gemspec
+- init.rb
+- install.rb
+- lib/geokit-rails.rb
+- lib/geokit-rails/acts_as_mappable.rb
+- lib/geokit-rails/adapters/abstract.rb
+- lib/geokit-rails/adapters/mysql.rb
+- lib/geokit-rails/adapters/postgresql.rb
+- lib/geokit-rails/adapters/sqlserver.rb
+- lib/geokit-rails/defaults.rb
+- lib/geokit-rails/geocoder_control.rb
+- lib/geokit-rails/ip_geocode_lookup.rb
+- test/acts_as_mappable_test.rb
+- test/boot.rb
+- test/database.yml
+- test/fixtures/companies.yml
+- test/fixtures/custom_locations.yml
+- test/fixtures/locations.yml
+- test/fixtures/mock_addresses.yml
+- test/fixtures/mock_families.yml
+- test/fixtures/mock_houses.yml
+- test/fixtures/mock_organizations.yml
+- test/fixtures/mock_people.yml
+- test/fixtures/stores.yml
+- test/ip_geocode_lookup_test.rb
+- test/models/company.rb
+- test/models/custom_location.rb
+- test/models/location.rb
+- test/models/mock_address.rb
+- test/models/mock_family.rb
+- test/models/mock_house.rb
+- test/models/mock_organization.rb
+- test/models/mock_person.rb
+- test/models/store.rb
+- test/schema.rb
+- test/tasks.rake
+- test/test_helper.rb
+has_rdoc: true
+homepage: 
+licenses: []
+
+post_install_message: 
+rdoc_options: 
+- --main
+- README.txt
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+requirements: []
+
+rubyforge_project: geokit-rails
+rubygems_version: 1.3.5
+signing_key: 
+specification_version: 3
+summary: Geo distance calculations, distance calculation query support, geocoding for physical and ip addresses.
+test_files: 
+- test/test_helper.rb
