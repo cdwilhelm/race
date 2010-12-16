@@ -54,7 +54,7 @@ class EventsController < ApplicationController
     @event.save
     respond_to do |format|
       if @event.save
-        #twitter(@event)
+        twitter(@event)
         @events = Event.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30",:order=>"start_date,name")
         flash.now[:notice] = 'Event was successfully created.'
         format.html { render :action=>:edit}
@@ -119,15 +119,15 @@ class EventsController < ApplicationController
 
   def twitter(event)
     if APP_CONFIG['perform_twitter']
-      oauth = Twitter::OAuth.new('consumer token', 'consumer secret')
-      oauth.authorize_from_access('access token', 'access secret')
+      oauth = Twitter::OAuth.new('RAsOrkbfuqehJDpHZBwChQ', 'suOP6dyR6wgj26XENzOZZbGeUeD3ynukO9Pwbg3Ng')
+      oauth.authorize_from_access('https://api.twitter.com/oauth/access_token', 'RAsOrkbfuqehJDpHZBwChQ')
 
       client = Twitter::Base.new(oauth)
-      client.friends_timeline.each  { |tweet| puts tweet.inspect }
-      client.user_timeline.each     { |tweet| puts tweet.inspect }
-      client.replies.each           { |tweet| puts tweet.inspect }
+#      client.friends_timeline.each  { |tweet| puts tweet.inspect }
+#      client.user_timeline.each     { |tweet| puts tweet.inspect }
+#      client.replies.each           { |tweet| puts tweet.inspect }
 
-      client.update('Heeeyyyyoooo from Twitter Gem!')
+      client.update("Posted: #{event.name} on #{event.state_date}  via http://findmyrace.com/#{event.id}")
     end
 
   end
