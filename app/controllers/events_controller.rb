@@ -54,7 +54,7 @@ class EventsController < ApplicationController
     @event.save
     respond_to do |format|
       if @event.save
-        twitter(@event)
+        #twitter(@event)
         @events = Event.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30",:order=>"start_date,name")
         flash.now[:notice] = 'Event was successfully created.'
         format.html { render :action=>:edit}

@@ -25,10 +25,10 @@ Rails::Initializer.run do |config|
   config.gem 'will_paginate', :version => '2.3.12', :source => 'http://gemcutter.org'
   # editor
   config.gem 'tiny_mce'
-  config.gem 'rack' ,:version=>'1.0.1'
+  #config.gem 'rack' ,:version=>'1.0.1'
 
-  config.gem 'oauth'
-  config.gem 'twitter'
+  #config.gem 'oauth'
+  #config.gem 'twitter'
   
   
   # Only load the plugins named here, in the order given (default is alphabetical).
