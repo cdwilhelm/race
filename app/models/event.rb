@@ -13,7 +13,7 @@ class Event < ActiveRecord::Base
 
 
   belongs_to :user
-  has_many :event_comments
+  has_many :event_comments,:dependent=>:delete_all
   accepts_nested_attributes_for :event_comments, :allow_destroy => true
 
   def to_param
