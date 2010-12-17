@@ -33,7 +33,7 @@
 <%= link_to_function "hide comments", "$('comments').hide();$('v_comments').show();$('h_comments').hide()",:id=>"h_comments" ,:style=>"display:none"%>
 <%end%>
 <%  unless current_user_logged_in?  %>
-  | <%= link_to "log in to add comment", login_path %>
+  <%= link_to "log in to add comment", login_path %>
 <%end%>
 <p>
 <div id="comments" style="display:none">
@@ -43,7 +43,8 @@
 
 <% if current_user_logged_in? %>
   <p>
-    <% form_remote_for(@comment,:url=>{:action=>:create_comment},:success=>"$('event_comment_comment').value=''")  do |f| -%>
+    <% form_remote_for(@comment,:url=>{:action=>:create_comment},
+      :success=>"$('event_comment_comment').value='';$('comments').show();")  do |f| -%>
       <% #f.fields_for :event_comments do |ff| %>
       <%= f.hidden_field :event_id,:value=>@event.id %>
       <%= f.text_area :comment, :rows=>2 %><br/>
