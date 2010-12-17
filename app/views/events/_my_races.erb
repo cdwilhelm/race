@@ -10,12 +10,14 @@
 
   <%  @events.each do |event| %>
     <tr class="<%=cycle("white","gray") %>">
-      <td class="title center"><%= link_to event.name.downcase, event_path(event)  %> </td>
+      <td class="title center"><%= link_to event.name, event_path(event)  %> </td>
       <td class="center"><%= event.event_type  %> </td>
       <td class="center"><%= event.start_date  %> </td>
       <td class="center"><%= event.state  %> </td>
-      <td class="title"><%= link_to event.promoter ,event.website %> </td>
+      <td class="title"><%= link_to event.promoter? ? event.promoter: event.name ,event.website %> </td>
       <td class="center"><%= link_to "Edit" ,edit_event_path(event) %> </td>
+      <td class="center"><%= link_to 'Remove', event_path(event), :confirm => 'Are you sure you want to remove this event?', :method => :delete %> </td>
+
 
   </tr>
 <%end%>

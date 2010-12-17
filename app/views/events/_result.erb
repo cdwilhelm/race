@@ -15,11 +15,11 @@
     </tr>
     <%  events.each do |event| %>
       <tr class="<%=cycle("white","gray") %>">
-        <td class="title center"><%= link_to event.name.downcase, event_path(event)  %> </td>
+        <td class="title center"><%= link_to event.name, event_path(event)  %> </td>
         <td class="title center"><%= event.event_type  %> </td>
         <td class="title center"><%= event.start_date  %> </td>
         <td class="title center"><%= event.state  %> </td>
-        <td class="title center"><%= link_to event.promoter.downcase ,event.website,:target=>"new" %> </td>
+        <td class="title center"><%= link_to event.promoter? ? event.promoter: event.name ,event.website,:target=>"new" %> </td>
       </tr>
     <%end%>
   <%end%>
