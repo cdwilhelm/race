@@ -1,8 +1,7 @@
 before "deploy:setup", "db:configure"
-after "deploy:update_code", "db:symlink"
+after "deploy:restart","deploy:cleanup"
 
 set :application, "race"
-#set :repository,  "/rails/hpd-2"
 set :deploy_to, "/rails/#{application}"
 set :user, 'root'
 set :use_sudo, true
@@ -10,6 +9,7 @@ set :scm, :subversion
 
 
 role :web, "97.74.121.159"                          # Your HTTP server, Apache/etc
+role :db, "97.74.121.159",:primary=>true 
 default_run_options[:pty] = true
 
 
@@ -22,11 +22,18 @@ namespace :deploy do
   task :restart, :roles => :web, :except => { :no_release => true } do
     run "touch #{File.join(current_path,'tmp','restart.txt')}"
   end
+  desc "Make symlinks"
+  task :symlink do
+    run "ln -nfs #{shared_path}/config/database.yml #{latest_release}/config/database.yml"
+    run "ln -nfs #{shared_path}/images/events #{latest_release}/images/events"
+    run "ln -nfs #{shared_path}/images/ads #{latest_release}/images/ads"
+    run "mkdir -p #{latest_release}/tmp/attachment_fu;chown -R nobody:nobody #{latest_release}/tmp/attachment_fu"
+  end
+
 end
 
 
 set(:database_username, "race")
-# set(:database_password, "root")
 set(:development_database) { application + "_development" }
 set(:test_database) { application + "_test" }
 set(:production_database) { application + "_production" }
@@ -59,15 +66,13 @@ test:
 production:
   database: #{production_database}
   <<: *base
-EOF
+    EOF
 
     run "mkdir -p #{shared_path}/config"
+    run "mkdir -p #{shared_path}/images/events; chown -R nobody:nobody #{shared_path}/images/events"
+    run "mkdir -p #{shared_path}/images/ads; chown -R nobody:nobody #{shared_path}/images/ads"
     put db_config, "#{shared_path}/config/database.yml"
   end
 
-  desc "Make symlink for database yaml"
-  task :symlink do
-    run "ln -nfs #{shared_path}/config/database.yml #{latest_release}/config/database.yml"
-  end
 end
 
