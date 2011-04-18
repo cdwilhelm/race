@@ -18,4 +18,4 @@ config.action_mailer.raise_delivery_errors = false
 #disable ssl for development
 SslRequirement.disable_ssl_check = true
 
-INFO_ADDRESS='curt_wilhelm@yahoo.com'
+INFO_ADDRESS='info@findmybikerace.com'

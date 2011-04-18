@@ -27,4 +27,4 @@ config.action_view.cache_template_loading            = true
 # Enable threaded mode
 # config.threadsafe
 #
-INFO_ADDRESS="curt_wilhelm@yahoo.com"
+INFO_ADDRESS="info@findmybikereace.com"
