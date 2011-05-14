@@ -9,7 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101213140548) do
+ActiveRecord::Schema.define(:version => 20110514152802) do
+
+  create_table "categories", :force => true do |t|
+    t.integer  "registration_id"
+    t.string   "name"
+    t.decimal  "fee",             :precision => 5, :scale => 2, :default => 0.0
+    t.integer  "field_limit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categories", ["registration_id"], :name => "fk_categories_registration_id"
 
   create_table "event_comments", :force => true do |t|
     t.integer  "event_id"
@@ -18,6 +29,9 @@ ActiveRecord::Schema.define(:version => 20101213140548) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "event_comments", ["event_id"], :name => "fk_event_comments_event_id"
+  add_index "event_comments", ["user_id"], :name => "fk_event_comments_user_id"
 
   create_table "events", :force => true do |t|
     t.string   "name",                            :null => false
@@ -33,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20101213140548) do
     t.string   "event_type",                      :null => false
     t.string   "featured",       :default => "n"
     t.string   "logo_path"
-    t.string   "user_id",                         :null => false
+    t.integer  "user_id",                         :null => false
     t.float    "lat"
     t.float    "lng"
     t.text     "notes"
@@ -46,6 +60,28 @@ ActiveRecord::Schema.define(:version => 20101213140548) do
   add_index "events", ["state"], :name => "index_events_on_state"
   add_index "events", ["user_id"], :name => "index_events_on_user_id"
 
+  create_table "registrations", :force => true do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.string   "address"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "emergency_contact"
+    t.string   "emergency_contact_phone"
+    t.string   "club"
+    t.date     "birth_date"
+    t.string   "license"
+    t.decimal  "fee",                     :precision => 5, :scale => 2, :default => 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "registrations", ["event_id"], :name => "fk_registrations_event_id"
+
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
     t.text     "data"
@@ -57,25 +93,30 @@ ActiveRecord::Schema.define(:version => 20101213140548) do
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                             :null => false
-    t.string   "first_name",                                        :null => false
-    t.string   "last_name",                                         :null => false
+    t.string   "email",                                                     :null => false
+    t.string   "first_name",                                                :null => false
+    t.string   "last_name",                                                 :null => false
     t.string   "hashed_password"
     t.string   "salt"
-    t.string   "role",                          :default => "user"
-    t.string   "address"
+    t.string   "role",                                  :default => "user"
     t.string   "address_1"
+    t.string   "address_2"
     t.string   "city"
     t.string   "state"
     t.string   "zipcode"
-    t.string   "country",                       :default => "USA"
+    t.string   "country",                               :default => "USA"
     t.string   "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "nickname",        :limit => 10
-    t.string   "opt_in",          :limit => 1,  :default => "y"
+    t.string   "nickname",                :limit => 10
+    t.string   "opt_in",                  :limit => 1,  :default => "y"
     t.float    "lat"
     t.float    "lng"
+    t.date     "birth_date"
+    t.string   "emergency_contact"
+    t.string   "emergency_contact_phone"
+    t.string   "license"
+    t.string   "club"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

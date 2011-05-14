@@ -1,4 +1,7 @@
+
 class CreateEventComments < ActiveRecord::Migration
+
+
   def self.up
     create_table :event_comments do |t|
       t.integer :event_id

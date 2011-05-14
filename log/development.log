@@ -48018,3 +48018,121 @@ Rendered layouts/_head (2.4ms)
 Rendered layouts/_header (242.9ms)
 Rendered layouts/_footer (0.4ms)
 Completed in 278ms (View: 27, DB: 237) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (211.1ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateEvents (20101102014014)
+Migrating to CreateUsers (20101102014807)
+Migrating to CreateSessions (20101114034628)
+Migrating to CreateEventComments (20101208150333)
+Migrating to AddNicknameToUsers (20101213034244)
+Migrating to AddLocationToUsers (20101213140548)
+Migrating to CreateRegistrations (20110514145455)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateEvents (20101102014014)
+Migrating to CreateUsers (20101102014807)
+Migrating to CreateSessions (20101114034628)
+Migrating to CreateEventComments (20101208150333)
+Migrating to AddNicknameToUsers (20101213034244)
+Migrating to AddLocationToUsers (20101213140548)
+Migrating to CreateRegistrations (20110514145455)
+  [4;36;1mSQL (63.7ms)[0m   [0;1mCREATE TABLE `registrations` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `event_id` int(11), `user_id` int(11), `address` varchar(255), `address_2` varchar(255), `city` varchar(255), `state` varchar(255), `zipcode` varchar(255), `phone` varchar(255), `email` varchar(255), `emergency_contact` varchar(255), `emergency_contact_phone` varchar(255), `club` varchar(255), `birth_date` date, `license` varchar(255), `fee` decimal(5,2) DEFAULT 0.0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (116.4ms)[0m   [0malter table registrations
+ add constraint fk_registrations_event_id
+ foreign key (event_id)
+ references events(id)[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20110514145455')[0m
+Migrating to CreateCategories (20110514145813)
+  [4;35;1mSQL (83.0ms)[0m   [0mCREATE TABLE `categories` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `registration_id` int(11), `name` varchar(255), `fee` decimal(5,2) DEFAULT 0.0, `field_limit` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (95.1ms)[0m   [0;1malter table categories
+ add constraint fk_categories_registration_id
+ foreign key (registration_id)
+ references registrations(id)[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110514145813')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `categories`[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mdescribe `categories`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW KEYS FROM `categories`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW FIELDS FROM `event_comments`[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mdescribe `event_comments`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW KEYS FROM `event_comments`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `events`[0m
+  [4;36;1mSQL (3.2ms)[0m   [0;1mdescribe `events`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW KEYS FROM `events`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `registrations`[0m
+  [4;35;1mSQL (2.5ms)[0m   [0mdescribe `registrations`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW KEYS FROM `registrations`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `sessions`[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mdescribe `sessions`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW KEYS FROM `sessions`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (5.1ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateEvents (20101102014014)
+Migrating to CreateUsers (20101102014807)
+Migrating to CreateSessions (20101114034628)
+Migrating to CreateEventComments (20101208150333)
+Migrating to AddNicknameToUsers (20101213034244)
+Migrating to AddLocationToUsers (20101213140548)
+Migrating to CreateRegistrations (20110514145455)
+Migrating to CreateCategories (20110514145813)
+Migrating to ForgienKeys (20110514152155)
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW FIELDS FROM `events`[0m
+  [4;35;1mSQL (173.1ms)[0m   [0mALTER TABLE `events` CHANGE `user_id` `user_id` int(11) NOT NULL[0m
+  [4;36;1mSQL (302.5ms)[0m   [0;1malter table events
+ add constraint fk_events_user_id
+ foreign key (user_id)
+ references users(id)[0m
+  [4;35;1mSQL (108.2ms)[0m   [0malter table event_comments
+ add constraint fk_event_comments_user_id
+ foreign key (user_id)
+ references users(id)[0m
+  [4;36;1mSQL (114.8ms)[0m   [0;1malter table event_comments
+ add constraint fk_event_comments_event_id
+ foreign key (event_id)
+ references events(id)[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110514152155')[0m
+Migrating to UsersDetail (20110514152802)
+  [4;36;1mSQL (115.3ms)[0m   [0;1mALTER TABLE `users` ADD `birth_date` date[0m
+  [4;35;1mSQL (91.0ms)[0m   [0mALTER TABLE `users` ADD `emergency_contact` varchar(255)[0m
+  [4;36;1mSQL (98.6ms)[0m   [0;1mALTER TABLE `users` ADD `emergency_contact_phone` varchar(255)[0m
+  [4;35;1mSQL (100.4ms)[0m   [0mALTER TABLE `users` ADD `license` varchar(255)[0m
+  [4;36;1mSQL (114.1ms)[0m   [0;1mALTER TABLE `users` ADD `club` varchar(255)[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSHOW COLUMNS FROM `users` LIKE 'address_1'[0m
+  [4;35;1mSQL (145.3ms)[0m   [0mALTER TABLE `users` CHANGE `address_1` `address_2` varchar(255) DEFAULT NULL[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (3.7ms)[0m   [0mSHOW COLUMNS FROM `users` LIKE 'address'[0m
+  [4;36;1mSQL (102.0ms)[0m   [0;1mALTER TABLE `users` CHANGE `address` `address_1` varchar(255) DEFAULT NULL[0m
+  [4;35;1mSQL (9.7ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110514152802')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `categories`[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mdescribe `categories`[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mSHOW KEYS FROM `categories`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `event_comments`[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mdescribe `event_comments`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW KEYS FROM `event_comments`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mSHOW FIELDS FROM `events`[0m
+  [4;36;1mSQL (3.1ms)[0m   [0;1mdescribe `events`[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mSHOW KEYS FROM `events`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `registrations`[0m
+  [4;35;1mSQL (2.8ms)[0m   [0mdescribe `registrations`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW KEYS FROM `registrations`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW FIELDS FROM `sessions`[0m
+  [4;36;1mSQL (39.0ms)[0m   [0;1mdescribe `sessions`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW KEYS FROM `sessions`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (5.2ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
