@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
-  before_filter :authorize, :except=>[:login,:new,:create,:logout]
+  before_filter :authorize, :except=>[:login,:new,:create,:logout,:forgot,:reset,:activate]
   ssl_exceptions
   def index
     redirect_to root_path
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     begin
-    @user = User.find(params[:id],:conditions=>["id=?",current_user_id])
+      @user = User.find(params[:id],:conditions=>["id=?",current_user_id])
     rescue
       flash.now[:error] = "Unable to find User."
       redirect_to root_path
@@ -62,10 +62,12 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
-
+        @user.create_activation_code
     respond_to do |format|
       if @user.save
-        flash[:notice] = 'Your account was created.  Please log in!'
+
+        flash[:notice] = 'Your account was created. Before you can login, you must
+        activate your account.  Check your email for the activation email.'
         format.html { redirect_to login_path}
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
@@ -102,5 +104,47 @@ class UsersController < ApplicationController
       format.html { redirect_to(users_url) }
       format.xml  { head :ok }
     end
+  end
+
+  def forgot
+    if request.post?
+      user = User.find_by_email(params[:user][:email])
+      if user
+        user.create_reset_code
+        flash[:notice] = "Reset code sent to #{user.email}"
+      else
+        flash[:notice] = "#{params[:user][:email]} does not exist in system"
+      end
+      redirect_back_or_default('/')
+    end
+  end
+
+  def reset
+    @user = User.find_by_reset_code(params[:reset_code]) unless params[:reset_code].nil?
+    @user.reset_password=true
+    if request.post?
+
+      if @user.update_attributes(:password => params[:user][:password], :password_confirmation => params[:user][:password_confirmation])
+        self.current_user = @user
+        @user.delete_reset_code
+        flash[:notice] = "Password reset successfully for #{@user.email}"
+        redirect_back_or_default('/')
+      else
+        render :action => :reset
+      end
+    end
+  end
+
+  def activate
+    @user = User.find_by_activation_code(params[:activation_code]) unless params[:activation_code].nil?
+    
+      self.current_user = @user
+      if @user.delete_activation_code
+      flash[:notice] = "Your account has been activated!"
+      redirect_back_or_default('/')
+    else
+      render :action => :reset
+    end
+
   end
 end

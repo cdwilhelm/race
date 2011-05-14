@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110514152802) do
+ActiveRecord::Schema.define(:version => 20110514154544) do
 
   create_table "categories", :force => true do |t|
     t.integer  "registration_id"
@@ -117,6 +117,8 @@ ActiveRecord::Schema.define(:version => 20110514152802) do
     t.string   "emergency_contact_phone"
     t.string   "license"
     t.string   "club"
+    t.string   "reset_code",              :limit => 40
+    t.string   "activation_code",         :limit => 40
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

@@ -114,10 +114,10 @@ def authorize
     session[:original_uri] = request.request_uri
     flash[:notice] = "Please log in"
     #render :update do |page|
-     # page.alert("Your session has expired.  Please log in to add a comment!")
-     # page.redirect_to(request.request_uri) if current_user_logged_in?
-     # page.redirect_to(login_path(:securt=>true)) unless current_user_logged_in?
-     #
+    # page.alert("Your session has expired.  Please log in to add a comment!")
+    # page.redirect_to(request.request_uri) if current_user_logged_in?
+    # page.redirect_to(login_path(:securt=>true)) unless current_user_logged_in?
+    #
     #end
     redirect_to(login_path(:session=>true))
   end
@@ -131,4 +131,10 @@ def admin
     flash[:notice] = "Your account is not authorized to access this page."
     redirect_to(:controller => "/users" , :action => "login" )
   end
+
+
+end
+def redirect_back_or_default(default)
+  redirect_to(session[:return_to] || default)
+  session[:return_to] = nil
 end

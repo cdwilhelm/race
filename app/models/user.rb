@@ -1,13 +1,14 @@
 class User < ActiveRecord::Base
 
-#  acts_as_mappable :default_units => :miles,
-#    :distance_field_name => :distance,
-#    :lat_column_name => :lat,
-#    :lng_column_name => :lng,
-#    :auto_geocode=>{:field=>:address, :error_message=>'Could not geocode address'}
+  #  acts_as_mappable :default_units => :miles,
+  #    :distance_field_name => :distance,
+  #    :lat_column_name => :lat,
+  #    :lng_column_name => :lng,
+  #    :auto_geocode=>{:field=>:address, :error_message=>'Could not geocode address'}
 
-  validates_presence_of :first_name,:last_name,:email,:nickname
-  validates_uniqueness_of :email,:nickname
+  validates_presence_of :first_name,:last_name,:email
+  validates_presence_of :nickname, :unless=>:reset_password?
+  validates_uniqueness_of :email,:nickname,:unless=>:reset_password?
   attr_accessor :password_confirmation,:email_confirmation
   validates_confirmation_of :password,:email
   validates_numericality_of  :zipcode,:allow_nil=>true, :allow_blank=>true
@@ -22,16 +23,22 @@ class User < ActiveRecord::Base
   has_many :events
   has_many :event_comments
 
+  after_save :reset_notification
+  #after_save :activation_notification
+  after_create :signup_notification
+
+  attr_accessor :reset_password
+
   def validate
     errors.add_to_base("Missing password" ) if hashed_password.blank?
   end
 
-#  def address
-#    "#{self.city}, #{self.state} #{self.zipcode}"
-#  end
+  #  def address
+  #    "#{self.city}, #{self.state} #{self.zipcode}"
+  #  end
 
   def self.authenticate(name, password)
-    user = self.find_by_email(name)
+    user = self.find_by_email(name,:conditions=>"activation_code is null")
     if user
       expected_password = encrypted_password(password, user.salt)
       if user.hashed_password != expected_password
@@ -53,6 +60,38 @@ class User < ActiveRecord::Base
     self.hashed_password = User.encrypted_password(self.password, self.salt)
   end
 
+  def create_reset_code
+    @reset = true
+    self.attributes = {:reset_code => Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )}
+    save(false)
+  end
+
+  def create_activation_code
+    @activated = true
+    self.attributes = {:activation_code => Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )}
+    save(false)
+  end
+
+  def recently_reset?
+    @reset
+  end
+
+  def recently_activated?
+    @activated
+  end
+
+  def delete_reset_code
+    self.attributes = {:reset_code => nil}
+    save(false)
+  end
+  def delete_activation_code
+    self.attributes = {:activation_code => nil}
+    save(false)
+  end
+  def reset_password?
+    self.reset_password==true
+  end
+  
   private
   def self.encrypted_password(password, salt)
     require 'digest/sha1'
@@ -73,5 +112,15 @@ class User < ActiveRecord::Base
 
   def logged_in?
     self.name
+  end
+
+  def reset_notification
+    UserNotifier.deliver_reset_notification(self) if self.recently_reset?
+  end
+  def activation_notification
+    UserNotifier.deliver_activation(self) if self.recently_activated?
+  end
+  def signup_notification
+    UserNotifier.deliver_signup_notification(self)
   end
 end

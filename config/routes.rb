@@ -15,7 +15,9 @@ ActionController::Routing::Routes.draw do |map|
   end
 
 
-
+  map.forgot    '/forgot',                    :controller => 'users',     :action => 'forgot'
+  map.reset     'reset/:reset_code',          :controller => 'users',     :action => 'reset'
+  map.activate     'activate/:activation_code',          :controller => 'users',     :action => 'activate'
   map.logout "logout"  , :controller=>"users", :action=>"logout"
   map.login "login", :controller=>"users" ,:action=>"login"
   map.admin "admin",:controller=>"admin",:action=>"index"
