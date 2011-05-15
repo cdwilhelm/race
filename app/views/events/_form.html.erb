@@ -1,73 +1,75 @@
 <fieldset style="display:inline">
 
-<% form_for(@event) do |f| %>
-  <%= f.error_messages %>
+  <% form_for(@event) do |f| %>
+    <%= f.error_messages %>
 
-  <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :website%>
-    <%= f.text_field :website %>
-  </p>
-  <p>
-    <%= f.label :promoter %>
-    <%= f.text_field :promoter %>
-  </p>
-  <p>
-    <%= f.label :start_date, "Date" %>
-    <%= f.text_field :start_date,:size=>11%>
-  </p>
-  <p>
-    <%= f.label :end_date %>
-    <%= f.text_field :end_date,:size=>11%>
-  </p>
-  <p>
-    <%= f.label :venue_location,"Location" %>
-    <%= f.text_field :venue_location %>
-  </p>
     <p>
-    <%= f.label :city %>
-    <%= f.text_field :city %>
-  </p>
-  <p>
-    <%= f.label :state%>
-    <%= f.select :state, state_list,:index=>8 %>
-  </p>
-  <p>
-    <%= f.label :event_type%>
-    <%= f.select :event_type,event_type_list,{:prompt=>"Select Event Type"},{} %>
-  </p>
-  <p>
-    
-    <%= f.label :series, "Series?" %>
-    <%= f.check_box :series,{},'y','n' %> Is this event a series?
-  </p>
-  <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :website%>
+      <%= f.text_field :website %>
+    </p>
+    <p>
+      <%= f.label :promoter %>
+      <%= f.text_field :promoter %>
+    </p>
+    <p>
+      <%= f.label :series, "Series?" %>
+      <%= f.check_box :series,{:onclick=>"is_series(this.id)" },'y','n'%> Is this event a series?
+    </p>
+    <p>
+      <%= f.label :start_date, "Date" %>
+      <%= f.text_field :start_date,:size=>11%>
+    </p>
+    <p id="form_end_date" style="display:none">
+      <%= f.label :end_date %>
+      <%= f.text_field :end_date,:size=>11%>
+    </p>
+    <p>
+      <%= f.label :venue_location,"Location" %>
+      <%= f.text_field :venue_location %>
+    </p>
+    <p>
+      <%= f.label :city %>
+      <%= f.text_field :city %>
+    </p>
+    <p>
+      <%= f.label :state%>
+      <%= f.select :state, state_list,:index=>8 %>
+    </p>
+    <p>
+      <%= f.label :event_type%>
+      <%= f.select :event_type,event_type_list,{:prompt=>"Select Event Type"},{} %>
+    </p>
 
-    <%= f.label :featured, "Featured?" %>
-    <%= f.check_box :featured, {},"y",'n' %> Is this event featured?
+    <p>
 
-  </p>
-  
-  <!--p>
+      <%= f.label :featured, "Featured?" %>
+      <%= f.check_box :featured, {},"y",'n' %> Is this event featured?
+
+    </p>
+
+    <!--p>
     <%= f.label :logo_path %>
     <%= f.file_field :logo_path %>
-  </p-->
-   <p>
-    <%= f.label :notes,"Notes" %>
-    <%= f.text_area :notes, :rows=>3,:cols=>40 %>
-  </p>
-  <p>
-    <%= f.submit 'Save' %>
-  </p>
-<% end %>
+    </p-->
+    <p>
+      <%= f.label :notes,"Notes" %>
+      <%= f.text_area :notes, :rows=>3,:cols=>40 %>
+    </p>
+    <p>
+      <%= f.submit 'Save' %>
+    </p>
+  <% end %>
 </fieldset>
 
 
 
 <script type="text/javascript">
+
+
   options = {
     showOn: 'button',
     buttonImage: '/images/icons/calendar.png',
@@ -85,6 +87,21 @@
 
   $jq(function() {
     $jq("#event_end_date").datepicker(options);
+  });
+
+  function is_series(id){
+
+    if($(id).checked){
+      $('form_end_date').show()
+    }else{
+      $('form_end_date').hide();
+      $(id).value='';
+    }
+  }
+
+  document.observe("dom:loaded", function() {
+    // initially hide all containers for tab content
+    is_series('event_series')
   });
 
 </script>
