@@ -16,6 +16,7 @@ class Event < ActiveRecord::Base
   has_many :event_comments,:dependent=>:delete_all
   accepts_nested_attributes_for :event_comments, :allow_destroy => true
 
+  before_save :clear_end_date
   def to_param
     "#{id}-#{name.gsub(/[^a-z0-9]+/i, '-')}"
   end
@@ -38,5 +39,8 @@ class Event < ActiveRecord::Base
   def is_feature?
     self.feature=='y'? true : false
 
+  end
+  def clear_end_date
+    self.end_date=nil unless is_series
   end
 end
