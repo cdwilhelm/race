@@ -41,7 +41,7 @@
                     <% form_tag '/home/search' do %>
                       <p>
                         <%= label_tag "Event" %><br/>
-                        <%= text_field_tag "name","",:size=>15 %>
+                        <%= text_field_tag "name","",:size=>20 %>
                       </p>
 
                       <p>
@@ -67,27 +67,54 @@
                 </div>
 
                 <div id="ads">
+
+
                   <div class="ad">
-                    <%= link_to image_tag('15hnbanlg.gif'), "http://www.hammernutrition.com/affiliates/146518",:class=>"ad" %>
+                    <!-- HomePage_Left_200x200 -->
+                    <script type='text/javascript'>
+                      GA_googleFillSlot("HomePage_Left_200x200");
+                    </script>
+                  </div>
+
+                  <div class="ad">
+                    <!-- HomePage_Left_234x60 -->
+                    <script type='text/javascript'>
+                      GA_googleFillSlot("HomePage_Left_200x200");
+                    </script>
                   </div>
                   <div class="ad">
-                    <%= link_to image_tag('mtbcoach.jpg'),"http://mtbcoach.com",:class=>"ad" %>
+                    <!-- HomePage_Left_234x60 -->
+                    <script type='text/javascript'>
+                      GA_googleFillSlot("HomePage_Left_200x200");
+                    </script>
+                  </div>
+                  <div class="ad">
+                    <!-- HomePage_Left_234x60 -->
+                    <script type='text/javascript'>
+                      GA_googleFillSlot("HomePage_Left_200x200");
+                    </script>
                   </div>
                 </div>
               </div>
               <div id="col2">
 
+                <div class="ad">
+                  <!-- HomePage_Leader -->
+                  <script type='text/javascript'>
+                    GA_googleFillSlot("HomePage_Leader");
+                  </script>
+                </div>
                 <%= yield %>
-
-
+                <div class="ad">
+                  <!-- HomePage_Bottome_Leader -->
+                  <script type='text/javascript'>
+                    GA_googleFillSlot("HomePageBottomLeader");
+                  </script>
+                </div>
               </div>
               <div id="col3">
-                <div>
-                  <%= link_to image_tag('FaceBooklogo.gif'),"http://www.facebook.com/#!/pages/Find-My-Bike-Race/138642542858198" %>
-                </div>
-                <div>
-                  <%= link_to image_tag('follow_bird-a.png'),"http://twitter.com/findmybikerace" %>
-                </div>
+
+                <!--
                 <div class="roundedcornr_box">
                   <div class="roundedcornr_top"><div></div></div>
                   <div class="roundedcornr_content">
@@ -109,7 +136,7 @@
                   <div class="roundedcornr_content">
                     <h3 class="rounded">Promote your race</h3>
                     <p>If you want to promote your race on your site
-                      <%= link_to "contact us","/home/contact_us" %>. We can discuss options
+                <%= link_to "contact us","/home/contact_us" %>. We can discuss options
                       to help increase your attendance. <%=link_to "Read More...", "/home/promote"%> </p>
                   </div>
                   <div class="roundedcornr_bottom"><div></div></div>
@@ -122,10 +149,37 @@
                     <p>info about advertising <%=link_to "Read More..." ,"/home/advertise"%></p>
                   </div>
                   <div class="roundedcornr_bottom"><div></div></div>
-                </div>
+                </div> -->
                 <div id="ads">
 
+
+                  <div class="ad">
+                    <!-- HomePage_Left_234x60 -->
+                    <script type='text/javascript'>
+                      GA_googleFillSlot("HomePageRight180x150");
+                    </script>
+                  </div>
+                  <div class="ad">
+                    </<!-- HomePage_Left_234x60 -->
+                    <script type='text/javascript'>
+                      GA_googleFillSlot("HomePageRight180x150");
+                    </script>
+                  </div>
+                  <div class="ad">
+                    </<!-- HomePage_Left_234x60 -->
+                    <script type='text/javascript'>
+                      GA_googleFillSlot("HomePageRight180x150");
+                    </script>
+                  </div>
+
+
+
                 </div>
+                <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like-box href="http://www.facebook.com/pages/Find-My-Bike-Race/138642542858198" width="200" colorscheme="dark" show_faces="true" stream="false" header="false"></fb:like-box>
+
+
+                <%#= link_to image_tag('follow_bird-a.png'),"http://twitter.com/findmybikerace" ,:style=>"padding:5px;" %>
+
               </div>
             </div>
           </div>

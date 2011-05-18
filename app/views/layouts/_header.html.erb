@@ -22,8 +22,9 @@
           <%= link_to "ADD MY RACE", {:controller=>"events",:action=>"new"} ,:class=>"white" %>
           <span style="float:right">
             <%= link_to "CONTACT", {:controller=>"home",:action=>"contact_us"},{:class=>"white"}%> <span class="white">|</span>
-            <%= link_to "ABOUT", {:controller=>"home",:action=>"about"},{:class=>"white"}%> <!--<span class="white">|</span>
-            <%#= link_to "HELP", {:controller=>"home",:action=>"help"} ,{:class=>"white"} %> -->
+            <%= link_to "ABOUT", {:controller=>"home",:action=>"about"},{:class=>"white"}%> <span class="white">|</span>
+            <%= link_to "PROMOTERS", {:controller=>"home",:action=>"promoter"} ,{:class=>"white"} %> <span class="white">|</span>
+           <%= link_to "ADVERTISE", {:controller=>"home",:action=>"advertise"} ,{:class=>"white"} %>
           </span>
 
         </div>

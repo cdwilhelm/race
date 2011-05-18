@@ -32,7 +32,7 @@ body{
     text-align: left;
     padding: 0px;
 
-    width: 1024px;
+    width: 1090px;
     color: #000000;
     background: #ffffff;
     margin: auto;
@@ -95,7 +95,7 @@ body{
     float:left;
     font-size: .7em;
     font-weight: normal;
-
+    width:100%;
 }
 
 #header{
@@ -237,7 +237,9 @@ hr{ width:100%  }
     font-size: small;
 }
 
-.center {text-align: center;}
+.center {text-align: center; margin-left: auto;margin-right: auto;}
+.clear {clear:both}
+
 .left{text-align: left;}
 .right{text-align:right;}
 /*.fieldWithErrors input {
@@ -280,7 +282,8 @@ tr.black {background-color: black;color:white}
 }
 
 
-.ad{margin-top:3px;margin-left:auto;margin-right: auto}
+.ad{width: 100%;margin-top: 3px; margin-bottom:1.5px;margin-left:auto;margin-right: auto}
+
 .thumb{
     border: solid black;
     padding: 1px;
