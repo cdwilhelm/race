@@ -1,4 +1,5 @@
 before "deploy:setup", "db:configure"
+before "deploy:restart","deploy:extra_symlink"#, "deploy:migrate"
 after "deploy:restart","deploy:cleanup"
 
 set :application, "race"
@@ -6,7 +7,7 @@ set :deploy_to, "/rails/#{application}"
 set :user, 'root'
 set :use_sudo, true
 set :scm, :subversion
-
+set :rails_env, "production"
 
 role :web, "97.74.121.159"                          # Your HTTP server, Apache/etc
 role :db, "97.74.121.159",:primary=>true 
@@ -23,11 +24,12 @@ namespace :deploy do
     run "touch #{File.join(current_path,'tmp','restart.txt')}"
   end
   desc "Make symlinks"
-  task :symlink do
+  task :extra_symlink do
     run "ln -nfs #{shared_path}/config/database.yml #{latest_release}/config/database.yml"
-    run "ln -nfs #{shared_path}/images/events #{latest_release}/images/events"
-    run "ln -nfs #{shared_path}/images/ads #{latest_release}/images/ads"
+    run "ln -nfs #{shared_path}/images/events #{latest_release}/public/images/events"
+    run "ln -nfs #{shared_path}/config/database.yml #{latest_release}/config/database.yml"
     run "mkdir -p #{latest_release}/tmp/attachment_fu;chown -R nobody:nobody #{latest_release}/tmp/attachment_fu"
+    run "touch #{latest_release}/log/#{rails_env}.log;chmod 666 #{latest_release}/log/#{rails_env}.log"
   end
 
 end
@@ -70,7 +72,7 @@ production:
 
     run "mkdir -p #{shared_path}/config"
     run "mkdir -p #{shared_path}/images/events; chown -R nobody:nobody #{shared_path}/images/events"
-    run "mkdir -p #{shared_path}/images/ads; chown -R nobody:nobody #{shared_path}/images/ads"
+    #run "mkdir -p #{shared_path}/images/ads; chown -R nobody:nobody #{shared_path}/images/ads"
     put db_config, "#{shared_path}/config/database.yml"
   end
 
