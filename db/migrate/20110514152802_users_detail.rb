@@ -12,12 +12,13 @@ class UsersDetail < ActiveRecord::Migration
   end
 
   def self.down
-    remove_column(:users,:birth_date,:date)
-    remove_column(:users,:emergency_contact,:string)
-    remove_column(:users,:emergency_contact_phone,:string)
-    remove_column(:users,:license,:string)
-    remove_column(:users,:club,:string)
-    rename_column(:users,:address_2,:address_1)
+    remove_column(:users,:birth_date)
+    remove_column(:users,:emergency_contact)
+    remove_column(:users,:emergency_contact_phone)
+    remove_column(:users,:license)
+    remove_column(:users,:club)
     rename_column(:users,:address_1,:address)
+    rename_column(:users,:address_2,:address_1)
+
   end
 end

@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20110514154544) do
     t.string   "event_type",                      :null => false
     t.string   "featured",       :default => "n"
     t.string   "logo_path"
-    t.integer  "user_id",                         :null => false
+    t.integer  "user_id",        :default => 0,   :null => false
     t.float    "lat"
     t.float    "lng"
     t.text     "notes"
