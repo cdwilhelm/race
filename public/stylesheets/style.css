@@ -32,7 +32,7 @@ body{
     text-align: left;
     padding: 0px;
 
-    width: 1090px;
+    width: 1110px;
     color: #000000;
     background: #ffffff;
     margin: auto;
@@ -92,7 +92,7 @@ body{
 }
 
 #ads{
-    float:left;
+    margin-left: auto;margin-right: auto;
     font-size: .7em;
     font-weight: normal;
     width:100%;
@@ -282,7 +282,7 @@ tr.black {background-color: black;color:white}
 }
 
 
-.ad{width: 100%;margin-top: 3px; margin-bottom:1.5px;margin-left:auto;margin-right: auto}
+.ad{width: 100%;text-align: center; padding: 2px;margin-left:auto;margin-right: auto}
 
 .thumb{
     border: solid black;
