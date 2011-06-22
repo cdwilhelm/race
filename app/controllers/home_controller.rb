@@ -28,6 +28,10 @@ class HomeController < ApplicationController
     render :controller=>:home, :action=>:contact_us
 
   end
+  
+  def privacy
+    @page_title="Privacy"
+  end
   def about
     @page_title="About"
   end
