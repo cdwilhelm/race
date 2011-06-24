@@ -10,9 +10,11 @@ class HomeController < ApplicationController
     @events_by_month = @events.group_by { |e| e.start_date.strftime("%B %Y") }
   end
   
-  def my_races
+  def my_page
     @events = Event.paginate_by_user_id(current_user.id,
       :order=>"start_date, name, state",:page=>params[:page],:per_page=>"30")#.paginate(:page=>params[:page],:per_page=>"30")
+    @user = User.find(current_user_id)
+    
   end
 
   def contactus_sendmail

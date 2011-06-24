@@ -9,7 +9,7 @@
             <%= link_to "Register",new_user_path(),:class=>"white"%>
           <% else %>
             <span class="white title bold" >Welcome <%= current_user.first_name %>! | </span>
-            <%= link_to "MY RACES", my_races_path,:class=>"white" %>  <span class="white">|</span>
+            <%= link_to "My Page", my_page_path,:class=>"white" %>  <span class="white">|</span>
          <% if is_admin? %>
            <%= link_to "Admin", admin_path,:class=>"white" %>  <span class="white">|</span>
            <%end%>
@@ -19,7 +19,7 @@
         </div>
         <div>
           <%= link_to "HOME", "/",:class=>"white" %> |
-          <%= link_to "ADD MY RACE", {:controller=>"events",:action=>"new"} ,:class=>"white" %>
+          <%= link_to "ADD RACE", {:controller=>"events",:action=>"new"} ,:class=>"white" %>
           <span style="float:right">
             <%= link_to "CONTACT", {:controller=>"home",:action=>"contact_us"},{:class=>"white"}%> <span class="white">|</span>
             <%= link_to "ABOUT", {:controller=>"home",:action=>"about"},{:class=>"white"}%> <span class="white">|</span>

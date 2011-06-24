@@ -17,6 +17,7 @@ end
 def event_type_list
   [["Cross Country"],["Endurance"],["Short Track"],["Stage"],["Cyclocross"],["Road"],["Downhill"],["SuperD"]]
 end
+
 def state_list
   [ ["Select State",""],
     ['Alabama', 'AL'],
@@ -71,6 +72,7 @@ def state_list
     ['Wisconsin', 'WI'],
     ['Wyoming', 'WY']]
 end
+
 def current_user_id
   session[:user_id]
 end
@@ -79,6 +81,7 @@ end
 def current_user_logged_in?
   ! current_user.nil?
 end
+
 #hide_action :current_user_logged_in?
 #helper_method :current_user_logged_in?
 
@@ -89,6 +92,14 @@ def is_admin?
     false
   end
 
+end
+
+def is_promoter?
+  if current_user_logged_in?
+    current_user.role=='promoter'
+  else
+    false
+  end
 end
 
 private

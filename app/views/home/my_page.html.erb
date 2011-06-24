@@ -1,0 +1,39 @@
+<h1> My Page </h1>
+<!--div id="ads" class="box">
+  <p>One Big Ad goes here</p>
+</div -->
+<div id="tabs" style="width: 800px;overflow:hidden;">
+  <ul>
+    <li><a href="#account">Account</a></li>
+    <li><a href="#my_races">My Races</a></li>
+    <li><a href="#my_events">My Events</a></li>
+  </ul>
+  <div id="account">
+    <%= render "/users/form" %>
+  </div>
+  <div id="my_races">
+    <div id="results">
+      <%= render "/events/my_races" %>
+    </div>
+  </div>
+  <div id="my_events">
+  </div>
+</div>
+
+
+
+<!--div id="ads" class="box">
+  <p>More ads here</p>
+</div-->
+
+
+<script>
+
+   /* $jq( "#tabs" ).tabs({
+      cookie: {
+        // store cookie for a day, without, it would be a session cookie
+        expires: 1
+      }
+    });*/
+  
+</script>
