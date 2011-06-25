@@ -4,7 +4,7 @@
 <html>
   <%= render '/layouts/head' %>
 
-  <body xonload="initialize()">
+  <body>
 
     <div id="wrapper">
       <%= render 'layouts/header' %>
@@ -23,17 +23,6 @@
           <div id="container2">
             <div id="container1">
               <div id="col1">
-                <div style="padding-bottom: 3px; text-align: center">
-                  <span class="bold">Share</span>
-                  <!-- AddThis Button BEGIN -->
-                  <div style="margin-right:auto;margin-left:auto;" class="addthis_toolbox addthis_default_style addthis_32x32_style"
-                       addthis:url="http://<%= request.env['HTTP_HOST'] + request.env['REQUEST_URI']%>" addthis:title="<%= @event.nil? ? "Find My Bike Race" : @event.name  %>">
-                    <a class="addthis_button_email"></a>
-                    <a class="addthis_button_facebook"></a>
-                    <a class="addthis_button_twitter"></a>
-                  </div>
-                  <!-- AddThis Button END -->
-                </div>
                 <div class="roundedcornr_box">
                   <div class="roundedcornr_top"><div></div></div>
                   <div class="roundedcornr_content">
@@ -180,9 +169,10 @@
                 </div>
                 <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like-box href="http://www.facebook.com/pages/Find-My-Bike-Race/138642542858198" width="200" colorscheme="dark" show_faces="true" stream="false" header="false"></fb:like-box>
 
-
-<%#= link_to image_tag('follow_bird-a.png'),"http://twitter.com/findmybikerace" ,:style=>"padding:5px;" %>
-
+                <div id="twitter" style="padding-top:3px">
+                  <a href="http://twitter.com/FindMyBikeRace" class="twitter-follow-button" data-button="grey" data-text-color="#FFFFFF" data-link-color="#00AEFF" data-show-count="false">Follow @FindMyBikeRace</a>
+                  <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+                </div>
               </div>
             </div>
           </div>

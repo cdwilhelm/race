@@ -523,7 +523,7 @@ ul#list-nav li a {
     width:100%;
 
     position:relative;
-    right:55%;
+    right:54%;
 }
 #col1 {
     float:left;
@@ -534,7 +534,7 @@ ul#list-nav li a {
 }
 #col2 {
     float:left;
-    width:55%;
+    width:52%;
     position:relative;
     left:80%;
     overflow:hidden;
@@ -543,7 +543,7 @@ ul#list-nav li a {
     float:left;
     width:21%;
     position:relative;
-    left:81%;
+    left:82%;
     overflow:hidden;
 }
 
