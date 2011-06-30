@@ -1,34 +1,38 @@
 <div id="nav">
-        <div>
-          <% if !current_user_logged_in? %>
-            <% form_tag login_path(:secure=>true)  do -%>
-              <span class="white">Email:</span> <%= text_field_tag :email, '', :size=>"10"%>
-              <span class="white">Password:</span>  <%= password_field_tag :password ,'', :size=>"10"%>
-              <%= submit_tag "login", :class=>"button"%>
-            <% end %>
-            <%= link_to "Register",new_user_path(),:class=>"white"%>
-          <% else %>
-            <span class="white title bold" >Welcome <%= current_user.first_name %>! | </span>
-            <%= link_to "My Page", my_page_path,:class=>"white" %>  <span class="white">|</span>
-         <% if is_admin? %>
-           <%= link_to "Admin", admin_path,:class=>"white" %>  <span class="white">|</span>
-           <%end%>
-            <%= link_to "LOGOUT", "/logout",:class=>"white" %>
+  <div id="controls">
+    <% if !current_user_logged_in? %>
+      <% form_tag login_path(:secure=>true)  do -%>
+        <span class="white">Email:</span> <%= text_field_tag :email, '', :size=>"10"%>
+        <span class="white">Password:</span>  <%= password_field_tag :password ,'', :size=>"10"%>
+        <%= submit_tag "login", :class=>"button"%>
+      <% end %>
+      <%= link_to "Register",new_user_path(),:class=>"white"%>
+    <% else %>
+      <span class="white title bold" >Welcome <%= current_user.first_name %>! | </span>
+      <%= link_to "My Page", my_page_path,:class=>"white" %>  <span class="white">|</span>
+      <% if is_admin? %>
+        <%= link_to "Admin", admin_path,:class=>"white" %>  <span class="white">|</span>
+      <%end%>
+      <%= link_to "Logout", "/logout",:class=>"white" %>
 
-          <%end%>
-        </div>
-        <div>
-          <%= link_to "HOME", "/",:class=>"white" %> |
-          <%= link_to "ADD RACE", {:controller=>"events",:action=>"new"} ,:class=>"white" %>
-          <span style="float:right">
-            <%= link_to "CONTACT", {:controller=>"home",:action=>"contact_us"},{:class=>"white"}%> <span class="white">|</span>
-            <%= link_to "ABOUT", {:controller=>"home",:action=>"about"},{:class=>"white"}%> <span class="white">|</span>
-            <%= link_to "PROMOTERS", {:controller=>"home",:action=>"promoter"} ,{:class=>"white"} %> <span class="white">|</span>
-           <%= link_to "ADVERTISE", {:controller=>"home",:action=>"advertise"} ,{:class=>"white"} %>
-          </span>
+    <%end%>
+  </div>
 
-        </div>
-      </div>
-      <div id="header">
-        Find My Bike Race
-      </div>
+</div>
+<div id="header">
+  <div id="header-img" >
+    <%= link_to image_tag("header-logo.png",:alt=>"",:size=>"150x75"),"/" %>
+  </div>
+
+  <div id="header-text">
+    <%= link_to "HOME", "/",:xclass=>"white" %> |
+    <%= link_to "ADD RACE", {:controller=>"events",:action=>"new"} ,:xclass=>"white" %>
+    <span style="float:right">
+      <%= link_to "CONTACT", {:controller=>"home",:action=>"contact_us"},{:xclass=>"white"}%> <span xclass="white">|</span>
+      <%= link_to "ABOUT", {:controller=>"home",:action=>"about"},{:xclass=>"white"}%> <span xclass="white">|</span>
+      <%= link_to "PROMOTERS", {:controller=>"home",:action=>"promoter"} ,{:xclass=>"white"} %> <span xclass="white">|</span>
+      <%= link_to "ADVERTISE", {:controller=>"home",:action=>"advertise"} ,{:xclass=>"white"} %>
+    </span>
+
+  </div>
+</div>

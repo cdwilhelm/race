@@ -101,14 +101,24 @@ body{
 
 #header{
     height: 100px;
-    padding: 0px;
-    text-align: center;
-    vertical-align: middle;
-    font-size: 3em;
-    font-weight: bolder;
+    padding: 5px;
     background-image:url('/images/header-gradient.jpg');
     background-repeat:repeat-x;
+}
+#header-text{ 
+    vertical-align: bottom;
+    text-align: left;
+    vertical-align: bottom;
+    font-size: 1em;
+    font-weight: bolder;
+    color:#000;
+}
 
+
+
+#header-links{
+    font-size: 1em;
+    color:#000;
 }
 
 #image{
@@ -117,21 +127,14 @@ body{
 }
 
 #controls{
-
-    width: 600px;
-    font-size: .8em;
-    height:100%;
-    text-align: right;
-    padding:5px;
-    position:relative;
+    font-size: 1em;
+    text-align: center;
+    vertical-align: top;
     float:right;
-
-
-
 }
 
 #header img{
-    float: left;
+/*float:left*/
 }
 
 #content{
