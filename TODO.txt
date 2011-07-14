@@ -1,9 +1,44 @@
 - add google ads
+ - event page
+
+- add facebook and twitter badges to bottom of page
+
+- for promotors page
+ - faq's
+  - pricing
+  - get paid
+  - web site hosting 
+
+- advertising page
+ - cost of ads
+ - size of ad
+ 
+
 - add registration
- -
-- add privacy page
-- add sitemap
+ - add registration close date
+ - checkout
+
+- my page
+  - events (calendar)
+  - registrations (promoter only)
+  - events added
+
+- promoters page
+ - links to registrations
+ - links to reports
+ - promoters, registrations, reports 
+  - list of users (csv) for event
+  - fees (gross,fee, number of registered) for event
+  - email to registered users
+
 - seo
-- blog
-- custom website
-- add search
+ - add sitemap
+  - event page
+  - registration
+  - home pages
+  - promoters page
+
+- custom website hosting
+
+
+- blog ??
