@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
   #   Scrub sensitive parameters from your log
   filter_parameter_logging :password
-
+  protect_from_forgery
 end
 def event_type_list
   [["Cross Country"],["Endurance"],["Short Track"],["Stage"],["Cyclocross"],["Road"],["Downhill"],["SuperD"]]
