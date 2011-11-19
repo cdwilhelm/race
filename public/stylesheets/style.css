@@ -46,7 +46,7 @@ body{
     border:1px solid #333333;
     width: 300px;
     padding:3px;
-    
+
 }
 
 #search_box{
@@ -134,13 +134,13 @@ body{
 }
 
 #header img{
-/*float:left*/
+    /*float:left*/
 }
 
 #content{
     color: #000000;
     padding: 0px;
-    
+
 
 }
 #admin{
@@ -288,7 +288,7 @@ tr.black {background-color: black;color:white}
 }
 
 
-.ad{width: 100%;text-align: center; padding-top: 2px;margin-left:auto;margin-right: auto}
+.ad{width: 98%; text-align: center; padding-top: 5px;margin-left:auto;margin-right: auto}
 
 .thumb{
     border: solid black;
@@ -553,8 +553,10 @@ ul#list-nav li a {
 /* boxes */
 
 .roundedcornr_box {
-    background: url(/images/roundedcornr_tl.png) no-repeat top left;
-    margin-top:2px;
+    border-radius: 8px;
+    -moz-border-radius: 18px;
+    -webkit-border-radius: 8px;
+    border: 1px solid black;
 }
 .roundedcornr_top {
     background: url(/images/roundedcornr_tr.png) no-repeat top right;
@@ -580,19 +582,22 @@ ul#list-nav li a {
 
 }
 .roundedcornr_content { /*padding: 0 10px; */
-                        padding: 3px;
-                        font-size: .7em;
-                        font-weight: normal;}
+    padding: 3px;
+    font-size: .7em;
+    font-weight: normal;}
 
 .rounded{
-    background-image:  url(/images/roundedcornr.gif);
-    background-repeat: no-repeat;
-    background-position: center;
+    border: 1px black solid;
+    background: #000;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
     margin-left:auto;
     margin-right:auto;
     color:#ffffff;
     text-align: center;
     overflow: visible;
+    width: 90%
 }
 
 /* set millions of background images */
@@ -604,9 +609,9 @@ ul#list-nav li a {
 
 /* height and width stuff, width not really nessisary. */
 .rbtop div, .rbtop, .rbbot div, .rbbot {
-width: 100%;
-height: 7px;
-font-size: 1px;
+    width: 100%;
+    height: 7px;
+    font-size: 1px;
 }
 .rbcontent { margin: 0 7px; }
 .rbroundbox { width: 100%; margin: 1em auto; }

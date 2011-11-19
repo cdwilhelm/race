@@ -41,7 +41,10 @@ class EventsController < ApplicationController
   def edit
     @event = Event.find(params[:id])
     @page_title="Edit Race"
-    @events = Event.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30",:order=>"start_date,name")
+    @events = Event.current.paginate_by_user_id(current_user.id,
+      :page=>params[:page],
+      :per_page=>"30",
+      :order=>"start_date,name")
 
   end
 
@@ -55,12 +58,12 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.save
         #twitter(@event)
-        @events = Event.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30",:order=>"start_date,name")
+        @events = Event.current.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30",:order=>"start_date,name")
         flash.now[:notice] = 'Event was successfully created.'
         format.html { render :action=>:edit}
         format.xml  { render :xml => @event, :status => :created, :location => @event }
       else
-        @events = Event.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30")
+        @events = Event.current.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30")
         format.html { render :action => "new" }
         format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
       end
@@ -87,16 +90,16 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
 
-    #@event.event_comments.build(:user_id=>current_user_id})
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        @events = Event.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30",:order=>"start_date,name")
+        @events = Event.current.paginate_by_user_id(current_user.id,
+          :page=>params[:page],:per_page=>"30",:order=>"start_date,name")
         flash.now[:notice] = 'Event was successfully updated.'
         format.html { render :action=>:edit }
         format.xml  { head :ok }
       else
-        @events = Event.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30")
+        @events = Event.current.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30")
         format.html { render :action => "edit" }
         format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
       end

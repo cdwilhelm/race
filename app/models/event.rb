@@ -17,6 +17,8 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :event_comments, :allow_destroy => true
 
   before_save :clear_end_date
+  
+  named_scope :current, :conditions=>["start_date >= ?",Time.now]
   def to_param
     "#{id}-#{name.gsub(/[^a-z0-9]+/i, '-')}"
   end
