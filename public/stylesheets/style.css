@@ -511,8 +511,8 @@ ul#list-nav li a {
 
 #map{
     float:left;
-    padding:10px;
-    width: 525px;
+    padding:0px;
+    width: 500px;
     height:300px;
     margin-left: auto;
     margin-right: auto;
