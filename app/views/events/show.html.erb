@@ -58,7 +58,7 @@
       <%= f.hidden_field :event_id,:value=>@event.id %>
       <%= f.text_area :comment, :rows=>2 %><br/>
     <%#end%>
-      <%= f.submit "comment" %>
+      <%= f.submit "comment" ,:class=>"button" %>
     <%end%>
   </p>
 <%end%>
@@ -67,7 +67,7 @@
   <tr>
     <td>
       <%= label_tag "Directions From" %><%= text_field_tag 'from' %> </td>
-    <td><%= button_to_function "Go","setDirections($('from').value,'#{@event.address}','en_US')" %>
+    <td><%= button_to_function "Go","setDirections($('from').value,'#{@event.address}','en_US')",:class=>"button" %>
     </td>
   </tr>
 </table>
