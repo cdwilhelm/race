@@ -24,20 +24,26 @@
     <%= link_to image_tag("header-logo.png",:alt=>"",:size=>"150x75"),"/" %>
   </div>
 
-  <div id="header-text">
-    <%= link_to "HOME", "/",:xclass=>"white" %> |
-    <%= link_to "ADD RACE", {:controller=>"events",:action=>"new"} ,:xclass=>"white" %>
-    <span style="float:right">
-      <%= link_to "CONTACT", {:controller=>"home",:action=>"contact_us"},{:xclass=>"white"}%> <span xclass="white">|</span>
-      <%= link_to "ABOUT", {:controller=>"home",:action=>"about"},{:xclass=>"white"}%> <span xclass="white">|</span>
-      <%= link_to "PROMOTERS", {:controller=>"home",:action=>"promoter"} ,{:xclass=>"white"} %> <span xclass="white">|</span>
-      <%= link_to "ADVERTISE", {:controller=>"home",:action=>"advertise"} ,{:xclass=>"white"} %>
-      
-      <%= link_to image_tag("facebook-icon-small.png",:size=>"24x24",:style=>"padding-left:10px;"),
-        "http://www.facebook.com/pages/Find-My-Bike-Race/138642542858198",:target=>"new" %>
-      <%= link_to image_tag("twitter.png",:size=>"24x24",:style=>"padding-left:5px;"),
-        "http://twitter.com/findmybikerace",:target=>"new" %>
-    </span>
+  <div id="header-text" >
+    
+      <div style="width: 550px;display: inline-block;">
+        <%= link_to "HOME", "/",:xclass=>"white" %> |
+        <%= link_to "ADD RACE", {:controller=>"events",:action=>"new"} ,:xclass=>"white" %>
+      </div>
+ 
+    <span style="text-align: right;">
+
+    <%= link_to "CONTACT", {:controller=>"home",:action=>"contact_us"},{:xclass=>"white"}%> <span xclass="white">|</span>
+    <%= link_to "ABOUT", {:controller=>"home",:action=>"about"},{:xclass=>"white"}%> <span xclass="white">|</span>
+    <%= link_to "PROMOTERS", {:controller=>"home",:action=>"promoter"} ,{:xclass=>"white"} %> <span xclass="white">|</span>
+    <%= link_to "ADVERTISE", {:controller=>"home",:action=>"advertise"} ,{:xclass=>"white"} %>
+
+    <%= link_to image_tag("facebook-icon-small.png",:size=>"24x24",:style=>"padding-left:10px;"),
+      "http://www.facebook.com/pages/Find-My-Bike-Race/138642542858198",:target=>"new" %>
+    <%= link_to image_tag("twitter.png",:size=>"24x24",:style=>"padding-left:5px;"),
+      "http://twitter.com/findmybikerace",:target=>"new" %>
+  </span>
 
   </div>
+
 </div>
