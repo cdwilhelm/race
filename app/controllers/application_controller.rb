@@ -15,7 +15,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 end
 def event_type_list
-  [["Cross Country"],["Endurance"],["Short Track"],["Stage"],["Cyclocross"],["Road"],["Downhill"],["SuperD"]]
+  [["Cross Country"],["Endurance"],["Short Track"],["Stage Race"],["Cyclocross"],["Road"],
+    ["Downhill"],["SuperD"],["Time Trial"]]
 end
 
 def state_list
