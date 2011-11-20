@@ -15,10 +15,10 @@
       <%= f.label :promoter %>
       <%= f.text_field :promoter %>
     </p>
-    <p>
+   <!-- <p>
       <%= f.label :series, "Series?" %>
       <%= f.check_box :series,{:onclick=>"is_series(this.id)" },'y','n'%> Is this event a series?
-    </p>
+    </p> -->
     <p>
       <%= f.label :start_date, "Date" %>
       <%= f.text_field :start_date,:size=>11%>
@@ -44,12 +44,12 @@
       <%= f.select :event_type,event_type_list,{:prompt=>"Select Event Type"},{} %>
     </p>
 
-    <p>
+    <!--<p>
 
       <%= f.label :featured, "Featured?" %>
       <%= f.check_box :featured, {},"y",'n' %> Is this event featured?
 
-    </p>
+    </p> -->
 
     <!--p>
     <%= f.label :logo_path %>
@@ -57,7 +57,7 @@
     </p-->
     <p>
       <%= f.label :notes,"Notes" %>
-      <%= f.text_area :notes, :rows=>3,:cols=>40 %>
+      <%= f.text_area :notes, :rows=>5,:cols=>60 %>
     </p>
     <p>
       <%= f.submit 'Save',:class=>"button" %>
