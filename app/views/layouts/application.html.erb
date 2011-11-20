@@ -49,7 +49,7 @@
                         <%= label_tag "Type" %><br/>
                         <%= select_tag "event_type",options_for_select(event_type_list.insert(0,["All",""]))%>
                       </p>
-                      <%= submit_tag 'find' %>
+                      <%= submit_tag 'find',:class=>"button" %>
                     <%end%>
                
                  
