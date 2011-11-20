@@ -1,18 +1,19 @@
 <%= will_paginate @events %>
 
-<table xwidth="100%" xcellspacing="0" border="0" style="margin:0px;padding:0px">
-  <tr>
+
+<table width="100%" xcellspacing="0" border="0" style="margin:0px;padding:0px">
+  <tr >
     <th width="25%">Race</th>
-    <th>Type</th>
-    <th>Date</th>
-    <th>State</th>
-    <th>Website</th>
+    <th width="15">Type</th>
+    <th width="15%">Date</th>
+    <th width="20%">State</th>
+    <th width="25%">Website</th>
   </tr>
 
 
   <% @events_by_month.each do |monthname, events| %>
     <tr>
-      <td colspan="5" style="color:#ffffff;background-color: #333333;text-align: center" ><%=monthname%></td>
+      <td class="rounded" colspan="5" style="color:#ffffff;background-color: #333333;text-align: center" ><%=monthname%></td>
     </tr>
     <%  events.each do |event| %>
       <tr class="<%=cycle("white","gray") %>">
@@ -25,4 +26,5 @@
     <%end%>
   <%end%>
 </table>
+
 <%= will_paginate @events %>
