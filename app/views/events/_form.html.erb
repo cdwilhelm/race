@@ -43,18 +43,34 @@
       <%= f.label :event_type%>
       <%= f.select :event_type,event_type_list,{:prompt=>"Select Event Type"},{} %>
     </p>
-
+    <p>
+      <%= f.label :distance %>
+      <%= f.text_field :distance,:size=>6 %> 
+      miles: <%= f.radio_button(:measurement, 'miles',:checked=>true) %> 
+      km <%= f.radio_button(:measurement, 'km') %>
+    </p>
+    
     <!--<p>
-
       <%= f.label :featured, "Featured?" %>
       <%= f.check_box :featured, {},"y",'n' %> Is this event featured?
-
     </p> -->
 
     <!--p>
+    
     <%= f.label :logo_path %>
     <%= f.file_field :logo_path %>
     </p-->
+    
+     <p>
+      <%= f.label :tags,"Tags" %>
+      <%= f.text_field_with_auto_complete :tags,  {:size=>82,:max_size=>255}, 
+        {:url=>"/tags/get_tags",
+         :param_name=>"name", :method=>"get",:tokens=>[',',' ']
+        } 
+    
+    %>
+    </p>
+    
     <p>
       <%= f.label :notes,"Notes" %>
       <%= f.text_area :notes, :rows=>5,:cols=>60 %>

@@ -25,6 +25,7 @@ Rails::Initializer.run do |config|
   config.gem 'will_paginate', :version => '2.3.12', :source => 'http://gemcutter.org'
   # editor
   config.gem 'tiny_mce'
+  config.gem 'repeated_auto_complete'
   #config.gem 'rack' ,:version=>'1.0.1'
 
   #config.gem 'oauth'

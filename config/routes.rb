@@ -4,6 +4,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resources :events
   #map.resources :admin
+  map.resource :rating
+  map.resource :tags
 
   map.namespace :event do |event|
     event.resources :event_comments

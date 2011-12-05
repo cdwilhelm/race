@@ -2,16 +2,29 @@
   <%= image_tag @event.logo_path  %>
 <%end%>
 <h1><%=h @event.name %></h1>
-                <div>
-                  <span class="bold">Share this event</span>
-                  <!-- AddThis Button BEGIN -->
-                  <div style="margin-right:auto;margin-left:auto;" class="addthis_toolbox addthis_default_style addthis_32x32_style"
-                       addthis:url="http://<%= request.env['HTTP_HOST'] + request.env['REQUEST_URI']%>" addthis:title="<%= @event.nil? ? "Find My Bike Race" : @event.name  %>">
-                    <a class="addthis_button_facebook"></a>
-                    <a class="addthis_button_twitter"></a>
-                  </div>
-                  <!-- AddThis Button END -->
-                </div>
+
+<div id="rate_event">
+  Rate This Event: 
+  <%= image_tag('crankset_32.png', :size=>"16x16", :id=>"rate_event_1" ,:class=>"rate_event" ,:onclick=>"alert(1)" ) %>
+  <%= image_tag('crankset_32.png', :size=>"16x16", :id=>"rate_event_2" ,:class=>"rate_event" ) %>
+  <%= image_tag('crankset_32.png', :size=>"16x16", :id=>"rate_event_3" ,:class=>"rate_event" ) %>
+  <%= image_tag('crankset_32.png', :size=>"16x16", :id=>"rate_event_4" ,:class=>"rate_event" ) %>
+  <%= image_tag('crankset_32.png', :size=>"16x16", :id=>"rate_event_5" ,:class=>"rate_event" ) %>
+</div>
+<script type="text/javascript">
+ // $('rate_event').observe('click', function(event){alert(this.getElementsByClassName("rate_event"))})
+  
+</script>
+<div>
+  <span class="bold">Share this event</span>
+  <!-- AddThis Button BEGIN -->
+  <div style="margin-right:auto;margin-left:auto;" class="addthis_toolbox addthis_default_style addthis_32x32_style"
+       addthis:url="http://<%= request.env['HTTP_HOST'] + request.env['REQUEST_URI']%>" addthis:title="<%= @event.nil? ? "Find My Bike Race" : @event.name  %>">
+    <a class="addthis_button_facebook"></a>
+    <a class="addthis_button_twitter"></a>
+  </div>
+  <!-- AddThis Button END -->
+</div>
 <p>
   <b>Promoter:</b> <%=link_to h( @event.promoter? ? @event.promoter: @event.name), @event.website, :target=>"new" %>
 </p>
@@ -38,8 +51,8 @@
   <%=h @event.notes %>
 </p>
 <% if @event.event_comments.size > 0 %>
-<%= link_to_function "view comments", "$('comments').show();$('h_comments').show();$('v_comments').hide()",:id=>"v_comments" %>
-<%= link_to_function "hide comments", "$('comments').hide();$('v_comments').show();$('h_comments').hide()",:id=>"h_comments" ,:style=>"display:none"%>
+  <%= link_to_function "view comments", "$('comments').show();$('h_comments').show();$('v_comments').hide()",:id=>"v_comments" %>
+  <%= link_to_function "hide comments", "$('comments').hide();$('v_comments').show();$('h_comments').hide()",:id=>"h_comments" ,:style=>"display:none"%>
 <%end%>
 <%  unless current_user_logged_in?  %>
   <%= link_to "log in to add comment", login_path %>

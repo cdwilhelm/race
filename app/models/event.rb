@@ -1,5 +1,7 @@
 class Event < ActiveRecord::Base
 
+  attr_accessor :tags
+  
   acts_as_mappable :default_units => :miles,
     :distance_field_name => :distance,
     :lat_column_name => :lat,
@@ -14,7 +16,9 @@ class Event < ActiveRecord::Base
 
   belongs_to :user
   has_many :event_comments,:dependent=>:delete_all
+ # has_many :tags, :foreign_key => :object_id, :dependent=>:delete_all
   accepts_nested_attributes_for :event_comments, :allow_destroy => true
+ # accepts_nested_attributes_for :tags, :allow_destroy => true
 
   before_save :clear_end_date
   

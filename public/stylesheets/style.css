@@ -117,6 +117,15 @@ body{
 }
 
 
+#rate_event.img{
+    cursor: pointer;
+    background-image:url('/images/crankset_32.png');
+}
+
+#rate_event.img:hover{
+    cursor: pointer;
+    background-image:url('/images/crankset_16.png');
+}
 
 #header-links{
     font-size: 1em;

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110514154544) do
+ActiveRecord::Schema.define(:version => 20111121134206) do
 
   create_table "categories", :force => true do |t|
     t.integer  "registration_id"
@@ -53,12 +53,25 @@ ActiveRecord::Schema.define(:version => 20110514154544) do
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "distance"
+    t.string   "measurement"
   end
 
   add_index "events", ["event_type"], :name => "index_events_on_event_type"
   add_index "events", ["name"], :name => "index_events_on_name"
   add_index "events", ["state"], :name => "index_events_on_state"
   add_index "events", ["user_id"], :name => "index_events_on_user_id"
+
+  create_table "ratings", :force => true do |t|
+    t.string   "object_id",  :null => false
+    t.string   "object",     :null => false
+    t.string   "user_id",    :null => false
+    t.integer  "rating",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ratings", ["object_id", "object"], :name => "index_ratings_on_object_id_and_object"
 
   create_table "registrations", :force => true do |t|
     t.integer  "event_id"
@@ -91,6 +104,18 @@ ActiveRecord::Schema.define(:version => 20110514154544) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "tags", :force => true do |t|
+    t.integer  "object_id"
+    t.string   "object"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags", ["name", "object_id", "object"], :name => "index_tags_on_name_and_object_id_and_object", :unique => true
+  add_index "tags", ["name"], :name => "index_tags_on_name"
+  add_index "tags", ["object"], :name => "index_tags_on_object"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                                     :null => false

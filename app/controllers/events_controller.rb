@@ -40,6 +40,7 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+    @event.tags = Tag.find_all_by_object_id(@event,:conditions=>["object = 'Event'"],:order=>"name asc").collect{|n| n.name}.join(",")
     @page_title="Edit Race"
     @events = Event.current.paginate_by_user_id(current_user.id,
       :page=>params[:page],
@@ -54,18 +55,25 @@ class EventsController < ApplicationController
     @event = Event.new(params[:event])
     @event.user = current_user
 
-    @event.save
-    respond_to do |format|
-      if @event.save
-        #twitter(@event)
-        @events = Event.current.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30",:order=>"start_date,name")
-        flash.now[:notice] = 'Event was successfully created.'
-        format.html { render :action=>:edit}
-        format.xml  { render :xml => @event, :status => :created, :location => @event }
-      else
-        @events = Event.current.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30")
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+    @event.transaction  do
+
+    
+      @event.save
+    
+      tags(@event)
+    
+      respond_to do |format|
+        if @event.save
+          #twitter(@event)
+          @events = Event.current.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30",:order=>"start_date,name")
+          flash.now[:notice] = 'Event was successfully created.'
+          format.html { render :action=>:edit}
+          format.xml  { render :xml => @event, :status => :created, :location => @event }
+        else
+          @events = Event.current.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30")
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end
@@ -80,8 +88,6 @@ class EventsController < ApplicationController
     end
     render :update do |page|
       page.replace_html 'comments',:partial=>'comments' 
-      #page.assign 'event_comment_comment', ''
-      #page.call "$('event_comment_comment').value", ""
     end
   end
 
@@ -89,19 +95,24 @@ class EventsController < ApplicationController
   # PUT /events/1.xml
   def update
     @event = Event.find(params[:id])
+    @event.transaction do
 
-
-    respond_to do |format|
-      if @event.update_attributes(params[:event])
-        @events = Event.current.paginate_by_user_id(current_user.id,
-          :page=>params[:page],:per_page=>"30",:order=>"start_date,name")
-        flash.now[:notice] = 'Event was successfully updated.'
-        format.html { render :action=>:edit }
-        format.xml  { head :ok }
-      else
-        @events = Event.current.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30")
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        if @event.update_attributes(params[:event])
+          @tags = Tag.find_all_by_object_id_and_object(@event.id, 'Event').collect { |item| item.name }
+          
+          tags(@event, @tags)
+          
+          @events = Event.current.paginate_by_user_id(current_user.id,
+            :page=>params[:page],:per_page=>"30",:order=>"start_date,name")
+          flash.now[:notice] = 'Event was successfully updated.'
+          format.html { render :action=>:edit }
+          format.xml  { head :ok }
+        else
+          @events = Event.current.paginate_by_user_id(current_user.id,:page=>params[:page],:per_page=>"30")
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end
@@ -126,12 +137,27 @@ class EventsController < ApplicationController
       oauth.authorize_from_access('https://api.twitter.com/oauth/access_token', 'RAsOrkbfuqehJDpHZBwChQ')
 
       client = Twitter::Base.new(oauth)
-#      client.friends_timeline.each  { |tweet| puts tweet.inspect }
-#      client.user_timeline.each     { |tweet| puts tweet.inspect }
-#      client.replies.each           { |tweet| puts tweet.inspect }
+      #      client.friends_timeline.each  { |tweet| puts tweet.inspect }
+      #      client.user_timeline.each     { |tweet| puts tweet.inspect }
+      #      client.replies.each           { |tweet| puts tweet.inspect }
 
       client.update("Posted: #{event.name} on #{event.state_date}  via http://findmyrace.com/#{event.id}")
     end
 
+  end
+  
+  def tags(event, tags=nil)
+    event_tags = event.tags.split(",").map{|t|t.strip}
+    unless tags.nil?
+      tags.each do |tag|
+        if ! event_tags.include?(tag)
+          Tag.delete_all(["name=? and object_id=? and object='Event'",tag.strip,event.id])
+        end
+      end
+    end
+ 
+    event_tags.each do |tag|  
+      tag = Tag.find_or_create_by_name_and_object_id_and_object(tag.strip, event.id,'Event')
+    end
   end
 end
