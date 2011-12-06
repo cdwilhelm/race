@@ -7,12 +7,14 @@ class AddRatings < ActiveRecord::Migration
       t.integer :rating, :null=>false
       t.timestamps
     end
-    add_index :ratings,[:rating,:object_id,:object],:unique>true
+    add_index :ratings,[:rating,:object_id,:object]
+    add_index :ratings,[:user_id,:object_id,:object],:unique=>true
 
   end
 
   def self.down
-    remove_index :ratings, [:object_id,:object]
+    remove_index :ratings, [:rating,:object_id,:object]
+    remove_index :ratings, [:user_id,:object_id,:object]
     drop_table :ratings
   end
 end

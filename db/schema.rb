@@ -71,7 +71,8 @@ ActiveRecord::Schema.define(:version => 20111121134206) do
     t.datetime "updated_at"
   end
 
-  add_index "ratings", ["object_id", "object"], :name => "index_ratings_on_object_id_and_object"
+  add_index "ratings", ["rating", "object_id", "object"], :name => "index_ratings_on_rating_and_object_id_and_object"
+  add_index "ratings", ["user_id", "object_id", "object"], :name => "index_ratings_on_user_id_and_object_id_and_object", :unique => true
 
   create_table "registrations", :force => true do |t|
     t.integer  "event_id"

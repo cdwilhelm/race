@@ -16,7 +16,12 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     #@event.event_comments.build
     @comment = EventComment.new
-
+    rating = Rating.find(:all,:conditions=>["object_id=? and object='Event'",@event.id]).collect{|a| a.rating}
+    @avg = 0.0
+    if rating
+      @avg =rating.sum / rating.size.to_f 
+    end
+    
     @page_title="#{@event.name} #{@event.city} #{@event.state} #{@event.start_date}"
     @page_desc=@event.notes
     @page_keywords="#{@event.name},#{@event.venue_location} #{@event.city}, #{@event.state}, #{@event.event_type}"
