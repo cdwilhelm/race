@@ -27,6 +27,9 @@ Rails::Initializer.run do |config|
   config.gem 'tiny_mce'
   config.gem 'repeated_auto_complete'
   #config.gem 'rack' ,:version=>'1.0.1'
+  
+  config.gem 'mogli' 
+  config.gem 'ruby-hmac' ,:version=>"0.4.0", :lib => 'ruby_hmac'
 
   #config.gem 'oauth'
   #config.gem 'twitter'

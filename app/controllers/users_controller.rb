@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
-  before_filter :authorize, :except=>[:login,:new,:create,:logout,:forgot,:reset,:activate]
+  before_filter :authorize, :except=>[:login,:new,:create,:logout,:forgot,:reset,:activate,:link_account_users]
   ssl_exceptions
   def index
     redirect_to root_path

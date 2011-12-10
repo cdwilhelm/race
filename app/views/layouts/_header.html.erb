@@ -1,5 +1,18 @@
 <div id="nav">
   <div id="controls">
+
+
+<% if current_facebook_user %>
+    <span class="white"><%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name}!" %>
+  <%= fb_logout_link("Logout of fb", request.url, :class=>"white") %><br /> </span>
+<% else
+   # you must explicitly request permissions for facebook user fields.
+   # here we instruct facebook to ask the user for permission for our website
+   # to access the user's facebook email and birthday
+   %>
+  <%= fb_login_and_redirect('/users/link_account_users', :perms => 'email,user_birthday') %>
+<% end %>
+
     <% if !current_user_logged_in? %>
       <% form_tag login_path(:secure=>true)  do -%>
         <span class="white">Email:</span> <%= text_field_tag :email, '', :size=>"20"%>
@@ -25,24 +38,24 @@
   </div>
 
   <div id="header-text" >
-    
-      <div style="width: 550px;display: inline-block;">
-        <%= link_to "HOME", "/",:xclass=>"white" %> |
-        <%= link_to "ADD RACE", {:controller=>"events",:action=>"new"} ,:xclass=>"white" %>
-      </div>
- 
+
+    <div style="width: 550px;display: inline-block;">
+      <%= link_to "HOME", "/",:xclass=>"white" %> |
+      <%= link_to "ADD RACE", {:controller=>"events",:action=>"new"} ,:xclass=>"white" %>
+    </div>
+
     <span style="text-align: right;">
 
-    <%= link_to "CONTACT", {:controller=>"home",:action=>"contact_us"},{:xclass=>"white"}%> <span xclass="white">|</span>
-    <%= link_to "ABOUT", {:controller=>"home",:action=>"about"},{:xclass=>"white"}%> <span xclass="white">|</span>
-    <%= link_to "PROMOTERS", {:controller=>"home",:action=>"promote"} ,{:xclass=>"white"} %> <span xclass="white">|</span>
-    <%= link_to "ADVERTISE", {:controller=>"home",:action=>"advertise"} ,{:xclass=>"white"} %>
+      <%= link_to "CONTACT", {:controller=>"home",:action=>"contact_us"},{:xclass=>"white"}%> <span xclass="white">|</span>
+      <%= link_to "ABOUT", {:controller=>"home",:action=>"about"},{:xclass=>"white"}%> <span xclass="white">|</span>
+      <%= link_to "PROMOTERS", {:controller=>"home",:action=>"promote"} ,{:xclass=>"white"} %> <span xclass="white">|</span>
+      <%= link_to "ADVERTISE", {:controller=>"home",:action=>"advertise"} ,{:xclass=>"white"} %>
 
-    <%= link_to image_tag("facebook-icon-small.png",:size=>"24x24",:style=>"padding-left:10px;"),
-      "http://www.facebook.com/pages/Find-My-Bike-Race/138642542858198",:target=>"new" %>
-    <%= link_to image_tag("twitter.png",:size=>"24x24",:style=>"padding-left:5px;"),
-      "http://twitter.com/findmybikerace",:target=>"new" %>
-  </span>
+      <%= link_to image_tag("facebook-icon-small.png",:size=>"24x24",:style=>"padding-left:10px;"),
+        "http://www.facebook.com/pages/Find-My-Bike-Race/138642542858198",:target=>"new" %>
+      <%= link_to image_tag("twitter.png",:size=>"24x24",:style=>"padding-left:5px;"),
+        "http://twitter.com/findmybikerace",:target=>"new" %>
+    </span>
 
   </div>
 
