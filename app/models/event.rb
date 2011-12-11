@@ -49,4 +49,14 @@ class Event < ActiveRecord::Base
   def clear_end_date
     self.end_date=nil unless is_series
   end
+  
+  def avg_rating
+    avg = 0.0
+    rating = Rating.find(:all,:conditions=>["object_id=? and object='Event'",id]).collect{|a| a.rating}
+    if rating.size > 0
+    avg = rating.sum / rating.size.to_f
+    return avg
+    end
+    return avg.to_f
+  end
 end

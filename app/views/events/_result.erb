@@ -3,11 +3,11 @@
 
 <table width="100%" xcellspacing="0" border="0" style="margin:0px;padding:0px">
   <tr >
-    <th width="25%">Race</th>
-    <th width="15">Type</th>
+    <th width="40%">Race</th>
+    <th width="15%">Type</th>
     <th width="15%">Date</th>
-    <th width="20%">State</th>
-    <th width="25%">Website</th>
+    <th width="10%">State</th>
+    <th width="20%">Rating</th>
   </tr>
 
 
@@ -19,12 +19,18 @@
       <tr class="<%=cycle("white","gray") %>">
         <td class="title center"><%= link_to event.name, event_path(event)  %> </td>
         <td class="title center"><%= event.event_type  %> </td>
-        <td class="title center"><%= event.start_date  %> </td>
+        <td class="title center"><%= event.start_date.strftime("%b %d")  %> </td>
         <td class="title center"><%= event.state  %> </td>
-        <td class="title center"><%= link_to event.promoter? ? event.promoter: event.name ,event.website,:target=>"new" %> </td>
+        <td class=""><div id="<%=event.id%>" avg="<%=event.avg_rating%>" user="<%=current_user_logged_in?%>" class="star"></div></td>
       </tr>
     <%end%>
   <%end%>
 </table>
 
 <%= will_paginate @events %>
+
+<script type="text/javascript">
+
+  
+ 
+</script>

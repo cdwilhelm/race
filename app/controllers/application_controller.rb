@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   
   def event_type_list
     [["Cross Country"],["Marathon"],["Ultra Endurance"],["Short Track"],["Stage Race"],["Cyclocross"],["Road"],
-      ["Downhill"],["SuperD"],["Time Trial"]].sort
+      ["Downhill"],["SuperD"],["Time Trial"]]
   end
 
   def state_list

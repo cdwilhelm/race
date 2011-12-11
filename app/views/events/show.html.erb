@@ -175,29 +175,6 @@ type="text/javascript"></script>
   });
 
 
-  $jq(function(){
-    $jq('#star').raty( {
-      start: <%=@avg%>,
-      noRatedMsg: 'Please rate this event!',
-      half:  true,
-      halfShow: true,
-      cancel: true,
-      click: function(score,evt) {
-        jQuery.ajax( "/ratings/rate/<%=@event.id%>?score="+score)
-      },
-      cancelHint:   'You sure you want to cancel?',
-      target:       '#hint',
-      targetFormat: 'Your rating: {score}',
-      targetText:   'You haven\'t rated yet!',
-      targetKeep:    true,
-      hintList:       ['Who cares', 'Weak', 'Fun', 'Rad', 'Sick!']
-      /*starOn:   'medal-on.png',
-      starOff:  'medal-off.png',
-      starHalf: 'medal-half.png',*/
-    }
-  )
- 
-  }
-);
+
   
 </script>

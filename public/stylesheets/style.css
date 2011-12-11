@@ -582,6 +582,7 @@ ul#list-nav li a {
     -moz-border-radius: 18px;
     -webkit-border-radius: 8px;
     border: 1px solid black;
+    padding:5px;
 }
 .roundedcornr_top {
     background: url(/images/roundedcornr_tr.png) no-repeat top right;
