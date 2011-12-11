@@ -1,0 +1,44 @@
+Unable to load category, underlying cause no such file to load -- category 
+
+ /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+/Users/cwilhelm/NetBeansProjects/race/vendor/rails/activesupport/lib/active_support/dependencies.rb:184:in `require'
+/Users/cwilhelm/NetBeansProjects/race/vendor/rails/activesupport/lib/active_support/dependencies.rb:291:in `require_or_load'
+/Users/cwilhelm/NetBeansProjects/race/vendor/rails/activesupport/lib/active_support/dependencies.rb:250:in `depend_on'
+/Users/cwilhelm/NetBeansProjects/race/vendor/rails/activesupport/lib/active_support/dependencies.rb:162:in `require_dependency'
+/Users/cwilhelm/NetBeansProjects/race/vendor/rails/activerecord/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/Users/cwilhelm/NetBeansProjects/race/vendor/rails/activerecord/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/Users/cwilhelm/NetBeansProjects/race/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `each'
+/Users/cwilhelm/NetBeansProjects/race/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/Users/cwilhelm/NetBeansProjects/race/vendor/rails/activerecord/lib/active_record/fixtures.rb:848:in `fixtures'
+./test/test_helper.rb:35
+/Users/cwilhelm/NetBeansProjects/race/test/functional/admin/events_controller_test.rb:1:in `require'
+/Users/cwilhelm/NetBeansProjects/race/test/functional/admin/events_controller_test.rb:1
+/Library/Ruby/Gems/1.8/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:10:in `require'
+/Library/Ruby/Gems/1.8/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:10
+/Library/Ruby/Gems/1.8/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:9:in `each'
+/Library/Ruby/Gems/1.8/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:9
+/Library/Ruby/Gems/1.8/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:4:in `select'
+/Library/Ruby/Gems/1.8/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:4
+Unable to load user_event, underlying cause no such file to load -- user_event 
+
+ /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+/Users/cwilhelm/NetBeansProjects/race/vendor/rails/activesupport/lib/active_support/dependencies.rb:184:in `require'
+/Users/cwilhelm/NetBeansProjects/race/vendor/rails/activesupport/lib/active_support/dependencies.rb:291:in `require_or_load'
+/Users/cwilhelm/NetBeansProjects/race/vendor/rails/activesupport/lib/active_support/dependencies.rb:250:in `depend_on'
+/Users/cwilhelm/NetBeansProjects/race/vendor/rails/activesupport/lib/active_support/dependencies.rb:162:in `require_dependency'
+/Users/cwilhelm/NetBeansProjects/race/vendor/rails/activerecord/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/Users/cwilhelm/NetBeansProjects/race/vendor/rails/activerecord/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/Users/cwilhelm/NetBeansProjects/race/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `each'
+/Users/cwilhelm/NetBeansProjects/race/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/Users/cwilhelm/NetBeansProjects/race/vendor/rails/activerecord/lib/active_record/fixtures.rb:848:in `fixtures'
+./test/test_helper.rb:35
+/Users/cwilhelm/NetBeansProjects/race/test/functional/admin/events_controller_test.rb:1:in `require'
+/Users/cwilhelm/NetBeansProjects/race/test/functional/admin/events_controller_test.rb:1
+/Library/Ruby/Gems/1.8/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:10:in `require'
+/Library/Ruby/Gems/1.8/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:10
+/Library/Ruby/Gems/1.8/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:9:in `each'
+/Library/Ruby/Gems/1.8/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:9
+/Library/Ruby/Gems/1.8/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:4:in `select'
+/Library/Ruby/Gems/1.8/gems/rake-0.9.2.2/lib/rake/rake_test_loader.rb:4
