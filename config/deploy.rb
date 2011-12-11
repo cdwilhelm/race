@@ -1,5 +1,5 @@
 before "deploy:setup", "db:configure"
-before "deploy:restart","deploy:extra_symlink"#, "deploy:migrate"
+before "deploy:restart","deploy:extra_symlink", "deploy:migrate"
 after "deploy:restart","deploy:cleanup"
 
 set :application, "race"
