@@ -19,7 +19,8 @@ class ApplicationController < ActionController::Base
     [["Cross Country"],["Marathon"],["Ultra Endurance"],["Short Track"],["Stage Race"],["Cyclocross"],["Road"],
       ["Downhill"],["SuperD"],["Time Trial"]]
   end
-
+  helper_method :event_type_list
+  
   def state_list
     [ ["Select State",""],
       ['Alabama', 'AL'],
@@ -74,18 +75,17 @@ class ApplicationController < ActionController::Base
       ['Wisconsin', 'WI'],
       ['Wyoming', 'WY']]
   end
+  helper_method :state_list
 
   def current_user_id
     current_user.id
   end
-  #hide_action :current_user_id
+  helper_method :current_user_id
 
   def current_user_logged_in?
     ! current_user.nil?
   end
-
-  #hide_action :current_user_logged_in?
-  #helper_method :current_user_logged_in?
+  helper_method :current_user_logged_in?
 
   def is_admin?
     if current_user_logged_in?
@@ -95,6 +95,7 @@ class ApplicationController < ActionController::Base
     end
 
   end
+  helper_method :is_admin?
 
   def is_promoter?
     if current_user_logged_in?
@@ -103,7 +104,8 @@ class ApplicationController < ActionController::Base
       false
     end
   end
-
+  
+  helper_method :current_user_logged_in?
   # Retrieves the user for the current session.
   def current_user
     #@current_user ||= current_user_id ? User.find(current_user_id) : User.anonymous
