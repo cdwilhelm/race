@@ -138,7 +138,7 @@ class User < ActiveRecord::Base
   #If you were using username to display to people you might want to get them to select one after registering through Facebook Connect
   def self.create_from_fb_connect(fb_user)
     
-    
+    fb_user.fetch
     new_facebooker = User.new( :password => "", :email => fb_user.email, :first_name=>fb_user.first_name, :last_name=>fb_user.last_name)
     new_facebooker.facebook_id = fb_user.id
  
