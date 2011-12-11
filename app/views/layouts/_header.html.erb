@@ -2,31 +2,23 @@
   <div id="controls">
 
 
-<% if current_facebook_user %>
-    <span class="white"><%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name}!" %>
-  <%= fb_logout_link("Logout of fb", request.url, :class=>"white") %><br /> </span>
-<% else
-   # you must explicitly request permissions for facebook user fields.
-   # here we instruct facebook to ask the user for permission for our website
-   # to access the user's facebook email and birthday
-   %>
-  <%= fb_login_and_redirect('/users/link_account_users', :perms => 'email,user_birthday') %>
-<% end %>
-
     <% if !current_user_logged_in? %>
-      <% form_tag login_path(:secure=>true)  do -%>
-        <span class="white">Email:</span> <%= text_field_tag :email, '', :size=>"20"%>
-        <span class="white">Password:</span>  <%= password_field_tag :password ,'', :size=>"10"%>
-        <%= submit_tag "login", :class=>"button"%>
+      <!-- <% form_tag login_path(:secure=>true)  do -%>
+             <span class="white">Email:</span> <%= text_field_tag :email, '', :size=>"20"%>
+             <span class="white">Password:</span>  <%= password_field_tag :password ,'', :size=>"10"%>
+        <%= submit_tag "login", :class=>"button"%> -->
+        <%= link_to "Login",login_path,:class=>"white" %>
+        <%#= fb_login_and_redirect('/users/link_user_accounts', :text=>"Login with Facebook", :perms => 'email,user_birthday') %>
       <% end %>
-      <%= link_to "Register",new_user_path(),:class=>"white"%>
+  <%#= link_to "Register",new_user_path(),:class=>"white"%>
     <% else %>
       <span class="white title bold" >Welcome <%= current_user.first_name %>! | </span>
       <%= link_to "My Page", my_page_path,:class=>"white" %>  <span class="white">|</span>
       <% if is_admin? %>
         <%= link_to "Admin", admin_path,:class=>"white" %>  <span class="white">|</span>
       <%end%>
-      <%= link_to "Logout", "/logout",:class=>"white" %>
+      <%= fb_logout_link("Logout", "/logout", :class=>"white") if current_facebook_user%>
+      <%= link_to "Logout", "/logout",:class=>"white" unless current_facebook_user %>
 
     <%end%>
   </div>

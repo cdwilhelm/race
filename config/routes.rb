@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :event_comments
 
-  map.resources :users
+  map.resources :users, :collection => {:link_user_accounts => :get}
   map.resources :events
   #map.resources :admin
   map.resource :rating

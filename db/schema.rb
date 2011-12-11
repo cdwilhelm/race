@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111121134206) do
+ActiveRecord::Schema.define(:version => 20111210231740) do
 
   create_table "categories", :force => true do |t|
     t.integer  "registration_id"
@@ -145,6 +145,8 @@ ActiveRecord::Schema.define(:version => 20111121134206) do
     t.string   "club"
     t.string   "reset_code",              :limit => 40
     t.string   "activation_code",         :limit => 40
+    t.string   "facebook_id"
+    t.string   "facebook_session_key"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

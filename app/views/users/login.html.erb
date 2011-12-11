@@ -6,17 +6,22 @@
   </tr>
   <tr valign="top" >
     <td width="350px" align="left" >
-      <p>
-        Existing customers please login to access your account or checkout.
+      <p style="margin-bottom: 10px;">
+        Existing user please login to access your profile and make reviews.
       </p>
+      
+      <div style="border: 0px solid black; height: 40px;text-align: center;vertical-align: middle;margin-bottom: auto;margin-top: auto">
+        <%= fb_login_and_redirect('/users/link_user_accounts', :text=>"Login with Facebook", :perms => 'email,user_birthday') %>
+      </div>
+      
       <% form_tag "/users/login", :secure=>true do %>
         <p>
           <label for="email" >Email Address</label>
-          <%= text_field_tag :email, params[:email] %>
+          <%= text_field_tag :email, params[:email],:size=>25 %>
         </p>
         <p>
           <label for="password" >Password</label>
-          <%= password_field_tag :password, params[:password] %>
+          <%= password_field_tag :password, params[:password],:size=>25 %>
         </p>
         <p>
           <%= submit_tag "Login",:class=>"button" %> <%= link_to "Forgot Password",forgot_path %>
@@ -27,11 +32,12 @@
     <td>
       &nbsp;
     </td>
+    
     <td width="450px" align="left" >
       <p>
-        If this is the first time visiting our store, please create an account.
-        By creating an account you'll enjoy fast checkouts,  review
-        previous orders, and manage your shipping and billing information.
+        If this is the first time visiting our site, please create an account.
+        By creating an account you'll enjoy adding events,reviewing and comments on events.  Login using
+        Facebook using the button on the left.  Or create a new account using the link below.
       </p>
       <p>
         <%= link_to "Create New Account", :controller=>"users",:action=>"new", :secure=>true %>
