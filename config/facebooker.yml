@@ -9,8 +9,8 @@
 # This should only be necessary until the final version of the new profile is released.
 
 development:
-  app_id: 255147511213786
-  secret: b8aad2ef41c03a4e144105eae1a7f353
+  app_id: 187569238004724
+  secret: f52a9fee9711ba62354e04b0c3135169
   api_key: 255147511213786
 
 
@@ -20,6 +20,6 @@ test:
   api_key: 255147511213786
 
 production:
-  app_id: 255147511213786
-  secret: b8aad2ef41c03a4e144105eae1a7f353
+  app_id: 232389380163393
+  secret: 668278694b7450141ded8602fb14e9af
   api_key: 255147511213786
