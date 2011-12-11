@@ -11,7 +11,6 @@
 development:
   app_id: 187569238004724
   secret: f52a9fee9711ba62354e04b0c3135169
-  api_key: 255147511213786
 
 
 test:
@@ -22,4 +21,3 @@ test:
 production:
   app_id: 232389380163393
   secret: 668278694b7450141ded8602fb14e9af
-  api_key: 255147511213786
