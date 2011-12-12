@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   before_filter :authorize, :except=>[:login,:new,:create,:logout,:forgot,:reset,:activate,:link_user_accounts]
-  ssl_exceptions
+  ssl_exceptions :link_user_accounts
   def index
     redirect_to root_path
   end
@@ -26,16 +26,22 @@ class UsersController < ApplicationController
   def logout
     @page_desc="Logout"
     @page_title="Logout"    
-    #if current_user.facebook_user?
-      set_fb_cookie(nil,nil,nil,nil) # clear the fb cookies
-    #end
+
     session[:user_id] = nil
     @current_user = false
-    session[:user_id] = nil
     flash[:notice] = "Logged out"
     redirect_to(:controller=>"home",:action => "index" )
   end
   
+  def logout_fb
+    @page_desc="Logout"
+    @page_title="Logout"    
+      set_fb_cookie(nil,nil,nil,nil) # clear the fb cookies
+    session[:user_id] = nil
+    @current_user = false
+    flash[:notice] = "Logged out"
+    redirect_to(:controller=>"home",:action => "index" )
+  end
   # GET /users/1
   # GET /users/1.xml
   def show
@@ -96,7 +102,7 @@ class UsersController < ApplicationController
         format.html { render :action => "edit" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
-    end
+    end 
   end
 
   # DELETE /users/1
@@ -158,7 +164,7 @@ class UsersController < ApplicationController
       #register with fb
       User.create_from_fb_connect(current_facebook_user)
       user = User.find_by_fb_user(current_facebook_user)
-      redirect_to edit_user_path(user)
+      redirect_to my_page_path
     else
       current_user.link_fb_connect(current_facebook_user.id) unless current_user.facebook_id == current_facebook_user.id
       redirect_to root_path
