@@ -23,14 +23,16 @@
       <%= f.label :nickname%>
       <%= f.text_field :nickname , :size=>30 %>
     </p>
-    <p>
-      <%= f.label :password %>
-      <%= f.password_field :password,:size => 10 %>
-    </p>
-    <p>
-      <%= f.label :password_confirmation,"Confirm Password" %>
-      <%= f.password_field :password_confirmation,:size => 10 %>
-    </p>
+    <% unless @user.facebook_id %>
+      <p>
+        <%= f.label :password %>
+        <%= f.password_field :password,:size => 10 %>
+      </p>
+      <p>
+        <%= f.label :password_confirmation,"Confirm Password" %>
+        <%= f.password_field :password_confirmation,:size => 10 %>
+      </p>
+    <%end%>
     <p>
       <%= f.label :first_name %>
       <%= f.text_field :first_name %>
