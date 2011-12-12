@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   attr_accessor :password_confirmation,:email_confirmation
   validates_confirmation_of :password,:email
   validates_numericality_of  :zipcode,:allow_nil=>true, :allow_blank=>true
-  validates_length_of :password, :within=>6...12
+  validates_length_of :password, :within=>6...12, :unless=>Proc.new{|p| p.password.blank?  or p.facebook_id.blank? }
   validates_format_of :email,
     :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i,
     :message => 'is not formated correctly.  Use you@example.com',
@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   attr_accessor :reset_password
 
   def validate
-    errors.add_to_base("Missing password" ) if hashed_password.blank?
+    errors.add_to_base("Missing password" ) if hashed_password.blank? and ! facebook_id
   end
 
   #  def address
