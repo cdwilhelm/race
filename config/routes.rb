@@ -21,6 +21,7 @@ ActionController::Routing::Routes.draw do |map|
   map.reset     'reset/:reset_code',          :controller => 'users',     :action => 'reset'
   map.activate     'activate/:activation_code',          :controller => 'users',     :action => 'activate'
   map.logout "logout"  , :controller=>"users", :action=>"logout"
+   map.logout "logout_fb"  , :controller=>"users", :action=>"logout_fb"
   map.login "login", :controller=>"users" ,:action=>"login"
   map.admin "admin",:controller=>"admin",:action=>"index"
   map.my_page "my_page" ,:controller=>:home,:action=>:my_page
