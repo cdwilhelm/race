@@ -11,7 +11,7 @@
       </p>
       
       <div style="border: 0px solid black; height: 40px;text-align: center;vertical-align: middle;margin-bottom: auto;margin-top: auto">
-        <%= fb_login_and_redirect('/users/link_user_accounts', :text=>"Login with Facebook", :perms => 'email,user_birthday') %>
+        <%= fb_login_and_redirect('/users/link_user_accounts', :text=>"Login with Facebook", :perms => '', :v => '2') %>
       </div>
       
       <% form_tag "/users/login", :secure=>true do %>

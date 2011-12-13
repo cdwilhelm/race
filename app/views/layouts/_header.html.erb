@@ -17,7 +17,7 @@
       <% if is_admin? %>
         <%= link_to "Admin", admin_path,:class=>"white" %>  <span class="white">|</span>
       <%end%>
-      <%= fb_logout_link("Logout", "/logout_fb", :class=>"white") if current_facebook_user%>
+      <%= fb_logout_link("Logout", "/logout", :class=>"white") if current_facebook_user%>
       <%= link_to "Logout", "/logout",:class=>"white" unless current_facebook_user %>
 
     <%end%>
