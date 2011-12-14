@@ -26,9 +26,9 @@ class UsersController < ApplicationController
   def logout
     @page_desc="Logout"
     @page_title="Logout"    
-
+    $stderr.puts "logout"
     session[:user_id] = nil
-    @current_user = false
+    current_user = nil
     flash[:notice] = "Logged out"
     redirect_to(:controller=>"home",:action => "index" )
   end
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     @page_title="Logout"    
     set_fb_cookie(nil,nil,nil,nil) # clear the fb cookies
     session[:user_id] = nil
-    @current_user = false
+    current_user = nil
     flash[:notice] = "Logged out"
     redirect_to(:controller=>"home",:action => "index" )
   end

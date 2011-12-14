@@ -105,8 +105,8 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  helper_method :current_user_logged_in?
   # Retrieves the user for the current session.
+  
   def current_user
     #@current_user ||= current_user_id ? User.find(current_user_id) : User.anonymous
     if session[:user_id]
