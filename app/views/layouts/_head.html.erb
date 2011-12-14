@@ -11,7 +11,9 @@
 
   <link rel='icon' href="/favicon.ico"/>
   <%= csrf_meta_tag %>
-  <%= fb_connect_async_js   %> 
+  <% fb_connect_async_js  do %> 
+    <%=  yield :fb_connect%>
+  <%end%>
   <%= javascript_include_tag 'prototype','effects','dragdrop','controls'%>
 
   <%= javascript_include_tag "jquery-1.5.1.min",'jquery-ui-1.8.13.custom.min','jquery.raty'%>
