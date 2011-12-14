@@ -5,7 +5,7 @@
   <%= render '/layouts/head' %>
 
   <body>
-
+    <%= fb_connect_async_js %>
     <div id="wrapper">
       <%= render 'layouts/header' %>
 
@@ -24,37 +24,37 @@
             <div id="container1">
               <div id="col1">
                 <div class="roundedcornr_box">
-               
-                 
-                    <h3 class="rounded">Search Events</h3>
-                    <% form_tag '/home/search' do %>
-                      <p>
-                        <%= label_tag "Event" %><br/>
-                        <%= text_field_tag "name","",:size=>25 %>
-                      </p>
 
-                      <p>
 
-                        <%= label_tag "Date Range" %><br/>
-                        <%= text_field_tag "start_date",Time.now.strftime('%Y-%m-%d'),:size=>11,:maxsize=>10%><br/>
-                        to <br/>
-                        <%= text_field_tag "end_date",(Time.now + 1.month).strftime("%Y-%m-%d"),:size=>11,:maxsize=>10%>
-                      </p>
-                      <p>
-                        <%= label_tag "State" %><br/>
-                        <%= select_tag "state",options_for_select(state_list)%>
-                      </p>
-                      <p>
+                  <h3 class="rounded">Search Events</h3>
+                  <% form_tag '/home/search' do %>
+                    <p>
+                      <%= label_tag "Event" %><br/>
+                      <%= text_field_tag "name","",:size=>25 %>
+                    </p>
 
-                        <%= label_tag "Type" %><br/>
-                        <%= select_tag "event_type",options_for_select(event_type_list.insert(0,["All",""]))%>
-                      </p>
+                    <p>
+
+                      <%= label_tag "Date Range" %><br/>
+                      <%= text_field_tag "start_date",Time.now.strftime('%Y-%m-%d'),:size=>11,:maxsize=>10%><br/>
+                      to <br/>
+                      <%= text_field_tag "end_date",(Time.now + 1.month).strftime("%Y-%m-%d"),:size=>11,:maxsize=>10%>
+                    </p>
+                    <p>
+                      <%= label_tag "State" %><br/>
+                      <%= select_tag "state",options_for_select(state_list)%>
+                    </p>
+                    <p>
+
+                      <%= label_tag "Type" %><br/>
+                      <%= select_tag "event_type",options_for_select(event_type_list.insert(0,["All",""]))%>
+                    </p>
                     <p>
                       <%= submit_tag 'find',:class=>"button" %>
-                </p>
-                    <%end%>
-               
-                 
+                    </p>
+                  <%end%>
+
+
                 </div>
 
                 <div id="ads">
@@ -150,7 +150,7 @@
                     </script>
                   </div>
                   <div class="ad">
-                   
+
                     <script type='text/javascript'>
                       GA_googleFillSlot("HomePageRight180x150_2");
                     </script>
@@ -171,7 +171,7 @@
 
 
                 </div>
-               <fb:like-box href="https://www.facebook.com/pages/Find-My-Bike-Race/138642542858198" width="200" colorscheme="dark" show_faces="true" stream="false" header="false"></fb:like-box>
+                <fb:like-box href="https://www.facebook.com/pages/Find-My-Bike-Race/138642542858198" width="200" colorscheme="dark" show_faces="true" stream="false" header="false"></fb:like-box>
 
                 <div id="twitter" style="padding-top:3px">
                   <a href="https://twitter.com/FindMyBikeRace" class="twitter-follow-button" data-button="grey" data-text-color="#FFFFFF" data-link-color="#00AEFF" data-show-count="false">Follow @FindMyBikeRace</a>

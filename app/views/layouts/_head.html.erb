@@ -2,7 +2,6 @@
       xmlns:addthis="https://www.addthis.com/help/api-spec">
 
   <title>Find My Bike Race  <%= "| #{@page_title}" unless @page_title.nil? %></title>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta NAME="description" CONTENT="<%= @page_desc.gsub(/<\/?[^>]*>/, "") unless @page_desc.nil? %>"/>
   <meta NAME="keywords" CONTENT="<%=@page_keywords unless @page_keywords.nil?%>"/>
@@ -11,9 +10,6 @@
 
   <link rel='icon' href="/favicon.ico"/>
   <%= csrf_meta_tag %>
-  <% fb_connect_async_js  do %> 
-    <%=  yield :fb_connect%>
-  <%end%>
   <%= javascript_include_tag 'prototype','effects','dragdrop','controls'%>
 
   <%= javascript_include_tag "jquery-1.5.1.min",'jquery-ui-1.8.13.custom.min','jquery.raty'%>
