@@ -7,19 +7,5 @@
 </div>
 
 
-<% if ! is_admin? and RAILS_ENV=='production' %>
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-23485624-1']);
-    _gaq.push(['_setDomainName', '.findmybikerace.com']);
-    _gaq.push(['_trackPageview']);
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-
-  </script>
-<%end%>
 <script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#username=xa-4ce202d427a8d5a3"></script>
