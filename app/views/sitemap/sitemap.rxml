@@ -1,0 +1,64 @@
+xml.instruct!
+xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
+
+  xml.url do
+    xml.loc url_for(:controller => 'home',
+      :action => 'index',
+      :only_path => false)
+    xml.lastmod "2011-12-19T02:27:03+00:00"
+    xml.changefreq "monthly"
+    xml.priority  0.8
+  end
+
+  xml.url do
+    xml.loc url_for(:controller => 'home',
+      :action => 'about',
+      :only_path => false)
+    xml.lastmod "2011-12-19T02:27:03+00:00"
+    xml.changefreq "monthly"
+    xml.priority  0.8
+  end
+  
+  
+  xml.url do
+    xml.loc url_for(:controller => 'home',
+      :action => 'contact_us',
+      :only_path => false)
+    xml.lastmod "2011-12-19T02:27:03+00:00"
+    xml.changefreq "monthly"
+    xml.priority  0.8
+  end
+  
+  xml.url do
+    xml.loc url_for(:controller => 'home',
+      :action => 'advertise',
+      :only_path => false)
+    xml.lastmod "2011-12-19T02:27:03+00:00"
+    xml.changefreq "monthly"
+    xml.priority  0.8
+  end
+  
+  xml.url do
+    xml.loc url_for(:controller => 'home',
+      :action => 'promote',
+      :only_path => false)
+    xml.lastmod "2011-12-19T02:27:03+00:00"
+    xml.changefreq "monthly"
+    xml.priority  0.8
+  end
+
+  @events.each do |entry|
+    xml.url do
+      xml.loc url_for(:controller => 'events',
+        :action => 'show',
+        :id => entry,
+        :only_path => false)
+      xml.lastmod w3c_date(entry.updated_at)
+      xml.changefreq "weekly"
+      xml.priority  0.8
+    end
+  end
+    
+
+
+end
