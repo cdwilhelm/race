@@ -1,0 +1,235 @@
+--- !ruby/object:Gem::Specification 
+name: mogli
+version: !ruby/object:Gem::Version 
+  hash: 87
+  prerelease: false
+  segments: 
+  - 0
+  - 0
+  - 36
+  version: 0.0.36
+platform: ruby
+authors: 
+- Mike Mangino
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2011-10-16 00:00:00 -06:00
+default_executable: 
+dependencies: 
+- !ruby/object:Gem::Dependency 
+  name: hashie
+  prerelease: false
+  requirement: &id001 !ruby/object:Gem::Requirement 
+    none: false
+    requirements: 
+    - - ~>
+      - !ruby/object:Gem::Version 
+        hash: 19
+        segments: 
+        - 1
+        - 1
+        - 0
+        version: 1.1.0
+  type: :runtime
+  version_requirements: *id001
+- !ruby/object:Gem::Dependency 
+  name: httmultiparty
+  prerelease: false
+  requirement: &id002 !ruby/object:Gem::Requirement 
+    none: false
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        hash: 31
+        segments: 
+        - 0
+        - 3
+        - 6
+        version: 0.3.6
+  type: :runtime
+  version_requirements: *id002
+- !ruby/object:Gem::Dependency 
+  name: httparty
+  prerelease: false
+  requirement: &id003 !ruby/object:Gem::Requirement 
+    none: false
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        hash: 9
+        segments: 
+        - 0
+        - 4
+        - 3
+        version: 0.4.3
+  type: :runtime
+  version_requirements: *id003
+- !ruby/object:Gem::Dependency 
+  name: multi_json
+  prerelease: false
+  requirement: &id004 !ruby/object:Gem::Requirement 
+    none: false
+    requirements: 
+    - - ~>
+      - !ruby/object:Gem::Version 
+        hash: 17
+        segments: 
+        - 1
+        - 0
+        - 3
+        version: 1.0.3
+  type: :runtime
+  version_requirements: *id004
+- !ruby/object:Gem::Dependency 
+  name: json
+  prerelease: false
+  requirement: &id005 !ruby/object:Gem::Requirement 
+    none: false
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        hash: 3
+        segments: 
+        - 0
+        version: "0"
+  type: :development
+  version_requirements: *id005
+- !ruby/object:Gem::Dependency 
+  name: rake
+  prerelease: false
+  requirement: &id006 !ruby/object:Gem::Requirement 
+    none: false
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        hash: 3
+        segments: 
+        - 0
+        version: "0"
+  type: :development
+  version_requirements: *id006
+- !ruby/object:Gem::Dependency 
+  name: rspec
+  prerelease: false
+  requirement: &id007 !ruby/object:Gem::Requirement 
+    none: false
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        hash: 3
+        segments: 
+        - 0
+        version: "0"
+  type: :development
+  version_requirements: *id007
+description: Simple library for accessing the Facebook Open Graph API
+email: mmangino@elevatedrails.com
+executables: []
+
+extensions: []
+
+extra_rdoc_files: []
+
+files: 
+- lib/mogli/action.rb
+- lib/mogli/activity.rb
+- lib/mogli/address.rb
+- lib/mogli/album.rb
+- lib/mogli/app_client.rb
+- lib/mogli/app_request.rb
+- lib/mogli/application.rb
+- lib/mogli/authenticator.rb
+- lib/mogli/book.rb
+- lib/mogli/checkin.rb
+- lib/mogli/client/event.rb
+- lib/mogli/client/user.rb
+- lib/mogli/client.rb
+- lib/mogli/comment.rb
+- lib/mogli/domain.rb
+- lib/mogli/education.rb
+- lib/mogli/event.rb
+- lib/mogli/fetching_array.rb
+- lib/mogli/fql_multiquery.rb
+- lib/mogli/group.rb
+- lib/mogli/insight.rb
+- lib/mogli/insight_value.rb
+- lib/mogli/interest.rb
+- lib/mogli/link.rb
+- lib/mogli/location.rb
+- lib/mogli/model/search.rb
+- lib/mogli/model.rb
+- lib/mogli/movie.rb
+- lib/mogli/music.rb
+- lib/mogli/note.rb
+- lib/mogli/page.rb
+- lib/mogli/photo.rb
+- lib/mogli/post.rb
+- lib/mogli/profile.rb
+- lib/mogli/status.rb
+- lib/mogli/television.rb
+- lib/mogli/test_user.rb
+- lib/mogli/user.rb
+- lib/mogli/video.rb
+- lib/mogli/work.rb
+- lib/mogli.rb
+- spec/app_client_spec.rb
+- spec/authenticator_spec.rb
+- spec/client/client_event_spec.rb
+- spec/client/client_user_spec.rb
+- spec/client_spec.rb
+- spec/fetching_array_spec.rb
+- spec/model_spec.rb
+- spec/page_spec.rb
+- spec/profile_spec.rb
+- spec/spec_helper.rb
+- spec/test_user_spec.rb
+- spec/user_spec.rb
+has_rdoc: true
+homepage: http://developers.facebook.com/docs/api
+licenses: []
+
+post_install_message: 
+rdoc_options: []
+
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  none: false
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      hash: 3
+      segments: 
+      - 0
+      version: "0"
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  none: false
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      hash: 3
+      segments: 
+      - 0
+      version: "0"
+requirements: []
+
+rubyforge_project: 
+rubygems_version: 1.3.7
+signing_key: 
+specification_version: 3
+summary: Open Graph Library for Ruby
+test_files: 
+- spec/app_client_spec.rb
+- spec/authenticator_spec.rb
+- spec/client/client_event_spec.rb
+- spec/client/client_user_spec.rb
+- spec/client_spec.rb
+- spec/fetching_array_spec.rb
+- spec/model_spec.rb
+- spec/page_spec.rb
+- spec/profile_spec.rb
+- spec/spec_helper.rb
+- spec/test_user_spec.rb
+- spec/user_spec.rb

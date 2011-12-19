@@ -1,0 +1,104 @@
+--- !ruby/object:Gem::Specification 
+name: repeated_auto_complete
+version: !ruby/object:Gem::Version 
+  hash: 29
+  prerelease: false
+  segments: 
+  - 0
+  - 1
+  - 3
+  version: 0.1.3
+platform: ruby
+authors: 
+- Pat Shaughnessy
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2010-03-01 00:00:00 -07:00
+default_executable: 
+dependencies: []
+
+description: auto_complete plugin refactored to handle complex forms and named scopes
+email: pat@patshaughnessy.net
+executables: []
+
+extensions: []
+
+extra_rdoc_files: 
+- README.rdoc
+files: 
+- .gitignore
+- README.rdoc
+- Rakefile
+- VERSION
+- lib/auto_complete.rb
+- lib/auto_complete_form_builder_helper.rb
+- lib/auto_complete_macros_helper.rb
+- lib/repeated_auto_complete.rb
+- lib/view_mapper/README
+- lib/view_mapper/has_many_auto_complete_view.rb
+- lib/view_mapper/templates/controller.rb
+- lib/view_mapper/templates/layout.html.erb
+- lib/view_mapper/templates/style.css
+- lib/view_mapper/templates/view_child_form.html.erb
+- lib/view_mapper/templates/view_form.html.erb
+- rails/init.rb
+- repeated_auto_complete.gemspec
+- test/auto_complete_form_builder_helper_test.rb
+- test/auto_complete_nested_attributes_test.rb
+- test/auto_complete_test.rb
+- test/helper.rb
+- test/view_mapper/expected_templates/_form.html.erb
+- test/view_mapper/expected_templates/_person.html.erb
+- test/view_mapper/expected_templates/create_parents.rb
+- test/view_mapper/expected_templates/edit.html.erb
+- test/view_mapper/expected_templates/index.html.erb
+- test/view_mapper/expected_templates/new.html.erb
+- test/view_mapper/expected_templates/parent.rb
+- test/view_mapper/expected_templates/show.html.erb
+- test/view_mapper/expected_templates/testies_controller.rb
+- test/view_mapper/has_many_auto_complete_view_test.rb
+has_rdoc: true
+homepage: http://patshaughnessy.net/repeated_auto_complete
+licenses: []
+
+post_install_message: 
+rdoc_options: 
+- --charset=UTF-8
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  none: false
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      hash: 3
+      segments: 
+      - 0
+      version: "0"
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  none: false
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      hash: 3
+      segments: 
+      - 0
+      version: "0"
+requirements: []
+
+rubyforge_project: 
+rubygems_version: 1.3.7
+signing_key: 
+specification_version: 3
+summary: auto_complete plugin refactored to handle complex forms and named scopes
+test_files: 
+- test/auto_complete_form_builder_helper_test.rb
+- test/auto_complete_nested_attributes_test.rb
+- test/auto_complete_test.rb
+- test/helper.rb
+- test/view_mapper/expected_templates/create_parents.rb
+- test/view_mapper/expected_templates/parent.rb
+- test/view_mapper/expected_templates/testies_controller.rb
+- test/view_mapper/has_many_auto_complete_view_test.rb
