@@ -34,6 +34,11 @@ class HomeController < ApplicationController
   def privacy
     @page_title="Privacy"
   end
+  
+    def tos
+    @page_title="Terms of service"
+  end
+  
   def about
     @page_title="About"
   end
