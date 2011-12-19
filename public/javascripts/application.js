@@ -47,7 +47,10 @@ $jq(function(){
 // /event/show rating
 $jq(function(){
     $jq('#star').raty( {
-        //start: <%@event.avg_rating%>,
+        start:function() {
+            var targetID = this.id;
+            var avg = $jq('#'+targetID).attr('avg')
+            return parseFloat(avg);  },
         noRatedMsg: 'Please rate this event!',
         half:  true,
         halfShow: true,
