@@ -104,6 +104,7 @@ body{
     padding: 5px;
     background-image:url('/images/header-gradient.jpg');
     background-repeat:repeat-x;
+    vertical-align: middle;
 }
 #header-text{ 
   /*  vertical-align: bottom;
