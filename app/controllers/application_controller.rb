@@ -133,16 +133,16 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
-    unless current_user
+    if current_user.nil?
       session[:original_uri] = request.request_uri
       flash[:notice] = "Please log in"
       #render :update do |page|
       # page.alert("Your session has expired.  Please log in to add a comment!")
       # page.redirect_to(request.request_uri) if current_user_logged_in?
-      # page.redirect_to(login_path(:securt=>true)) unless current_user_logged_in?
+      # page.redirect_to(login_path(:secure>true)) unless current_user_logged_in?
       #
       #end
-      redirect_to(login_path(:session=>true))
+      redirect_to(login_path(:secure>true)) and return
     end
   end
 
