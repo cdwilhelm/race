@@ -3,11 +3,11 @@
 
 <table width="100%" xcellspacing="0" border="0" style="margin:0px;padding:0px">
   <tr >
-    <th width="40%">Race</th>
-    <th width="15%">Type</th>
-    <th width="15%">Date</th>
-    <th width="10%">State</th>
-    <th width="20%">Rating</th>
+    <th width="40%"><%= search_sort_link("Race","name")%></th>
+    <th width="15%"><%= search_sort_link("Type","event_type")%></th>
+    <th width="15%"><%= search_sort_link("Date","start_date")%></th>
+    <th width="10%"><%= search_sort_link("State","state")%></th>
+    <th width="20%"><%= search_sort_link("Rating","avg_score")%></th>
   </tr>
 
 
@@ -21,7 +21,7 @@
         <td class="title center"><%= event.event_type  %> </td>
         <td class="title center"><%= event.start_date.strftime("%b %d")  %> </td>
         <td class="title center"><%= event.state  %> </td>
-        <td class=""><div id="<%=event.id%>" avg="<%=event.avg_rating%>" user="<%=current_user_logged_in?%>" class="star"></div></td>
+        <td class=""><div id="<%=event.id%>" avg="<%=event.avg_score.to_f %>" user="<%=current_user_logged_in?%>" class="star"></div></td>
       </tr>
     <%end%>
   <%end%>
@@ -29,8 +29,10 @@
 
 <%= will_paginate @events %>
 
-<script type="text/javascript">
+<script>
 
-  
- 
+
+doRating()
+
 </script>
+  

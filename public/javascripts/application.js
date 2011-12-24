@@ -21,36 +21,37 @@ Ajax.Responders.register({
 });
 
 // /event/_result rating
-$jq(function(){
-    $jq('.star').raty( {
-        start: function() {
-            var targetID = this.id;
-            var avg = $jq('#'+targetID).attr('avg')
-            return parseFloat(avg);
-        },
-        half:  true,
-        halfShow: true,
-        //  cancel: true,
-        click: function(score,evt) {
-            if ($jq('#'+this.id).attr('user')=='true'){
-                jQuery.ajax( "/ratings/rate/"+ this.id +"?score="+score)
-            }else {
-                alert('Please login to rate an event.')
+function doRating(){
+    $jq(function(){
+        $jq('.star').raty( {
+            start: function() {
+                var targetID = this.id;
+                var avg = $jq('#'+targetID).attr('avg')
+                return parseFloat(avg);
+            },
+            half:  true,
+            halfShow: true,
+            //  cancel: true,
+            click: function(score,evt) {
+                if ($jq('#'+this.id).attr('user')=='true'){
+                    jQuery.ajax( "/ratings/rate/"+ this.id +"?score="+score)
+                }else {
+                    alert('Please login to rate an event.')
                 // window.location='/login'
+                }
             }
         }
-    }
-)
+        )
+    });
 }
-);
-
 // /event/show rating
 $jq(function(){
     $jq('#star').raty( {
         start:function() {
             var targetID = this.id;
             var avg = $jq('#'+targetID).attr('avg')
-            return parseFloat(avg);  },
+            return parseFloat(avg);
+        },
         noRatedMsg: 'Please rate this event!',
         half:  true,
         halfShow: true,
@@ -60,7 +61,7 @@ $jq(function(){
                 jQuery.ajax( "/ratings/rate/"+ this.id +"?score="+score)
             }else {
                 alert('Please login to rate an event.')
-                // window.location='/login'
+            // window.location='/login'
             }
         },
         cancelHint:   'You sure you want to cancel?',
@@ -70,7 +71,7 @@ $jq(function(){
         targetKeep:    true,
         hintList:       ['Who cares', 'Weak', 'Fun', 'Rad', 'Sick!']
     }
-)
+    )
  
 }
 );

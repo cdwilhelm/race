@@ -8,7 +8,8 @@ class EventSearch
     @end_date=params['end_date']
     @event_type=params['event_type']
     @state=params['state']
-
+    @sort=params['sort']
+    @order=params['order']
 
     find_events
   end
@@ -17,9 +18,21 @@ class EventSearch
   private
 
   def self.find_events
-    Event.find(:all,:conditions => conditions ,:order=>"start_date, name")
+    Event.find(:all,
+      :select=>"events.id,events.name, events.start_date, events.state, events.event_type, avg(ratings.rating) as avg_score",
+      :joins=>"left join ratings on ratings.object_id = events.id and ratings.object='Event'",
+      :group=>'events.name, events.start_date, events.state, events.event_type',
+      :conditions => conditions ,
+      :order=>"#{order}")
   end
 
+  def self.order
+    if @sort
+      "#{@sort+" "+@order}"
+    else
+      "start_date, name"
+    end
+  end
 
   def self.name_conditions
     ["name LIKE ?", "%#{@name}%"] unless @name.blank?

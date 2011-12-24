@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
 
-  attr_accessor :tags
+  attr_accessor :tags#,:avg_score
   
   acts_as_mappable :default_units => :miles,
     :distance_field_name => :distance,
@@ -58,5 +58,11 @@ class Event < ActiveRecord::Base
     return avg
     end
     return avg.to_f
+  end
+  def self.avg_score(value)
+    @avg_score
+  end
+  def self.avg_score
+    @avg_score
   end
 end

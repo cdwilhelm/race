@@ -27,33 +27,34 @@
 
 
                   <h3 class="rounded">Search Events</h3>
-                  <% form_tag '/home/search' do %>
+                  <% form_remote_tag :update=>'result',:url=>{:action=>'search'} do %>
                     <p>
                       <%= label_tag "Event" %><br/>
-                      <%= text_field_tag "name","",:size=>25 %>
+                      <%= text_field_tag  "search[name]","",:size=>25 %>
                     </p>
 
                     <p>
 
                       <%= label_tag "Date Range" %><br/>
-                      <%= text_field_tag "start_date",Time.now.strftime('%Y-%m-%d'),:size=>11,:maxsize=>10%><br/>
+                      <%= text_field_tag  "search[start_date]",Time.now.strftime('%Y-%m-%d'),:size=>11,:maxsize=>10 ,:id=>'start_date'%><br/>
                       to <br/>
-                      <%= text_field_tag "end_date",(Time.now + 1.month).strftime("%Y-%m-%d"),:size=>11,:maxsize=>10%>
+                      <%= text_field_tag "search[end_date]",(Time.now + 3.month).strftime("%Y-%m-%d"),:size=>11,:maxsize=>10,:id=>'end_date'%>
                     </p>
                     <p>
                       <%= label_tag "State" %><br/>
-                      <%= select_tag "state",options_for_select(state_list)%>
+                      <%= select_tag "search[state]",options_for_select(state_list)%>
                     </p>
                     <p>
 
                       <%= label_tag "Type" %><br/>
-                      <%= select_tag "event_type",options_for_select(event_type_list.insert(0,["All",""]))%>
+                      <%= select_tag "search[event_type]",options_for_select(event_type_list.insert(0,["All",""]))%>
                     </p>
                     <p>
                       <%= submit_tag 'find',:class=>"button" %>
                     </p>
                   <%end%>
 
+                  
 
                 </div>
 
@@ -88,13 +89,14 @@
               </div>
               <div id="col2">
 
-                <div class="ad">
+                <!--div class="ad"-->
                   <!-- HomePage_Leader -->
                   <!--script type='text/javascript'>
                     GA_googleFillSlot("HomePage_Leader");
                   </script-->
-                </div> 
+                <!--/div--> 
                 <%= yield %>
+                
                 <div class="ad">
                   <!-- HomePage_Bottome_Leader -->
                   <script type='text/javascript'>
