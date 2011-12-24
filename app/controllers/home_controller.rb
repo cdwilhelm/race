@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   
   def index
     start_date=Time.now.strftime("%Y-%m-%d %H:%M:%S")
-    end_date=(Time.now + 3.months).strftime("%Y-%m-%d %H:%M:%S")
+    end_date=(Time.now + 3.years).strftime("%Y-%m-%d %H:%M:%S")
     @events = EventSearch.search({'start_date'=>start_date,'end_date'=>end_date}).paginate(:page=>params[:page],:per_page=>"30")
     #@events = Event.paginate(:all,:conditions=>["start_date > ?",Time.now ],
     # :order=>"start_date,name",:page=>params[:page],:per_page=>"30")
