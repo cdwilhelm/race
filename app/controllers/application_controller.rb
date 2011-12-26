@@ -114,6 +114,7 @@ class ApplicationController < ActionController::Base
     elsif current_facebook_user and @current_user.nil?
       @current_user = User.find_by_facebook_id(current_facebook_user.id)
     end
+    
     return @current_user
   end
   helper_method :current_user
@@ -142,7 +143,7 @@ class ApplicationController < ActionController::Base
       # page.redirect_to(login_path(:secure>true)) unless current_user_logged_in?
       #
       #end
-      redirect_to(login_path(:secure>true)) and return
+      redirect_to(login_path(:secure=>true)) and return
     end
   end
 
