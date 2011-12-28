@@ -27,7 +27,7 @@
 
 
                   <h3 class="rounded">Search Events</h3>
-                  <% form_remote_tag :update=>'result',:url=>{:action=>'search'} do %>
+                  <% form_remote_tag :update=>'result',:url=>{:controller=>:home,:action=>:search} do %>
                     <p>
                       <%= label_tag "Event" %><br/>
                       <%= text_field_tag  "search[name]","",:size=>25 %>
@@ -176,7 +176,7 @@
                 <fb:like-box href="https://www.facebook.com/pages/Find-My-Bike-Race/138642542858198" width="200" colorscheme="dark" show_faces="true" stream="false" header="false"></fb:like-box>
 
                 <div id="twitter" style="padding-top:3px">
-                  <a href="https://twitter.com/FindMyBikeRace" class="twitter-follow-button" data-button="grey" data-text-color="#FFFFFF" data-link-color="#00AEFF" data-show-count="false">Follow @FindMyBikeRace</a>
+                  <a href="https://twitter.com/FindMyBikeRace" class="twitter-follow-button" data-button="grey" data-text-color="#FFFFFF" data-link-color="#00AEFF" data-show-count="true">Follow @FindMyBikeRace</a>
                   <script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
                 </div>
               </div>

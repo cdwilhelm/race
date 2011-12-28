@@ -23,7 +23,7 @@ class HomeController < ApplicationController
   
   def my_page
     @events = Event.current.paginate_by_user_id(current_user.id,
-      :order=>"start_date, name, state",:page=>params[:page],:per_page=>"30")#.paginate(:page=>params[:page],:per_page=>"30")
+      :order=>"start_date, name, state",:page=>params[:page],:per_page=>"30")
     @user = User.find(current_user_id)
     
   end
