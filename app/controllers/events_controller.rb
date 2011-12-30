@@ -18,7 +18,7 @@ class EventsController < ApplicationController
     @comment = EventComment.new
     
     
-    @page_title="#{@event.name} #{@event.city} #{@event.state} #{@event.start_date}"
+    @page_title="#{@event.name} In #{@event.city} #{@event.state} On #{@event.start_date.strftime("%b-%d-%Y")}"
     @page_desc=@event.notes
     @page_keywords="#{@event.name},#{@event.venue_location} #{@event.city}, #{@event.state}, #{@event.event_type}"
     respond_to do |format|
