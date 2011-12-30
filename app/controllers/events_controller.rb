@@ -20,7 +20,7 @@ class EventsController < ApplicationController
     
     @page_title="#{@event.name} In #{@event.city.titleize} #{@event.state.upcase} On #{@event.start_date.strftime("%b-%d-%Y")}"
     @page_desc="Find My Bike Race | #{@event.name} a #{@event.event_type} event #{@event.venue_location.blank? ? "": "at "+@event.venue_location.titleize}\
-    in #{@event.city.titleize}, #{@event.state.upcase}.<br> #{@event.notes}"
+    in #{@event.city.titleize}, #{@event.state.upcase} on #{@event.start_date.strftime("%b-%d-%Y")}. #{@event.notes}"
     @page_keywords="#{@event.name},#{@event.venue_location} #{@event.city.titleize}, #{@event.state.upcase}, #{@event.event_type}"
     respond_to do |format|
       format.html # show.html.erb
