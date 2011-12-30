@@ -5,13 +5,15 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta NAME="description" CONTENT="<%= @page_desc.gsub(/<\/?[^>]*>/, "") unless @page_desc.nil? %>"/>
   <meta NAME="keywords" CONTENT="<%=@page_keywords unless @page_keywords.nil?%>"/>
- 
-  <meta property="og:image" content="<%=image_path('crank-logo.png')%>"/> 
-  <meta property="og:title" content="<%= @page_title  %>"/> 
-  <meta property="og:url" content="<%= request.env['HTTP_HOST'] +request.env['REQUEST_URI']  %>"/> 
-  <meta property="og:site_name" content="Find My Bike Race"/> 
+
+  <meta property="og:image" content="http://<%=request.env['HTTP_HOST'] +image_path('crank-logo_75x75.png')%>"/> 
+  <meta property="og:title" content="Find My Bike Race | <%= @page_title  %>"/> 
+  <meta property="og:url" content="http://<%= request.env['HTTP_HOST'] +request.env['REQUEST_URI']  %>"/> 
+  <meta property="og:site_name" content="Find My Bike Race"/>
+  <meta property="og:type" content="<%= request.env['REQUEST_URI'].end_with?("/") ? 'website' : 'sport' %>"/> 
+  <meta property="og:description" content="<%= @page_desc.gsub(/<\/?[^>]*>/, "") unless @page_desc.nil? %>"/>
   <meta property="fb:app_id" content="<%= Facebooker2.app_id %>"/>
-  
+
   <meta name="msvalidate.01" content="15FFE477BBEFD1551ABEBE8500325455" />
   <link rel='icon' href="/favicon.ico"/>
   <%= csrf_meta_tag %>
@@ -50,19 +52,19 @@
   <%= stylesheet_link_tag 'jquery-ui-1.8.13.custom' %>
 
 <%#= include_tiny_mce_if_needed %>
-<% if ! is_admin? and RAILS_ENV=='production' %>
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-23485624-1']);
-    _gaq.push(['_setDomainName', '.findmybikerace.com']);
-    _gaq.push(['_trackPageview']);
+  <% if ! is_admin? and RAILS_ENV=='production' %>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-23485624-1']);
+      _gaq.push(['_setDomainName', '.findmybikerace.com']);
+      _gaq.push(['_trackPageview']);
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
 
-  </script>
-<%end%>
+    </script>
+  <%end%>
 </head>
