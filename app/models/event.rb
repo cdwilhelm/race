@@ -16,11 +16,12 @@ class Event < ActiveRecord::Base
 
   belongs_to :user
   has_many :event_comments,:dependent=>:delete_all
- # has_many :tags, :foreign_key => :object_id, :dependent=>:delete_all
+  # has_many :tags, :foreign_key => :object_id, :dependent=>:delete_all
   accepts_nested_attributes_for :event_comments, :allow_destroy => true
- # accepts_nested_attributes_for :tags, :allow_destroy => true
+  # accepts_nested_attributes_for :tags, :allow_destroy => true
 
   before_save :clear_end_date
+  
   
   named_scope :current, :conditions=>["start_date >= ?",Time.now]
   def to_param
@@ -28,7 +29,7 @@ class Event < ActiveRecord::Base
   end
 
   def address
-        "#{self.city}, #{self.state} #{self.zip_code}"
+    "#{self.city}, #{self.state} #{self.zip_code}"
   end
 
   def geocode_address
@@ -54,8 +55,8 @@ class Event < ActiveRecord::Base
     avg = 0.0
     rating = Rating.find(:all,:conditions=>["object_id=? and object='Event'",id]).collect{|a| a.rating}
     if rating.size > 0
-    avg = rating.sum / rating.size.to_f
-    return avg
+      avg = rating.sum / rating.size.to_f
+      return avg
     end
     return avg.to_f
   end
@@ -64,5 +65,31 @@ class Event < ActiveRecord::Base
   end
   def self.avg_score
     @avg_score
+  end
+  
+  def description
+    "Find My Bike Race | #{name} a #{event_type} event #{venue_location.blank? ? "": "at "+venue_location.titleize}\
+    in #{city.titleize}, #{state.upcase} on #{start_date.strftime("%b-%d-%Y")}. #{notes}"
+  end
+  
+  def post_to_fb_page(fb_client)
+    if fb_client
+      #find my bike race fb page id
+      page = Mogli::Page.find('138642542858198') 
+      
+      #like the page if not already liked
+      fb_client.post("#{page.id}/likes",nil,{}) unless page.can_post
+      
+      post = {:link=>"http://findmybikerace.com/events/#{to_param}",
+        :message=>description,
+        #:icon=>'http://findmybikerace.com/images/crank-logo.png',
+        # :description=>"this is the description event #{name}",
+        #:type=>'link'
+      }
+      # make a post
+      fb_client.post("#{page.id}/feed",'Post',post)
+      #fb_client.post("me/feed",'Post',post)
+
+    end
   end
 end
