@@ -33,12 +33,12 @@ function doRating(){
             halfShow: true,
             //  cancel: true,
             click: function(score,evt) {
-                if ($jq('#'+this.id).attr('user')=='true'){
+               // if ($jq('#'+this.id).attr('user')=='true'){
                     jQuery.ajax( "/ratings/rate/"+ this.id +"?score="+score)
-                }else {
-                    alert('Please login to rate an event.')
+              //  }else {
+                   // alert('Please login to rate an event.')
                 // window.location='/login'
-                }
+               // }
             }
         }
         )
@@ -57,12 +57,12 @@ $jq(function(){
         halfShow: true,
         cancel: true,
         click: function(score,evt) {
-            if ($jq('#'+this.id).attr('user')=='true'){
+           // if ($jq('#'+this.id).attr('user')=='true'){
                 jQuery.ajax( "/ratings/rate/"+ this.id +"?score="+score)
-            }else {
-                alert('Please login to rate an event.')
+            //}else {
+            //    alert('Please login to rate an event.')
             // window.location='/login'
-            }
+            //}
         },
         cancelHint:   'You sure you want to cancel?',
         target:       '#hint',

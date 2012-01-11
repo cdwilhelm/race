@@ -21,7 +21,7 @@
         <td class="title center"><%= event.event_type  %> </td>
         <td class="title center"><%= event.start_date.strftime("%b %d")  %> </td>
         <td class="title center"><%= event.state  %> </td>
-        <td class=""><div id="<%=event.id%>" avg="<%=event.avg_score.to_f %>" user="<%=current_user_logged_in?%>" class="star"></div></td>
+        <td class=""><div id="<%=event.id%>" avg="<%=event.avg_score.to_f %>"  class="star"></div></td>
       </tr>
     <%end%>
   <%end%>
