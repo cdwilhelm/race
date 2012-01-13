@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     @page_desc="Logout"
     @page_title="Logout"    
     session[:user_id] = nil
-    current_user = nil
+    @current_user = nil
     flash[:notice] = "Logged out"
     redirect_to(:controller=>"home",:action => "index" )
   end
@@ -163,9 +163,11 @@ class UsersController < ApplicationController
       #register with fb
       User.create_from_fb_connect(current_facebook_user)
       user = User.find_by_fb_user(current_facebook_user)
+      session[:user_id]=user.id
       redirect_to my_page_path
     else
       current_user.link_fb_connect(current_facebook_user.id) unless current_user.facebook_id == current_facebook_user.id
+      session[:user_id]=current_user_id
       redirect_to root_path
     end
   end

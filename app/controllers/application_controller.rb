@@ -78,18 +78,18 @@ class ApplicationController < ActionController::Base
   helper_method :state_list
 
   def current_user_id
-    @current_user.id
+    current_user.id 
   end
   helper_method :current_user_id
 
   def current_user_logged_in?
-    ! @current_user.nil?
+    ! current_user.nil?
   end
   helper_method :current_user_logged_in?
 
   def is_admin?
     if current_user_logged_in?
-      @current_user.role=='admin'
+      current_user.role=='admin'
     else
       false
     end
@@ -99,7 +99,7 @@ class ApplicationController < ActionController::Base
 
   def is_promoter?
     if current_user_logged_in?
-      @current_user.role=='promoter'
+      current_user.role=='promoter'
     else
       false
     end
@@ -134,7 +134,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
-    if @current_user.nil?
+    if current_user.nil?
       session[:original_uri] = request.request_uri
       flash[:notice] = "Please log in"
       #render :update do |page|
@@ -150,7 +150,7 @@ class ApplicationController < ActionController::Base
 
 
   def admin
-    unless User.find_by_id(session[:user_id],:conditions=>"role='admin'")
+    unless User.find_by_id(current_user_id,:conditions=>"role='admin'")
       session[:original_uri] = request.request_uri
       flash[:notice] = "Your account is not authorized to access this page."
       redirect_to(:controller => "/users" , :action => "login" )

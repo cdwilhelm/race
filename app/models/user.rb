@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
 
   after_save :reset_notification
   #after_save :activation_notification
-  after_create :signup_notification
+  after_create :signup_notification  
 
   attr_accessor :reset_password
 
@@ -125,7 +125,7 @@ class User < ActiveRecord::Base
     UserNotifier.deliver_activation(self) if self.recently_activated?
   end
   def signup_notification
-    UserNotifier.deliver_signup_notification(self)
+    UserNotifier.deliver_signup_notification(self) unless facebook_id.blank?
   end
  
   #find the user in the database, first by the facebook user id and if that fails through the email hash

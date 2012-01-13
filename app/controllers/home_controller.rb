@@ -22,10 +22,13 @@ class HomeController < ApplicationController
   end
   
   def my_page
-    @events = Event.current.paginate_by_user_id(current_user.id,
+    if current_user_logged_in?
+    @events = Event.current.paginate_by_user_id(current_user_id,
       :order=>"start_date, name, state",:page=>params[:page],:per_page=>"30")
     @user = User.find(current_user_id)
-    
+    else
+      redirect_to(login_path())
+    end
   end
 
   def contactus_sendmail
