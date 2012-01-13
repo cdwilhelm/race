@@ -3,7 +3,7 @@
 
   <title>Find My Bike Race  <%= "| #{@page_title}" unless @page_title.nil? %></title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta NAME="description" CONTENT="<%= @page_desc.gsub(/<\/?[^>]*>/, "") unless @page_desc.nil? %>"/>
+  <meta NAME="description" CONTENT="<%= @page_desc.gsub(/<\/?[^>]*>/, "Bicyle race calender and ratings. Add and rate your favorite races") unless @page_desc.nil? %>"/>
   <meta NAME="keywords" CONTENT="<%=@page_keywords unless @page_keywords.nil?%>"/>
 
   <meta property="og:image" content="http://<%=request.env['HTTP_HOST'] +image_path('crank-logo_75x75.png')%>"/> 
