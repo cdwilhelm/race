@@ -1,6 +1,6 @@
-<div id="home_blub" >
-<% unless current_user_logged_in? %>
 
+<% unless current_user_logged_in? %>
+<div id="home_blub" >
   <h2 style="text-align: center">Welcome to Find My Bike Race.Com!</h2>
 <p>
   This site is communituy based to calendar and 
@@ -16,14 +16,14 @@
 <p>
   Don't forget to Like us on Facebook or follow us on Twitter.
 </p>
-
+<%end%>
+</div>
 <% else %>
 <p>
   
 </p>
 
-<%end%>
-</div>
+
 <div id="results">
   <%= render "/events/result"  %>
 </div>
