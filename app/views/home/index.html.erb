@@ -1,4 +1,29 @@
+<div id="home_blub" >
+<% unless current_user_logged_in? %>
 
+  <h2 style="text-align: center">Welcome to Find My Bike Race.Com!</h2>
+<p>
+  This site is communituy based to calendar and 
+  share races we know about.  We built it to allow athletes to easily 
+  find the races they are most interested in.  We are cataloging all types of races, 
+  Mountain Bike: XC, Eendurance and gravity, Road Bike: Track, TT and Road.  
+</p>
+<p>
+  Please <%= link_to "login" ,login_path %> 
+  to <%= link_to 'add new events', new_event_path() %> and rate the events. 
+  Tell your friends what you think about the events by clicking on the stars for each event you've done.  
+</p>
+<p>
+  Don't forget to Like us on Facebook or follow us on Twitter.
+</p>
+
+<% else %>
+<p>
+  
+</p>
+
+<%end%>
+</div>
 <div id="results">
   <%= render "/events/result"  %>
 </div>

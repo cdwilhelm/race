@@ -116,6 +116,16 @@ body{
     width:100%;
     
 }
+#home_blub p{font-size: 1.2em;
+    /*line-height: 2px;*/
+    letter-spacing: 2px;}
+
+#home_blub{
+    border: 3px #666666 double;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
 
 
 #rate_event.img{
