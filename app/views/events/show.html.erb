@@ -23,6 +23,7 @@
 <a href="https://<%= request.env['HTTP_HOST'] +request.env['REQUEST_URI']%>" class="twitter-share-button" data-via="findmybikerace" data-lang="en">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </p>
+
 <p>
   <b>Event Website:</b> <%=link_to h( @event.promoter? ? @event.promoter: @event.name), @event.website, :target=>"new" %>
 </p>
@@ -56,24 +57,9 @@
   <%= link_to "log in to add comment", login_path %>
 <%end%>
 <p>
-<div id="comments" style="display:none">
-  <%= render 'comments' %>
-</div>
-</p>
 
-<% if current_user_logged_in? %>
-  <p>
-    <% form_remote_for(@comment,:url=>{:action=>:create_comment},
-      :success=>"$('event_comment_comment').value='';$('comments').show();")  do |f| -%>
-      <% #f.fields_for :event_comments do |ff| %>
-      <%= f.hidden_field :event_id,:value=>@event.id %>
-      <%= f.text_area :comment, :rows=>2 %><br/>
-    <%#end%>
-      <%= f.submit "comment" ,:class=>"button" %>
-    <%end%>
-  </p>
-<%end%>
-
+  <div class="fb-comments" data-href="https://<%= request.env['HTTP_HOST'] +request.env['REQUEST_URI']%>" data-num-posts="2" data-width="470"></div>
+  
 <table width="100%">
   <tr>
     <td>
