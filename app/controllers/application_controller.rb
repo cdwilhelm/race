@@ -6,6 +6,16 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   include SslRequirement
+  
+  unless ActionController::Base.consider_all_requests_local
+    rescue_from Exception, :with => :render_error
+    rescue_from ActiveRecord::RecordNotFound, :with => :render_not_found
+    rescue_from ActionController::RoutingError, :with => :render_not_found
+    rescue_from ActionController::UnknownController, :with => :render_not_found
+    rescue_from ActionController::UnknownAction, :with => :render_not_found
+
+  end
+  
   #only have ssl in prod
   def ssl_required?
     return false if local_request? || RAILS_ENV == 'test' || RAILS_ENV == 'development'
@@ -108,14 +118,20 @@ class ApplicationController < ActionController::Base
   # Retrieves the user for the current session.
   
   def current_user
-    #@current_user ||= current_user_id ? User.find(current_user_id) : User.anonymous
+
+    begin 
     if session[:user_id]
       @current_user ||= User.find(session[:user_id])
     elsif current_facebook_user and @current_user.nil?
       @current_user = User.find_by_facebook_id(current_facebook_user.id)
     end
-    
     return @current_user
+    rescue Exception => exc
+      logger.error("Current_user: #{exc.message}")
+      @current_user = nil
+      return @current_user
+    end
+    
   end
   helper_method :current_user
   
@@ -163,5 +179,14 @@ class ApplicationController < ActionController::Base
     session[:return_to] = nil
   end
 
+  def render_not_found(exception)
+    log_error(exception)
+    render :template => "/error/404.html.erb", :status => 404
+  end
+
+  def render_error(exception)
+    log_error(exception)
+    render :template => "/error/500.html.erb", :status => 500
+  end
 
 end
