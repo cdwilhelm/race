@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     @page_desc="Logout"
     @page_title="Logout"    
     session[:user_id] = nil
-    @current_user = nil
+    current_user = nil
     flash[:notice] = "Logged out"
     redirect_to(:controller=>"home",:action => "index" )
   end
@@ -148,7 +148,7 @@ class UsersController < ApplicationController
   def activate
     @user = User.find_by_activation_code(params[:activation_code]) unless params[:activation_code].nil?
     
-    self.current_user = @user
+    current_user = @user
     if @user.delete_activation_code
       flash[:notice] = "Your account has been activated!"
       redirect_back_or_default('/')

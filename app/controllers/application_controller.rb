@@ -118,7 +118,6 @@ class ApplicationController < ActionController::Base
   # Retrieves the user for the current session.
   
   def current_user
-
     begin 
     if session[:user_id]
       @current_user ||= User.find(session[:user_id])
@@ -127,7 +126,6 @@ class ApplicationController < ActionController::Base
     end
     return @current_user
     rescue Exception => exc
-      logger.error("Current_user: #{exc.message}")
       @current_user = nil
       return @current_user
     end
