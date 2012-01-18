@@ -74,6 +74,7 @@ class Event < ActiveRecord::Base
   
   def post_to_fb_page(fb_client)
     if fb_client
+      begin 
       #find my bike race fb page id
       page = Mogli::Page.find('138642542858198') 
       
@@ -89,6 +90,9 @@ class Event < ActiveRecord::Base
       # make a post
       fb_client.post("#{page.id}/feed",'Post',post)
       #fb_client.post("me/feed",'Post',post)
+      rescue Exception => ex
+        logger.error("#{Time.now} ERROR: Unable to post to facebook. #{ex.message} ")
+      end
 
     end
   end
