@@ -69,7 +69,7 @@ class Event < ActiveRecord::Base
   
   def description
     "Find My Bike Race | #{name} a #{event_type} event #{venue_location.blank? ? "": "at "+venue_location.titleize}\
-    in #{city.titleize}, #{state.upcase} on #{start_date.strftime("%b-%d-%Y")}. #{notes}"
+    in #{city.titleize}, #{state.upcase} on #{start_date.strftime("%b-%d-%Y")}."
   end
   
   def post_to_fb_page(fb_client)
@@ -83,15 +83,14 @@ class Event < ActiveRecord::Base
       
       post = {:link=>"http://findmybikerace.com/events/#{to_param}",
         :message=>description,
-        #:icon=>'http://findmybikerace.com/images/crank-logo.png',
-        # :description=>"this is the description event #{name}",
-        #:type=>'link'
+        :icon=>'http://findmybikerace.com/images/crank-logo.png',
+         :description=>notes,
       }
       # make a post
       fb_client.post("#{page.id}/feed",'Post',post)
       #fb_client.post("me/feed",'Post',post)
       rescue Exception => ex
-        logger.error("#{Time.now} ERROR: Unable to post to facebook. #{ex.message} ")
+        logger.error("#{Time.now} ERROR: Unable to post to facebook. \n#{ex.message} ")
       end
 
     end
