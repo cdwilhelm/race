@@ -57,10 +57,6 @@ Rails::Initializer.run do |config|
     :address  => "localhost",
     :port     => 25,
     :domain   => 'findmybikerace.com',
-    #:authentication => :plain,
-    :authentication  => :login,
-    :user_name  => '',
-    :password  => '',
     :default_mime_version =>'1.0',
     :default_charset=>'UTF-8'
   }
