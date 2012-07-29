@@ -9,8 +9,8 @@ set :use_sudo, true
 set :scm, :subversion
 set :rails_env, "production"
 
-role :web, "97.74.121.159"                          # Your HTTP server, Apache/etc
-role :db, "97.74.121.159",:primary=>true 
+role :web, "findmyrace.com"                          # Your HTTP server, Apache/etc
+role :db, "findmyrace.com",:primary=>true 
 default_run_options[:pty] = true
 
 
